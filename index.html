@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperlab - Fundamental Tech Lab</title>
+    <style>
+        :root {
+            --primary-color: #7cdc69; /* Green accent color from image */
+            --bg-dark: #0a0a0a; /* Dark background color */
+            --text-light: #f0f0f0;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --line-color: rgba(255, 255, 255, 0.2); /* For wireframe patterns */
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            vertical-align: middle;
+            position: relative;
+            top: -1px; /* Fine-tune vertical alignment */
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            line-height: 1;
+            position: relative;
+            top: 1px; /* Fine-tune vertical alignment */
+        }
+
+        .profile-button {
+            background-color: var(--primary-color);
+            color: #000;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-button:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-button::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 0 4rem;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .title-tech {
+            display: block;
+        }
+
+        .title-plan {
+            display: block;
+            margin-top: 2rem;
+        }
+
+        .title-divider {
+            width: 500px;
+            height: 2px;
+            background-color: var(--text-light);
+            margin: 1rem 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tagline-container {
+            display: flex;
+            margin-top: 0.5rem;
+            flex-direction: column;
+            max-width: 100%;
+        }
+
+        .tagline-static {
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .tagline-dynamic-wrapper {
+            position: relative;
+            min-height: 11rem; /* Height for two lines */
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        .tagline-dynamic {
+            font-size: 5rem;
+            font-weight: 300;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            white-space: nowrap; /* Keep each line as a single line */
+            width: 0; /* Start with no width */
+            line-height: 1.1;
+            padding-bottom: 0.2rem;
+            overflow: hidden; /* Hide overflow for typing effect */
+            border-right: 0.2em solid transparent; /* Slightly thicker cursor for better visibility */
+            box-sizing: content-box; /* Ensure border doesn't affect width calculation */
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: max-content } /* Use max-content instead of 100% to fit exactly to text length */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid var(--line-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(124, 220, 105, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .service-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        .service-list {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        .service-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 400px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.7), transparent);
+            z-index: 1;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 5rem;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-label {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--line-color);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .footer-logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px; /* Fine-tune vertical alignment */
+        }
+
+        .footer-address {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Background Pattern */
+        .wireframe-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.2;
+            background-image: radial-gradient(circle at 80% 80%, var(--line-color) 1px, transparent 1px),
+                              radial-gradient(circle at 80% 80%, var(--line-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+
+        .wave-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.1;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 10px, var(--line-color) 10px, var(--line-color) 11px),
+                repeating-linear-gradient(90deg, transparent, transparent 10px, var(--line-color) 10px, var(--line-color) 11px);
+            background-size: 100px 100px;
+            transform: skewY(-10deg);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .tagline-static {
+                font-size: 4rem;
+            }
+
+            .tagline-dynamic {
+                font-size: 3.5rem;
+            }
+            
+            .tagline-dynamic-wrapper {
+                min-height: 8rem;
+            }
+            
+            .title-divider {
+                width: 350px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tagline-static {
+                font-size: 3rem;
+            }
+
+            .tagline-dynamic {
+                font-size: 2.8rem;
+                margin-left: 0;
+            }
+            
+            .tagline-dynamic-wrapper {
+                min-height: 7rem;
+            }
+            
+            .title-divider {
+                width: 300px;
+            }
+            
+            .contact-section, .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tagline-static {
+                font-size: 2.2rem;
+            }
+
+            .tagline-dynamic {
+                font-size: 2rem;
+                padding-bottom: 0.1rem; /* Smaller padding on mobile */
+            }
+            
+            .tagline-dynamic-wrapper {
+                min-height: 5.5rem;
+            }
+            
+            .title-divider {
+                width: 200px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-bg"></div>
+    <div class="wave-pattern"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="40" height="40">
+                </div>
+                <span class="logo-text">hyperlab</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <a href="https://wa.me/573175946793" target="_blank" class="profile-button">Get in touch</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="hero">
+            <div class="tagline-container">
+                <div class="tagline-static">We turn</div>
+                <div class="tagline-dynamic-wrapper">
+                    <div class="tagline-dynamic" data-words='["complex problems into elegant code.", "your ideas into digital reality.", "innovation into competitive advantage."]'>complex problems into elegant code.</div>
+                </div>
+            </div>
+            
+            <p class="hero-subtitle">A boutique tech lab creating cutting-edge solutions for businesses ready to transform their digital presence.</p>
+            
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Our Services</a>
+                <a href="https://wa.me/573175946793" target="_blank" class="btn-secondary">Get in Touch</a>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Cutting-edge solutions for forward-thinking businesses</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3 class="service-title">Custom Software</h3>
+                    <ul class="service-list">
+                        <li>Web & Mobile Applications - Customized platform development with modern technologies</li>
+                        <li>MVPs for Startups - Rapid product validation with agile methodologies</li>
+                        <li>Business Process Automation - Cost reduction and operational optimization with specialized software</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Custom%20Software." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI Powered Chatbots</h3>
+                    <ul class="service-list">
+                        <li>AI Model Implementation - Machine learning and NLP solutions for process optimization</li>
+                        <li>Chatbots & Virtual Assistants - Automation of customer interactions on WhatsApp, web, and social media</li>
+                        <li>Predictive Analysis & Big Data - Extracting insights for strategic decision-making</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20AI%20Powered%20Chatbots." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">Automation & API Integrations</h3>
+                    <ul class="service-list">
+                        <li>Software & Platform Connections - Integration of tools like CRMs, ERPs, third-party APIs</li>
+                        <li>RPA (Robotic Process Automation) - Automation of repetitive tasks in businesses</li>
+                        <li>Custom API Development - Creation of scalable and secure backend services</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Automation%20%26%20API%20Integrations." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⛓️</div>
+                    <h3 class="service-title">Blockchain & Web3</h3>
+                    <ul class="service-list">
+                        <li>Smart Contract Development - Creation of smart contracts on Ethereum, Solana, Polygon</li>
+                        <li>Crypto & Stablecoin Payment Systems - Integration with USDC, Bitcoin, etc.</li>
+                        <li>Asset Tokenization - Creation of NFT and DeFi-based models</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Blockchain%20%26%20Web3." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title">Cloud & DevOps</h3>
+                    <ul class="service-list">
+                        <li>Cloud Architecture - Scalable infrastructure design in AWS, GCP, Azure</li>
+                        <li>CI/CD and Deployment Automation - Improved speed and stability of releases</li>
+                        <li>Cloud Cost Optimization - Reduction of operational expenses in cloud computing</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Cloud%20%26%20DevOps." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3 class="service-title">Tech Consulting & CTO as a Service</h3>
+                    <ul class="service-list">
+                        <li>Advisory for Companies & Startups - Technology strategies to optimize operations</li>
+                        <li>Digital Transformation Strategy - Process modernization and adoption of new technologies</li>
+                        <li>External CTO for Startups - Technological leadership without needing a full-time CTO</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Tech%20Consulting%20%26%20CTO%20as%20a%20Service." target="_blank" class="service-link">Learn more →</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Growth & Tech Marketing</h3>
+                    <ul class="service-list">
+                        <li>Growth Hacking & Data Analytics - Implementation of data-driven growth strategies</li>
+                        <li>AI Marketing Automation - WhatsApp bots, automated email marketing, lead nurturing</li>
+                        <li>SEO & Conversion Optimization - Increased traffic and improved conversion rates</li>
+                    </ul>
+                    <a href="https://wa.me/573175946793?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20Growth%20%26%20Tech%20Marketing." target="_blank" class="service-link">Learn more →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <span>⚗️</span>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h2>Fundamental Tech Lab</h2>
+                    <p>Hyperlab is a boutique technology laboratory focused on creating innovative solutions that transform how businesses operate in the digital landscape.</p>
+                    <p>Our team of experts combines cutting-edge technology with creative problem-solving to deliver solutions that not only meet but exceed client expectations.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Ready to transform your business with cutting-edge technology?</p>
+            
+            <div class="contact-section">
+                <div class="contact-item">
+                    <div class="contact-label">Connect With Us</div>
+                    <div class="contact-value">
+                        <a href="https://wa.me/573175946793" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                            Start a conversation on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="30" height="30">
+                    hyperlab
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                
+                <div class="footer-address">
+                    Bogotá, Colombia
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 Hyperlab. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dynamicWrapper = document.querySelector('.tagline-dynamic-wrapper');
+            const dynamicText = document.querySelector('.tagline-dynamic');
+            const words = JSON.parse(dynamicText.getAttribute('data-words'));
+            let wordIndex = 0;
+            
+            // Split phrases into separate lines for line-by-line typing
+            const phrasePairs = [
+                ["complex problems into", "elegant code."],
+                ["your ideas into", "digital reality."],
+                ["innovation into", "competitive advantage."]
+            ];
+            
+            function typeLine(line, element, callback, delay = 0) {
+                // Clear previous animation
+                element.style.animation = 'none';
+                
+                setTimeout(() => {
+                    // Set content and prepare for animation
+                    element.textContent = line;
+                    element.style.width = '0';
+                    
+                    // Temporarily make element visible but not animated to measure its full width
+                    const tempEl = element.cloneNode(true);
+                    tempEl.style.visibility = 'hidden';
+                    tempEl.style.position = 'absolute';
+                    tempEl.style.width = 'auto';
+                    tempEl.style.whiteSpace = 'nowrap';
+                    tempEl.style.borderRight = 'none'; // Remove border for accurate measurement
+                    element.parentNode.appendChild(tempEl);
+                    
+                    // Get exact width of text
+                    const fullWidth = tempEl.offsetWidth;
+                    element.parentNode.removeChild(tempEl);
+                    
+                    // Force reflow
+                    void element.offsetWidth;
+                    
+                    // Calculate stepping speed based on text length
+                    const steps = line.length;
+                    // Adjust typing speed based on line length (longer lines type faster)
+                    const typingDuration = Math.max(1, Math.min(1.8, 0.03 * steps + 0.5));
+                    
+                    // Create animation manually with exact width
+                    const keyframesName = `typing-${Math.random().toString(36).substr(2, 9)}`;
+                    const styleSheet = document.createElement('style');
+                    styleSheet.innerHTML = `
+                        @keyframes ${keyframesName} {
+                            from { width: 0 }
+                            to { width: ${fullWidth}px }
+                        }
+                    `;
+                    document.head.appendChild(styleSheet);
+                    
+                    // Apply typing animation with calculated duration and exact width
+                    element.style.animation = `${keyframesName} ${typingDuration}s steps(${steps}) forwards, blink-caret 0.75s step-end infinite`;
+                    
+                    // Call callback after animation completes
+                    setTimeout(callback, typingDuration * 1000);
+                }, delay);
+            }
+            
+            function stopCursorBlink(element) {
+                // Remove cursor completely instead of just stopping the animation
+                element.style.animation = element.style.animation.replace(', blink-caret 0.75s step-end infinite', '');
+                element.style.borderRight = 'none';
+            }
+            
+            function animatePhrase() {
+                // Clear the wrapper
+                dynamicWrapper.innerHTML = '';
+                
+                // Get current phrase pair
+                const currentPair = phrasePairs[wordIndex];
+                
+                // Create line elements with consistent styling
+                function createLineElement(text) {
+                    const line = document.createElement('div');
+                    line.className = 'tagline-dynamic';
+                    line.style.borderRight = '0.2em solid var(--primary-color)';
+                    line.textContent = text;
+                    return line;
+                }
+                
+                // Create both lines
+                const line1 = createLineElement(currentPair[0]);
+                const line2 = createLineElement(currentPair[1]);
+                
+                // Add styling for second line
+                line2.style.marginTop = '0.5rem';
+                
+                // Add lines to wrapper
+                dynamicWrapper.appendChild(line1);
+                dynamicWrapper.appendChild(line2);
+                
+                // Type first line, then second line
+                typeLine(currentPair[0], line1, () => {
+                    // Remove cursor from first line when second line starts typing
+                    stopCursorBlink(line1);
+                    
+                    // After first line completes, type second line
+                    typeLine(currentPair[1], line2, () => {
+                        // Keep cursor blinking at end of phrase for a while
+                        setTimeout(() => {
+                            // Prepare for transition to next phrase
+                            stopCursorBlink(line2);
+                            
+                            // Fade out current phrase
+                            line1.style.transition = 'opacity 0.5s ease';
+                            line2.style.transition = 'opacity 0.5s ease';
+                            line1.style.opacity = '0';
+                            line2.style.opacity = '0';
+                            
+                            // Move to next phrase after fade out
+                            setTimeout(() => {
+                                wordIndex = (wordIndex + 1) % phrasePairs.length;
+                                animatePhrase();
+                            }, 500);
+                        }, 2500); // Display completed phrase for 2.5 seconds
+                    }, 200); // Small delay between first and second line
+                });
+            }
+            
+            // Start the animation sequence
+            animatePhrase();
+        });
+    </script>
+</body>
+</html> 
