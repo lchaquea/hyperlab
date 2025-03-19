@@ -205,10 +205,20 @@
 
             .header-title {
                 font-size: 2.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
             }
 
             .header-subtitle {
                 font-size: 1.2rem;
+            }
+
+            .client-logo .typing-text {
+                font-size: 1.5rem !important;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
             }
         }
 
@@ -1172,6 +1182,14 @@
                 setTimeout(() => {
                     title.classList.add('typing-complete');
                 }, maxDuration * 1000);
+            });
+
+            // Timeline collapsing functionality
+            document.querySelectorAll('.timeline-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const content = title.parentElement;
+                    content.classList.toggle('expanded');
+                });
             });
 
             // Calculate days until delivery
