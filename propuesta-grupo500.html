@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Grupo 500 - Hyperlab</title>
+    <style>
+        :root {
+            --primary-color: #7cdc69;
+            --bg-dark: #0a0a0a;
+            --text-light: #f0f0f0;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --line-color: rgba(255, 255, 255, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #4a90e2;
+            --accent-purple: #9b51e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Styles */
+        .proposal-header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
+        }
+
+        .client-logo {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .header-title {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        /* Project Summary Section */
+        .project-summary {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 220, 105, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content {
+            color: var(--text-dim);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .timeline-item.visible {
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -54px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 0;
+        }
+
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-details {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 3rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline-container {
+                padding-left: 30px;
+            }
+
+            .timeline-dot {
+                left: -34px;
+            }
+        }
+
+        /* Table Styles */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .schedule-table th {
+            background: rgba(124, 220, 105, 0.1);
+            color: var(--primary-color);
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Cost Details Section */
+        .cost-details {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cost-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .cost-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="proposal-header">
+        <div class="container">
+            <div class="client-logo">
+                <!-- Replace with actual client logo -->
+                <h1 style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+            </div>
+            <h1 class="header-title">Transformación Digital Educativa</h1>
+            <p class="header-subtitle">Una propuesta personalizada para revolucionar la experiencia de aprendizaje y ventas a través de tecnología de vanguardia</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-summary">
+            <h2 class="section-title">Bot de Ventas con IA para WhatsApp</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Objetivos del Proyecto</h3>
+                    <ul class="feature-list">
+                        <li>Automatizar la comunicación con clientes mediante IA (GPT-4)</li>
+                        <li>Capturar clientes potenciales e integrarlos con CRM</li>
+                        <li>Procesar pagos directamente desde WhatsApp</li>
+                        <li>Proporcionar informes en tiempo real</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Funcionalidades Principales</h3>
+                    <ul class="feature-list">
+                        <li>Integración con WhatsApp Business API</li>
+                        <li>Chatbot con IA (GPT-4)</li>
+                        <li>Gestión de leads en CRM</li>
+                        <li>Panel de administración</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">📦</div>
+                    <h3 class="card-title">Entregables</h3>
+                    <ul class="feature-list">
+                        <li>Bot de WhatsApp funcional</li>
+                        <li>CRM integrado con leads</li>
+                        <li>Sistema de pagos vinculado</li>
+                        <li>Implementación en la nube</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline">
+            <h2 class="section-title">Cronograma de Desarrollo</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Funcionalidad</th>
+                        <th>Tiempo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Semana 1</strong><br>(Marzo 25-31)</td>
+                        <td>
+                            <strong>Configuración de Infraestructura y API de WhatsApp</strong>
+                            <ul>
+                                <li>Configuración de Meta Business Manager</li>
+                                <li>Solicitud y verificación de API de WhatsApp</li>
+                                <li>Configuración de hosting</li>
+                            </ul>
+                        </td>
+                        <td>7 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 2</strong><br>(Abril 1-7)</td>
+                        <td>
+                            <strong>Desarrollo del Chatbot IA y Manejo de Leads</strong>
+                            <ul>
+                                <li>Integración de GPT-4</li>
+                                <li>Configuración de respuestas personalizadas</li>
+                                <li>Integración con CRM</li>
+                            </ul>
+                        </td>
+                        <td>7 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 3</strong><br>(Abril 8-14)</td>
+                        <td>
+                            <strong>Integración de Pagos y Panel de Administración</strong>
+                            <ul>
+                                <li>Integración con Stripe/MercadoPago</li>
+                                <li>Desarrollo del Dashboard</li>
+                                <li>Configuración de métricas</li>
+                            </ul>
+                        </td>
+                        <td>7 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semana 4</strong><br>(Abril 15)</td>
+                        <td>
+                            <strong>Pruebas Finales y Despliegue</strong>
+                            <ul>
+                                <li>Pruebas de carga</li>
+                                <li>Implementación de seguridad</li>
+                                <li>Despliegue final</li>
+                            </ul>
+                        </td>
+                        <td>1 día</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="pricing">
+            <h2 class="section-title">Modelo de Costos y Precios</h2>
+            <div class="pricing-options">
+                <div class="pricing-card">
+                    <h3>Opción 1: Tarifa Fija</h3>
+                    <div class="price">$8,000 USD</div>
+                    <p class="price-details">Desarrollo inicial + 1 mes de soporte</p>
+                    <ul class="feature-list">
+                        <li>Desarrollo completo</li>
+                        <li>Integración total</li>
+                        <li>Soporte inicial (1 mes)</li>
+                        <li>Mantenimiento mensual: $500 USD</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Opción 2: Revenue Share</h3>
+                    <div class="price">$3,000 USD</div>
+                    <p class="price-details">Desarrollo inicial + 5% de ventas</p>
+                    <ul class="feature-list">
+                        <li>Desarrollo inicial reducido</li>
+                        <li>5% de ventas generadas por el bot</li>
+                        <li>Soporte continuo incluido</li>
+                        <li>Proyección: $10,000 USD/mes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cost-details">
+                <h2>Costos Asociados Mensuales</h2>
+                <div class="cost-category">
+                    <h3>1️⃣ Infraestructura y Hosting</h3>
+                    <div class="cost-item">
+                        <span>Hosting Backend y Base de Datos</span>
+                        <span>$30 - $100/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Almacenamiento de Archivos</span>
+                        <span>$5 - $30/mes</span>
+                    </div>
+                </div>
+                <div class="cost-category">
+                    <h3>2️⃣ WhatsApp Business API</h3>
+                    <div class="cost-item">
+                        <span>Conversaciones Cliente-Iniciado</span>
+                        <span>$30 - $500/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>BSP (Twilio, 360dialog, Wati)</span>
+                        <span>$20 - $50/mes</span>
+                    </div>
+                </div>
+                <div class="cost-category">
+                    <h3>3️⃣ CRM e Integraciones</h3>
+                    <div class="cost-item">
+                        <span>CRM (HubSpot, Pipedrive, Zoho)</span>
+                        <span>$15 - $300/mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="https://wa.me/573175946793?text=Hola,%20me%20interesa%20la%20propuesta%20para%20Preicfes%20Grupo%20500" class="cta-button" target="_blank">
+                    Consultar sobre esta propuesta
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for timeline animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.timeline-item').forEach((item) => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html> 
