@@ -868,17 +868,19 @@
                 </div>
                 <div class="header-right">
                     <div class="proposal-info">
-                        <p>Fecha de propuesta: <strong>19 de marzo, 2024</strong></p>
-                        <p>Válida hasta: <strong>25 de marzo, 2024</strong></p>
+                        <p>Fecha de propuesta: <strong>Marzo 19, 2025</strong></p>
+                        <p>Válida hasta: <strong>Marzo 25, 2025</strong></p>
                     </div>
                     <div class="countdown">
-                        <div class="countdown-number">27</div>
+                        <div class="countdown-number"></div>
                         <p>días para la entrega</p>
                     </div>
                     <div class="prepared-by">
-                        <p style="color: var(--text-dim); margin-bottom: 1rem;">Fecha de entrega: <strong>15 de abril, 2024</strong></p>
-                        <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
-                        <span>Preparado por hyperlab</span>
+                        <p style="color: var(--text-dim); margin-bottom: 1rem;">Fecha de entrega: <strong>Abril 15, 2025</strong></p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+                            <span>Preparado por hyperlab</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1325,12 +1327,18 @@
             });
 
             // Calculate days until delivery
-            const deliveryDate = new Date('2024-04-15');
-            const today = new Date();
-            const diffTime = Math.abs(deliveryDate - today);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            function updateCountdown() {
+                const deliveryDate = new Date('2025-04-15');
+                const today = new Date();
+                const diffTime = deliveryDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                document.querySelector('.countdown-number').textContent = diffDays;
+            }
             
-            document.querySelector('.countdown-number').textContent = diffDays;
+            // Update countdown immediately and then every day
+            updateCountdown();
+            setInterval(updateCountdown, 24 * 60 * 60 * 1000);
         });
 
         // Add collapsible functionality to timeline items
