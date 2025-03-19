@@ -2347,17 +2347,30 @@
                 });
             });
 
-            // Calculate days until delivery
+            // Calculate days until delivery for both sections
             function updateCountdown() {
-                const deliveryDate = new Date('2025-04-19');
+                // WhatsApp Bot delivery date
+                const whatsappDeliveryDate = new Date('2025-04-15');
                 const today = new Date();
-                const diffTime = deliveryDate - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const whatsappDiffTime = whatsappDeliveryDate - today;
+                const whatsappDiffDays = Math.ceil(whatsappDiffTime / (1000 * 60 * 60 * 24));
                 
-                // Update both countdown elements
-                document.querySelectorAll('.countdown-number').forEach(element => {
-                    element.textContent = diffDays;
-                });
+                // LMS delivery date
+                const lmsDeliveryDate = new Date('2025-04-19');
+                const lmsDiffTime = lmsDeliveryDate - today;
+                const lmsDiffDays = Math.ceil(lmsDiffTime / (1000 * 60 * 60 * 24));
+                
+                // Update WhatsApp Bot countdown
+                const whatsappCountdown = document.querySelector('.proposal-header:not(#lms-resumen) .countdown-number');
+                if (whatsappCountdown) {
+                    whatsappCountdown.textContent = whatsappDiffDays;
+                }
+                
+                // Update LMS countdown
+                const lmsCountdown = document.querySelector('#lms-resumen .countdown-number');
+                if (lmsCountdown) {
+                    lmsCountdown.textContent = lmsDiffDays;
+                }
             }
             
             updateCountdown();
