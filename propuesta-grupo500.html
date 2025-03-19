@@ -30,6 +30,7 @@
             overflow-x: hidden;
         }
 
+        /* Container Styles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -47,6 +48,9 @@
             position: relative;
             padding: 4rem 0;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         .header-content {
@@ -54,6 +58,9 @@
             grid-template-columns: 70% 30%;
             gap: 2rem;
             align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .header-left {
@@ -86,6 +93,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.2s forwards;
+            line-height: 1.2;
         }
 
         .header-subtitle {
@@ -95,6 +103,7 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.4s forwards;
+            line-height: 1.4;
         }
 
         /* Info Box Styles */
@@ -247,6 +256,10 @@
         .project-summary {
             padding: 6rem 0;
             position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 6rem 2rem;
         }
 
         .section-title {
@@ -295,6 +308,10 @@
         .timeline {
             padding: 6rem 0;
             position: relative;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 6rem 2rem;
         }
 
         .timeline-container {
@@ -333,6 +350,7 @@
             background: var(--primary-color);
         }
 
+        /* Timeline Content Styles */
         .timeline-content {
             position: relative;
         }
@@ -340,55 +358,86 @@
         .timeline-content ul {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
             margin: 0;
             padding: 0;
             opacity: 0;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         }
 
         .timeline-content.expanded ul {
             max-height: 500px;
-            margin-top: 1rem;
             opacity: 1;
+            margin-top: 1rem;
         }
 
-        .timeline-title {
+        .timeline-content .timeline-title {
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem;
+            padding: 0.8rem;
             background: rgba(124, 220, 105, 0.1);
             border-radius: 8px;
             margin: -0.5rem;
             transition: background-color 0.3s ease;
         }
 
-        .timeline-title:hover {
-            background: rgba(124, 220, 105, 0.15);
-        }
-
-        .timeline-title::before {
+        .timeline-content .timeline-title::after {
             content: '+';
-            font-size: 1.5em;
+            font-size: 1.2em;
             color: var(--primary-color);
-            margin-right: 1rem;
+            margin-left: 1rem;
             font-weight: 300;
             min-width: 20px;
             text-align: center;
         }
 
-        .timeline-content.expanded .timeline-title::before {
+        .timeline-content.expanded .timeline-title::after {
             content: '−';
         }
 
-        .timeline-title strong {
-            flex: 1;
+        .timeline-content .timeline-title strong {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .timeline-content ul.feature-list {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content ul.feature-list li {
+            color: var(--text-dim);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .timeline-title:hover {
+            background: rgba(124, 220, 105, 0.15);
         }
 
         .timeline-title:hover strong {
             color: var(--primary-color);
+        }
+
+        .timeline-content.expanded .timeline-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-table td {
+            vertical-align: top;
+            padding: 1.2rem 1rem;
+        }
+
+        .schedule-table td strong {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .schedule-table td br + span {
+            font-size: 0.9rem;
+            color: var(--text-dim);
         }
 
         .timeline-date {
@@ -400,6 +449,10 @@
         /* Pricing Section */
         .pricing {
             padding: 6rem 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 6rem 2rem;
         }
 
         .pricing-options {
@@ -886,6 +939,260 @@
                 padding-top: 5rem;
             }
         }
+
+        /* LMS Product Section */
+        .product-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Implementation Timeline */
+        .timeline-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .phase-number {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--primary-color);
+        }
+
+        .duration {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Technical Stack */
+        .tech-stack-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .tech-stack-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tech-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-card p {
+            color: var(--text-dim);
+        }
+
+        /* New Detailed Functionalities Styles */
+        .detailed-features {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 6rem 2rem;
+        }
+
+        .detailed-features-container {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+        }
+
+        .detailed-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detailed-feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .detailed-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 220, 105, 0.1);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-number {
+            font-size: 1.2rem;
+        }
+
+        .feature-header h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .feature-content {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .feature-item {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -909,38 +1216,39 @@
         </div>
     </nav>
 
-    <header class="proposal-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="client-logo">
-                        <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+    <main>
+        <!-- WhatsApp Bot Hero Section -->
+        <header class="proposal-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="client-logo">
+                            <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+                        </div>
+                        <h1 class="header-title typing-text">WhatsApp AI Bot</h1>
+                        <p class="header-subtitle">Una propuesta para hacer crecer tu negocio con un asistente virtual que entiende, responde y vende por ti, las 24 horas del día.</p>
                     </div>
-                    <h1 class="header-title typing-text">Tu Negocio, Más Inteligente</h1>
-                    <p class="header-subtitle">Una propuesta para hacer crecer tu negocio con un asistente virtual que entiende, responde y vende por ti, las 24 horas del día.</p>
-                </div>
-                <div class="header-right">
-                    <div class="proposal-info">
-                        <p>Fecha de propuesta: <strong>Marzo 19, 2025</strong></p>
-                        <p>Válida hasta: <strong>Marzo 25, 2025</strong></p>
-                    </div>
-                    <div class="countdown">
-                        <div class="countdown-number"></div>
-                        <p>días para la entrega</p>
-                    </div>
-                    <div class="prepared-by">
-                        <p>Fecha de entrega: <strong>Abril 15, 2025</strong></p>
-                        <div class="hyperlab-info">
-                            <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
-                            <span>Preparado por hyperlab</span>
+                    <div class="header-right">
+                        <div class="proposal-info">
+                            <p>Fecha de propuesta: <strong>Marzo 19, 2025</strong></p>
+                            <p>Válida hasta: <strong>Marzo 25, 2025</strong></p>
+                        </div>
+                        <div class="countdown">
+                            <div class="countdown-number"></div>
+                            <p>días para la entrega</p>
+                        </div>
+                        <div class="prepared-by">
+                            <p>Fecha de entrega: <strong>Abril 15, 2025</strong></p>
+                            <div class="hyperlab-info">
+                                <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+                                <span>Preparado por hyperlab</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="container">
         <section id="resumen" class="project-summary">
             <h2 class="section-title">Bot de Ventas con IA para WhatsApp</h2>
             <p style="color: var(--text-dim); margin-bottom: 3rem;"><strong>Alcance del proyecto:</strong> Esta propuesta describe el desarrollo de un Bot de Ventas con IA integrado a WhatsApp Business API Oficial de Meta, con capacidad para automatizar respuestas, gestionar clientes potenciales y procesar pagos.</p>
@@ -1279,54 +1587,644 @@
                 </a>
             </div>
         </section>
+
+        <!-- LMS Section Start -->
+        <header class="proposal-header" id="lms-resumen">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="client-logo">
+                            <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+                        </div>
+                        <h1 class="header-title typing-text">Sistema LMS</h1>
+                        <p class="header-subtitle">Una plataforma de gestión de aprendizaje personalizada para optimizar la preparación de estudiantes ICFES, con herramientas avanzadas de seguimiento y evaluación.</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="proposal-info">
+                            <p>Fecha de propuesta: <strong>Marzo 19, 2025</strong></p>
+                            <p>Válida hasta: <strong>Marzo 25, 2025</strong></p>
+                        </div>
+                        <div class="countdown">
+                            <div class="countdown-number" id="lms-countdown"></div>
+                            <p>días para la entrega</p>
+                        </div>
+                        <div class="prepared-by">
+                            <p>Fecha de entrega: <strong>Abril 15, 2025</strong></p>
+                            <div class="hyperlab-info">
+                                <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+                                <span>Preparado por hyperlab</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- LMS Product Section -->
+        <section id="lms-resumen" class="project-summary">
+            <h2 class="section-title">LMS para Preicfes Grupo 500</h2>
+            <p style="color: var(--text-dim); margin-bottom: 3rem;"><strong>Alcance del proyecto:</strong> Sistema de Gestión del Aprendizaje personalizado para optimizar la preparación de estudiantes, diseñado específicamente para las necesidades de preparación ICFES.</p>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Objetivos del Proyecto</h3>
+                    <ul class="feature-list">
+                        <li>Control de acceso basado en roles (RBAC)</li>
+                        <li>Gestión escalable de cursos multiformato</li>
+                        <li>Integración optimizada con YouTube</li>
+                        <li>Sistema de evaluación y seguimiento</li>
+                        <li>Gamificación y engagement estudiantil</li>
+                        <li>Monetización flexible y escalable</li>
+                        <li>Soporte para 5,000+ usuarios concurrentes</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Resultados del Proyecto</h3>
+                    <ul class="feature-list">
+                        <li>Gestión eficiente de roles y permisos</li>
+                        <li>Biblioteca de contenido organizada y accesible</li>
+                        <li>Reducción de costos en infraestructura de video</li>
+                        <li>Mejora en el seguimiento del progreso estudiantil</li>
+                        <li>Aumento en la retención y compromiso</li>
+                        <li>Incremento en conversión de ventas</li>
+                        <li>Alta disponibilidad y rendimiento óptimo</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- LMS Features Section -->
+        <section id="lms-funcionalidades" class="project-summary">
+            <h2 class="section-title">Funcionalidades y Entregables</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Funcionalidades Principales</h3>
+                    <ul class="feature-list">
+                        <li>Sistema RBAC completo (Admin, Instructor, Estudiante)</li>
+                        <li>Gestión de contenido multimedia y documentos</li>
+                        <li>Integración avanzada con YouTube</li>
+                        <li>Sistema de evaluación automatizada</li>
+                        <li>Gamificación y sistema de recompensas</li>
+                        <li>Procesamiento de pagos y suscripciones</li>
+                        <li>Analíticas y reportes en tiempo real</li>
+                        <li>Sistema de comunicación integrado</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">📦</div>
+                    <h3 class="card-title">Entregables</h3>
+                    <ul class="feature-list">
+                        <li>Plataforma LMS completamente funcional</li>
+                        <li>Panel de administración personalizado</li>
+                        <li>Sistema de evaluación</li>
+                        <li>Panel de inteacción</li>
+                        <li>Sistema de retroalimentación automatizado</li>
+                        <li>Sistema de pagos integrado</li>
+                        <li>Documentación técnica y de usuario</li>
+                        <li>Capacitación para administradores</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="screenshots-container">
+                <h2 class="section-title" style="margin-bottom: 2rem;">Vista Previa del Producto</h2>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <svg width="100%" height="300" viewBox="0 0 600 400">
+                            <!-- Dashboard Preview SVG -->
+                            <defs>
+                                <pattern id="lms-mockup-pattern1" patternUnits="userSpaceOnUse" width="600" height="400">
+                                    <rect width="600" height="400" fill="#1a1a1a"/>
+                                    <rect x="40" y="30" width="520" height="340" rx="12" fill="#2a2a2a"/>
+                                    
+                                    <!-- Header with Navigation -->
+                                    <rect x="60" y="50" width="480" height="60" rx="8" fill="#3a3a3a"/>
+                                    <text x="80" y="85" fill="#f0f0f0" font-size="18">Panel de Cursos</text>
+                                    <circle cx="480" cy="80" r="15" fill="#7cdc69" opacity="0.8"/>
+                                    
+                                    <!-- Search Bar -->
+                                    <rect x="60" y="130" width="480" height="40" rx="20" fill="#3a3a3a"/>
+                                    <text x="85" y="155" fill="#808080" font-size="14">Buscar cursos...</text>
+                                    
+                                    <!-- Course Grid -->
+                                    <g transform="translate(60, 190)">
+                                        <!-- Mathematics Course Card -->
+                                        <rect width="150" height="160" rx="8" fill="#3a3a3a"/>
+                                        <circle cx="30" cy="30" r="15" fill="#7cdc69" opacity="0.8"/>
+                                        <text x="20" y="70" fill="#f0f0f0" font-size="14">Matemáticas</text>
+                                        <text x="20" y="90" fill="#808080" font-size="12">12 lecciones</text>
+                                        <rect x="20" y="110" width="110" height="6" rx="3" fill="#4a4a4a"/>
+                                        <rect x="20" y="110" width="75" height="6" rx="3" fill="#7cdc69"/>
+                                        <text x="20" y="130" fill="#808080" font-size="12">75% completado</text>
+                                        
+                                        <!-- Language Course Card -->
+                                        <rect x="170" y="0" width="150" height="160" rx="8" fill="#3a3a3a"/>
+                                        <circle cx="200" cy="30" r="15" fill="#4a90e2" opacity="0.8"/>
+                                        <text x="190" y="70" fill="#f0f0f0" font-size="14">Lenguaje</text>
+                                        <text x="190" y="90" fill="#808080" font-size="12">15 lecciones</text>
+                                        <rect x="190" y="110" width="110" height="6" rx="3" fill="#4a4a4a"/>
+                                        <rect x="190" y="110" width="55" height="6" rx="3" fill="#4a90e2"/>
+                                        <text x="190" y="130" fill="#808080" font-size="12">50% completado</text>
+                                        
+                                        <!-- Science Course Card -->
+                                        <rect x="340" y="0" width="150" height="160" rx="8" fill="#3a3a3a"/>
+                                        <circle cx="370" cy="30" r="15" fill="#9b51e0" opacity="0.8"/>
+                                        <text x="360" y="70" fill="#f0f0f0" font-size="14">Ciencias</text>
+                                        <text x="360" y="90" fill="#808080" font-size="12">10 lecciones</text>
+                                        <rect x="360" y="110" width="110" height="6" rx="3" fill="#4a4a4a"/>
+                                        <rect x="360" y="110" width="33" height="6" rx="3" fill="#9b51e0"/>
+                                        <text x="360" y="130" fill="#808080" font-size="12">30% completado</text>
+                                    </g>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#lms-mockup-pattern1)"/>
+                        </svg>
+                        <div class="screenshot-caption">Dashboard de Cursos Interactivo</div>
+                    </div>
+                    <div class="screenshot-item">
+                        <svg width="100%" height="300" viewBox="0 0 600 400">
+                            <!-- Video Player Preview SVG -->
+                            <defs>
+                                <pattern id="lms-mockup-pattern2" patternUnits="userSpaceOnUse" width="600" height="400">
+                                    <rect width="600" height="400" fill="#1a1a1a"/>
+                                    <rect x="40" y="30" width="520" height="340" rx="12" fill="#2a2a2a"/>
+                                    
+                                    <!-- Course Header -->
+                                    <rect x="60" y="50" width="480" height="60" rx="8" fill="#3a3a3a"/>
+                                    <text x="80" y="85" fill="#f0f0f0" font-size="16">Matemáticas > Álgebra > Ecuaciones Cuadráticas</text>
+                                    
+                                    <!-- Video Player -->
+                                    <rect x="60" y="130" width="480" height="270" rx="8" fill="#3a3a3a"/>
+                                    <!-- Video Thumbnail -->
+                                    <rect x="60" y="130" width="480" height="200" fill="#2a2a2a"/>
+                                    <circle cx="300" cy="230" r="30" fill="#7cdc69" opacity="0.8"/>
+                                    <path d="M290 220 L315 230 L290 240 Z" fill="white"/>
+                                    
+                                    <!-- Video Controls -->
+                                    <rect x="60" y="330" width="480" height="40" rx="4" fill="#3a3a3a"/>
+                                    <!-- Progress Bar -->
+                                    <rect x="80" y="345" width="360" height="8" rx="4" fill="#4a4a4a"/>
+                                    <rect x="80" y="345" width="180" height="8" rx="4" fill="#7cdc69"/>
+                                    <!-- Time -->
+                                    <text x="460" y="353" fill="#808080" font-size="12">15:30 / 31:00</text>
+                                    
+                                    <!-- Controls -->
+                                    <circle cx="100" cy="345" r="8" fill="#7cdc69"/>
+                                    <rect x="120" y="341" width="4" height="8" fill="#f0f0f0"/>
+                                    <rect x="130" y="341" width="4" height="8" fill="#f0f0f0"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#lms-mockup-pattern2)"/>
+                        </svg>
+                        <div class="screenshot-caption">Reproductor de Video Optimizado</div>
+                    </div>
+                    <div class="screenshot-item">
+                        <svg width="100%" height="300" viewBox="0 0 600 400">
+                            <!-- Quiz System Preview SVG -->
+                            <defs>
+                                <pattern id="lms-mockup-pattern3" patternUnits="userSpaceOnUse" width="600" height="400">
+                                    <rect width="600" height="400" fill="#1a1a1a"/>
+                                    <rect x="40" y="30" width="520" height="340" rx="12" fill="#2a2a2a"/>
+                                    
+                                    <!-- Quiz Header -->
+                                    <rect x="60" y="50" width="480" height="60" rx="8" fill="#3a3a3a"/>
+                                    <text x="80" y="85" fill="#f0f0f0" font-size="18">Evaluación: Ecuaciones Cuadráticas</text>
+                                    
+                                    <!-- Progress Indicator -->
+                                    <text x="80" y="120" fill="#808080" font-size="14">Pregunta 3 de 10</text>
+                                    <rect x="80" y="130" width="440" height="4" rx="2" fill="#4a4a4a"/>
+                                    <rect x="80" y="130" width="132" height="4" rx="2" fill="#7cdc69"/>
+                                    
+                                    <!-- Question -->
+                                    <rect x="60" y="150" width="480" height="100" rx="8" fill="#3a3a3a"/>
+                                    <text x="80" y="180" fill="#f0f0f0" font-size="16">Resuelve la siguiente ecuación:</text>
+                                    <text x="80" y="210" fill="#7cdc69" font-size="18">x² + 5x + 6 = 0</text>
+                                    
+                                    <!-- Answer Options -->
+                                    <rect x="60" y="270" width="230" height="40" rx="8" fill="#3a3a3a"/>
+                                    <text x="80" y="295" fill="#f0f0f0" font-size="14">a) x = -2, x = -3</text>
+                                    
+                                    <rect x="310" y="270" width="230" height="40" rx="8" fill="#3a3a3a"/>
+                                    <text x="330" y="295" fill="#f0f0f0" font-size="14">b) x = 2, x = 3</text>
+                                    
+                                    <rect x="60" y="320" width="230" height="40" rx="8" fill="#7cdc69"/>
+                                    <text x="80" y="345" fill="#1a1a1a" font-size="14">c) x = -2, x = 3</text>
+                                    
+                                    <rect x="310" y="320" width="230" height="40" rx="8" fill="#3a3a3a"/>
+                                    <text x="330" y="345" fill="#f0f0f0" font-size="14">d) x = 2, x = -3</text>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#lms-mockup-pattern3)"/>
+                        </svg>
+                        <div class="screenshot-caption">Sistema de Evaluación Interactivo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LMS Detailed Features -->
+        <section id="lms-caracteristicas" class="detailed-features">
+            <h2 class="section-title">Características Detalladas</h2>
+            <div class="detailed-features-grid">
+                <!-- User Management -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">1️⃣</span>
+                                <h4>Gestión de Usuarios y Autenticación</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Control de acceso basado en roles (RBAC)</div>
+                            <div class="feature-item"><span class="check">✓</span> Autenticación segura (Email/OAuth/SSO)</div>
+                            <div class="feature-item"><span class="check">✓</span> Gestión de perfiles de usuario</div>
+                            <div class="feature-item"><span class="check">✓</span> Autenticación multifactor (2FA)</div>
+                            <div class="feature-item"><span class="check">✓</span> Sincronización multiplataforma</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Management -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">2️⃣</span>
+                                <h4>Gestión de Cursos y Contenido</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> CRUD completo de cursos</div>
+                            <div class="feature-item"><span class="check">✓</span> Estructura multinivel</div>
+                            <div class="feature-item"><span class="check">✓</span> Soporte multiformato</div>
+                            <div class="feature-item"><span class="check">✓</span> Desbloqueo progresivo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Integration -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">3️⃣</span>
+                                <h4>Integración de Video</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Embebido seguro YouTube</div>
+                            <div class="feature-item"><span class="check">✓</span> Reproductor personalizado</div>
+                            <div class="feature-item"><span class="check">✓</span> Anotaciones temporales</div>
+                            <div class="feature-item"><span class="check">✓</span> Streaming adaptativo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Tools -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">4️⃣</span>
+                                <h4>Herramientas de Evaluación</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Cuestionarios diversos</div>
+                            <div class="feature-item"><span class="check">✓</span> Sistema de asignaciones</div>
+                            <div class="feature-item"><span class="check">✓</span> Calificación automática</div>
+                            <div class="feature-item"><span class="check">✓</span> Exámenes temporizados</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracking -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">5️⃣</span>
+                                <h4>Seguimiento de Progreso</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Certificaciones</div>
+                            <div class="feature-item"><span class="check">✓</span> Sistema de gamificación</div>
+                            <div class="feature-item"><span class="check">✓</span> Rachas de aprendizaje</div>
+                            <div class="feature-item"><span class="check">✓</span> IA para recomendaciones</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">6️⃣</span>
+                                <h4>Comunicación</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Anuncios de cursos</div>
+                            <div class="feature-item"><span class="check">✓</span> Foros de discusión</div>
+                            <div class="feature-item"><span class="check">✓</span> Mensajería directa</div>
+                            <div class="feature-item"><span class="check">✓</span> Clases en vivo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monetization -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">7️⃣</span>
+                                <h4>Monetización</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Múltiples pasarelas de pago</div>
+                            <div class="feature-item"><span class="check">✓</span> Sistema de descuentos</div>
+                            <div class="feature-item"><span class="check">✓</span> Programa de afiliados</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">8️⃣</span>
+                                <h4>Seguridad</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> GDPR y SSL</div>
+                            <div class="feature-item"><span class="check">✓</span> Control RBAC</div>
+                            <div class="feature-item"><span class="check">✓</span> Protección DDoS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">9️⃣</span>
+                                <h4>Rendimiento</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Caché Redis</div>
+                            <div class="feature-item"><span class="check">✓</span> CDN integrado</div>
+                            <div class="feature-item"><span class="check">✓</span> Carga optimizada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Learning -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">🔟</span>
+                                <h4>Aprendizaje Móvil</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> PWA con modo offline</div>
+                            <div class="feature-item"><span class="check">✓</span> Notificaciones push</div>
+                            <div class="feature-item"><span class="check">✓</span> UI/UX responsive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel -->
+                <div class="detailed-feature-card">
+                    <div class="timeline-content">
+                        <div class="timeline-title">
+                            <div class="feature-header">
+                                <span class="feature-number">1️⃣1️⃣</span>
+                                <h4>Panel Administrativo</h4>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-item"><span class="check">✓</span> Analíticas completas</div>
+                            <div class="feature-item"><span class="check">✓</span> Reportes de ventas</div>
+                            <div class="feature-item"><span class="check">✓</span> Monitoreo en tiempo real</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LMS Timeline -->
+        <section id="lms-cronograma" class="timeline">
+            <h2 class="section-title">Cronograma de Desarrollo</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Funcionalidad</th>
+                        <th>Tiempo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fase 1: MVP</strong><br>(Semanas 1-6)</td>
+                        <td>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Producto Mínimo Viable</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Control de acceso basado en roles (RBAC)</li>
+                                    <li>Autenticación segura (Email/OAuth/SSO)</li>
+                                    <li>Gestión de perfiles de usuario</li>
+                                    <li>Autenticación multifactor (2FA)</li>
+                                    <li>Sincronización multiplataforma</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>6 semanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 2: Escalabilidad</strong><br>(Semanas 7-13)</td>
+                        <td>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Escalabilidad y Mejoras</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Sistema de evaluaciones</li>
+                                    <li>Integración de pagos</li>
+                                    <li>Foros y comunicación</li>
+                                    <li>Clases en vivo</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>6 semanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 3: Avanzado</strong><br>(Semanas 13-18)</td>
+                        <td>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Funcionalidades Avanzadas</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Optimización de rendimiento</li>
+                                    <li>Sistema de gamificación</li>
+                                    <li>IA para recomendaciones</li>
+                                    <li>Panel administrativo avanzado</li>
+                                    <li>Vista previa gratuita</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>4 semanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fase 4: Expansión</strong><br>(Semanas 18+)</td>
+                        <td>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Optimización y Expansión</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Versión móvil (PWA)</li>
+                                    <li>Seguridad avanzada</li>
+                                    <li>Pruebas de escalabilidad</li>
+                                    <li>Desarrollo de App</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>6 semanas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LMS Pricing -->
+        <section id="lms-precios" class="pricing">
+            <h2 class="section-title">Modelo de Costos y Precios</h2>
+            <div class="pricing-options">
+                <div class="pricing-card">
+                    <h3>Plan Básico</h3>
+                    <div class="price">$12,000 USD</div>
+                    <p class="price-details">Desarrollo inicial + 3 meses de soporte</p>
+                    <ul class="feature-list">
+                        <li>Desarrollo completo del LMS</li>
+                        <li>Integración con YouTube</li>
+                        <li>Sistema de evaluación básico</li>
+                        <li>Soporte técnico (3 meses)</li>
+                        <li>Capacitación inicial</li>
+                        <li>Hosting no incluido</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Plan Enterprise</h3>
+                    <div class="price">$18,000 USD</div>
+                    <p class="price-details">Desarrollo completo + 6 meses de soporte</p>
+                    <ul class="feature-list">
+                        <li>Todo lo del Plan Básico</li>
+                        <li>Sistema de gamificación avanzado</li>
+                        <li>IA para recomendaciones</li>
+                        <li>App móvil (PWA)</li>
+                        <li>Soporte prioritario 24/7</li>
+                        <li>Hosting incluido (1er año)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cost-details">
+                <h2>Costos Operativos Mensuales</h2>
+                <p style="color: var(--text-dim); margin-bottom: 1rem; font-style: italic;">* Los costos estimados asociados a mantener la infraestructura son responsabilidad del cliente</p>
+                
+                <div class="cost-category">
+                    <h3>1️⃣ Infraestructura Cloud</h3>
+                    <div class="cost-item">
+                        <span>Servidores y Base de Datos</span>
+                        <span>$200 - $500/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>CDN y Almacenamiento</span>
+                        <span>$100 - $300/mes</span>
+                    </div>
+                </div>
+
+                <div class="cost-category">
+                    <h3>2️⃣ Servicios de Streaming</h3>
+                    <div class="cost-item">
+                        <span>CDN para Video</span>
+                        <span>$50 - $200/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Almacenamiento de Video</span>
+                        <span>$30 - $100/mes</span>
+                    </div>
+                </div>
+
+                <div class="cost-category">
+                    <h3>3️⃣ Servicios Adicionales</h3>
+                    <div class="cost-item">
+                        <span>SSL y Seguridad</span>
+                        <span>$20 - $50/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Email y Notificaciones</span>
+                        <span>$10 - $30/mes</span>
+                    </div>
+                </div>
+
+                <div class="cost-category">
+                    <h3>4️⃣ Mantenimiento</h3>
+                    <div class="cost-item">
+                        <span>Soporte Técnico</span>
+                        <span>$500 - $1,000/mes</span>
+                    </div>
+                    <div class="cost-item">
+                        <span>Actualizaciones y Mejoras</span>
+                        <span>$300 - $800/mes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="https://wa.me/573175946793?text=Hola,%20me%20interesa%20la%20propuesta%20para%20Preicfes%20Grupo%20500" class="cta-button" target="_blank">
+                    Consultar sobre esta propuesta
+                </a>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="30" height="30">
-                    hyperlab
+                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="24" height="24">
+                    <span>hyperlab</span>
                 </div>
-                
                 <div class="footer-links">
-                    <a href="/" class="footer-link">Home</a>
                     <a href="/#services" class="footer-link">Services</a>
                     <a href="/#about" class="footer-link">About</a>
                     <a href="/#contact" class="footer-link">Contact</a>
                 </div>
-                
-                <div class="footer-address">
-                    Bogotá, Colombia
-                </div>
             </div>
-            
+            <div class="footer-address">
+                Bogotá, Colombia
+            </div>
             <div class="copyright">
-                © 2025 Hyperlab. All rights reserved.
+                © 2025 hyperlab. All rights reserved.
             </div>
         </div>
     </footer>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/573175946793?text=Hola,%20me%20interesa%20la%20propuesta%20para%20Preicfes%20Grupo%20500" target="_blank" class="whatsapp-float">
-        <span class="whatsapp-tooltip">Chatea con nosotros en WhatsApp</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#ffffff">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-    </a>
-
-    <!-- Table of Contents Button -->
-    <div class="toc-button">Tabla de Contenidos</div>
-    <div class="toc-content">
-        <h3>Contenido</h3>
-        <ul>
-            <li><a href="#resumen">Resumen del Proyecto</a></li>
-            <li><a href="#funcionalidades">Funcionalidades</a></li>
-            <li><a href="#entregables">Entregables</a></li>
-            <li><a href="#cronograma">Cronograma</a></li>
-            <li><a href="#precios">Precios y Costos</a></li>
-        </ul>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1382,5 +2280,35 @@
             setInterval(updateCountdown, 24 * 60 * 60 * 1000);
         });
     </script>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/573175946793?text=Hola,%20me%20interesa%20la%20propuesta%20para%20Preicfes%20Grupo%20500" class="whatsapp-float" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-tooltip">¿Preguntas? ¡Escríbenos!</span>
+    </a>
+
+    <!-- Table of Contents Button -->
+    <button class="toc-button">Tabla de Contenidos</button>
+    <div class="toc-content">
+        <h3>Contenido de la Propuesta</h3>
+        <ul>
+            <!-- WhatsApp AI Bot -->
+            <li style="margin-bottom: 0.5rem; color: var(--primary-color); font-weight: 500;">WhatsApp AI Bot</li>
+            <li><a href="#resumen">➤ Resumen del Proyecto</a></li>
+            <li><a href="#funcionalidades">➤ Funcionalidades</a></li>
+            <li><a href="#cronograma">➤ Cronograma</a></li>
+            <li style="margin-bottom: 1rem;"><a href="#precios">➤ Precios</a></li>
+            
+            <!-- LMS -->
+            <li style="margin-bottom: 0.5rem; color: var(--primary-color); font-weight: 500;">Sistema LMS</li>
+            <li><a href="#lms-resumen">➤ Resumen del Proyecto</a></li>
+            <li><a href="#lms-funcionalidades">➤ Funcionalidades</a></li>
+            <li><a href="#lms-caracteristicas">➤ Características Detalladas</a></li>
+            <li><a href="#lms-cronograma">➤ Cronograma</a></li>
+            <li><a href="#lms-precios">➤ Precios</a></li>
+        </ul>
+    </div>
 </body>
 </html> 
