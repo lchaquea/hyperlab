@@ -763,24 +763,28 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 0.2em solid var(--primary-color);
-            opacity: 0;
+            opacity: 1;
+            position: relative;
+            min-width: var(--final-width);
         }
 
-        .typing-text.typing-start {
-            opacity: 1;
-            width: 0;
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-dark);
+            width: 100%;
             animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards;
         }
 
-        .typing-text.typing-complete {
-            opacity: 1;
-            width: auto;
-            animation: blink-caret 0.75s step-end infinite;
+        .typing-text.typing-complete::after {
+            display: none;
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: var(--final-width) }
+            to { width: 0 }
         }
 
         @keyframes blink-caret {
@@ -869,7 +873,7 @@
                     <div class="client-logo">
                         <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
                     </div>
-                    <h1 class="header-title typing-text">Tu Escuela, Más Inteligente</h1>
+                    <h1 class="header-title typing-text">Tu Negocio, Más Inteligente</h1>
                     <p class="header-subtitle">Una propuesta para hacer crecer tu negocio con un asistente virtual que entiende, responde y vende por ti, las 24 horas del día.</p>
                 </div>
                 <div class="header-right">
@@ -1299,30 +1303,34 @@
             const titles = document.querySelectorAll('.typing-text');
             let maxDuration = 0;
             
-            // Calculate the longest duration but make it twice as fast
+            // First pass: calculate widths and max duration
             titles.forEach(title => {
                 const text = title.textContent;
-                const duration = (text.length * 0.15) / 2; // Doubled speed
+                const duration = (text.length * 0.15) / 2;
                 maxDuration = Math.max(maxDuration, duration);
+                
+                // Force the browser to calculate the final width
+                title.style.opacity = '0';
+                title.style.position = 'absolute';
+                const width = title.offsetWidth;
+                title.style.position = '';
+                title.style.opacity = '1';
+                
+                // Set the final width as a CSS variable
+                title.style.setProperty('--final-width', `${width}px`);
             });
             
-            titles.forEach((title, index) => {
+            // Second pass: apply animations
+            titles.forEach(title => {
                 const text = title.textContent;
-                const width = title.offsetWidth;
-                const duration = maxDuration;
                 const steps = text.length;
                 
-                title.style.setProperty('--final-width', `${width}px`);
-                title.style.setProperty('--typing-duration', `${duration}s`);
+                title.style.setProperty('--typing-duration', `${maxDuration}s`);
                 title.style.setProperty('--typing-steps', steps);
                 
                 setTimeout(() => {
-                    title.classList.add('typing-start');
-                    
-                    setTimeout(() => {
-                        title.classList.add('typing-complete');
-                    }, duration * 1000);
-                }, 500);
+                    title.classList.add('typing-complete');
+                }, maxDuration * 1000);
             });
         });
 
