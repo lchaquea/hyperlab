@@ -32,9 +32,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             position: relative;
             z-index: 2;
         }
@@ -46,19 +46,20 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            padding: 4rem 0;
+            padding: 2rem 0;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
         }
 
         .header-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
         }
 
         .header-left {
-            text-align: left;
+            text-align: center;
+            max-width: 100%;
         }
 
         .header-right {
@@ -66,8 +67,9 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             height: fit-content;
+            width: 100%;
         }
 
         .client-logo {
@@ -78,7 +80,7 @@
         }
 
         .header-title {
-            font-size: 4rem;
+            font-size: 2.5rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
             opacity: 0;
@@ -87,7 +89,7 @@
         }
 
         .header-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
             opacity: 0;
@@ -130,9 +132,25 @@
             margin-top: 1.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--line-color);
+        }
+
+        .prepared-by p {
+            margin: 0.5rem 0;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prepared-by strong {
+            color: var(--text-light);
+        }
+
+        .prepared-by .hyperlab-info {
             display: flex;
             align-items: center;
             gap: 1rem;
+            margin-top: 1rem;
         }
 
         .prepared-by img {
@@ -144,22 +162,75 @@
             color: var(--text-dim);
         }
 
-        @media (max-width: 768px) {
+        /* Tablet and up */
+        @media (min-width: 768px) {
             .header-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .header-left {
-                text-align: center;
+            .container {
+                padding: 0 2rem;
             }
 
             .header-title {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .header-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            .header-content {
+                grid-template-columns: 70% 30%;
+                gap: 2rem;
+            }
+
+            .header-left {
+                text-align: left;
+            }
+
+            .container {
+                max-width: 1200px;
+            }
+
+            .header-title {
+                font-size: 4rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .header-right {
+                padding: 2rem;
+            }
+        }
+
+        /* Ensure proper spacing on small screens */
+        @media (max-width: 480px) {
+            .proposal-header {
+                padding: 2rem 0;
+            }
+
+            .header-right {
+                margin-top: 1rem;
+            }
+
+            .proposal-info p,
+            .prepared-by p {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .prepared-by .hyperlab-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
         }
 
@@ -876,8 +947,8 @@
                         <p>días para la entrega</p>
                     </div>
                     <div class="prepared-by">
-                        <p style="color: var(--text-dim); margin-bottom: 1rem;">Fecha de entrega: <strong>Abril 15, 2025</strong></p>
-                        <div style="display: flex; align-items: center; gap: 1rem;">
+                        <p>Fecha de entrega: <strong>Abril 15, 2025</strong></p>
+                        <div class="hyperlab-info">
                             <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                             <span>Preparado por hyperlab</span>
                         </div>
