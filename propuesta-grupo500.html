@@ -681,13 +681,14 @@
                 <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
             </div>
             <h1 class="header-title typing-text">Transformación Digital Educativa</h1>
-            <p class="header-subtitle">Una propuesta personalizada para revolucionar la experiencia de aprendizaje y ventas a través de tecnología de vanguardia</p>
+            <p class="header-subtitle">Una propuesta personalizada para revolucionar la gestión clientes potenciales a través de tecnología automatizada, y así aumentar tus ventas.</p>
         </div>
     </header>
 
     <main class="container">
         <section class="project-summary">
             <h2 class="section-title">Bot de Ventas con IA para WhatsApp</h2>
+            <p style="color: var(--text-dim); margin-bottom: 3rem;">Esta propuesta describe el desarrollo de un Bot de Ventas con IA integrado a WhatsApp Business API Oficial de Meta, con capacidad para automatizar respuestas, gestionar clientes potenciales y procesar pagos.</p>
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="card-icon">🎯</div>
@@ -699,14 +700,23 @@
                         <li>Proporcionar informes en tiempo real</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <section class="project-summary">
+            <h2 class="section-title">Funcionalidades y Entregables</h2>
+            <div class="summary-grid">
                 <div class="summary-card">
                     <div class="card-icon">✨</div>
                     <h3 class="card-title">Funcionalidades Principales</h3>
                     <ul class="feature-list">
-                        <li>Integración con WhatsApp Business API</li>
-                        <li>Chatbot con IA (GPT-4)</li>
-                        <li>Gestión de leads en CRM</li>
-                        <li>Panel de administración</li>
+                        <li>Integración con WhatsApp Business API (Meta verificado).✅</li>
+                        <li>Chatbot con IA (GPT-4) para gestionar preguntas, ventas y seguimiento.✅</li>
+                        <li>Gestión de leads en CRM (HubSpot, Pipedrive o Zoho).✅</li>
+                        <li>Generación de enlaces de pago y recordatorios automáticos.✅</li>
+                        <li>Panel de administración para supervisar interacciones.✅</li>
+                        <li>Seguridad avanzada (Cifrado SSL, control de acceso basado en roles).✅</li>
+                        <li>Despliegue y hosting en la nube (AWS/Render/Railway).✅</li>
                     </ul>
                 </div>
                 <div class="summary-card">
@@ -928,21 +938,33 @@
         // Add typing effect for the title
         document.addEventListener('DOMContentLoaded', function() {
             const titles = document.querySelectorAll('.typing-text');
+            let maxDuration = 0;
+            
+            // Calculate the longest duration
+            titles.forEach(title => {
+                const text = title.textContent;
+                const duration = text.length * 0.15;
+                maxDuration = Math.max(maxDuration, duration);
+            });
             
             titles.forEach((title, index) => {
                 const text = title.textContent;
                 const width = title.offsetWidth;
+                // Adjust the typing speed so both finish at the same time
+                const duration = maxDuration;
+                const steps = text.length;
+                
                 title.style.setProperty('--final-width', `${width}px`);
-                title.style.setProperty('--typing-duration', `${text.length * 0.15}s`);
-                title.style.setProperty('--typing-steps', text.length);
+                title.style.setProperty('--typing-duration', `${duration}s`);
+                title.style.setProperty('--typing-steps', steps);
                 
                 setTimeout(() => {
                     title.classList.add('typing-start');
                     
                     setTimeout(() => {
                         title.classList.add('typing-complete');
-                    }, text.length * 150);
-                }, index * 3000); // 3 second delay between titles
+                    }, duration * 1000);
+                }, 500); // Start both at almost the same time
             });
         });
     </script>
