@@ -45,11 +45,29 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
             position: relative;
             padding: 4rem 0;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .header-left {
+            text-align: left;
+        }
+
+        .header-right {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            height: fit-content;
         }
 
         .client-logo {
@@ -71,59 +89,50 @@
         .header-subtitle {
             font-size: 1.5rem;
             color: var(--text-dim);
-            max-width: 800px;
-            margin: 0 auto;
+            margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.4s forwards;
         }
 
         .proposal-info {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            text-align: right;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            animation: fadeInRight 0.8s ease forwards;
+            margin-bottom: 2rem;
         }
 
         .proposal-info p {
             margin: 0.5rem 0;
             color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .proposal-info strong {
             color: var(--text-light);
-            margin-left: 0.5rem;
         }
 
         .countdown {
-            margin-top: 1rem;
-            padding-top: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--line-color);
+            text-align: center;
         }
 
         .countdown-number {
-            font-size: 2rem;
+            font-size: 3.5rem;
             font-weight: 300;
             color: var(--accent-purple);
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
         .prepared-by {
-            position: absolute;
-            bottom: 2rem;
-            left: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line-color);
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            animation: fadeInLeft 0.8s ease forwards;
         }
 
         .prepared-by img {
@@ -135,14 +144,22 @@
             color: var(--text-dim);
         }
 
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateX(0);
+
+            .header-left {
+                text-align: center;
+            }
+
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
             }
         }
 
@@ -847,23 +864,29 @@
 
     <header class="proposal-header">
         <div class="container">
-            <div class="proposal-info">
-                <p>Fecha de propuesta: <strong>19 de marzo de 2024</strong></p>
-                <p>Válida hasta: <strong>25 de marzo de 2024</strong></p>
-                <div class="countdown">
-                    <div class="countdown-number">14</div>
-                    <p>días para la entrega</p>
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="client-logo">
+                        <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+                    </div>
+                    <h1 class="header-title typing-text">Tu Escuela, Más Inteligente</h1>
+                    <p class="header-subtitle">Una propuesta para hacer crecer tu negocio con un asistente virtual que entiende, responde y vende por ti, las 24 horas del día.</p>
+                </div>
+                <div class="header-right">
+                    <div class="proposal-info">
+                        <p>Fecha de propuesta: <strong>19 de marzo de 2024</strong></p>
+                        <p>Válida hasta: <strong>25 de marzo de 2024</strong></p>
+                    </div>
+                    <div class="countdown">
+                        <div class="countdown-number">14</div>
+                        <p>días para la entrega</p>
+                    </div>
+                    <div class="prepared-by">
+                        <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+                        <span>Preparado por hyperlab</span>
+                    </div>
                 </div>
             </div>
-            <div class="prepared-by">
-                <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
-                <span>Preparado por hyperlab</span>
-            </div>
-            <div class="client-logo">
-                <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
-            </div>
-            <h1 class="header-title typing-text">Tu Escuela, Más Inteligente</h1>
-            <p class="header-subtitle">Una propuesta para hacer crecer tu negocio con un asistente virtual que entiende, responde y vende por ti, las 24 horas del día.</p>
         </div>
     </header>
 
