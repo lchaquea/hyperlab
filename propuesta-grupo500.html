@@ -852,6 +852,34 @@
         .profile-button:hover {
             transform: scale(1.05);
         }
+
+        @media (max-width: 768px) {
+            .navbar {
+                position: absolute;
+                padding: 1rem 0;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+                justify-content: center;
+            }
+
+            .nav-links, .profile-button {
+                display: none !important;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                margin-right: 10px;
+            }
+
+            .header-content {
+                padding-top: 5rem;
+            }
+        }
     </style>
 </head>
 <body>
