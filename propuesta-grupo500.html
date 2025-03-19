@@ -766,25 +766,17 @@
             opacity: 1;
             position: relative;
             min-width: var(--final-width);
-        }
-
-        .typing-text::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg-dark);
-            width: 100%;
+            width: 0;
             animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards;
         }
 
-        .typing-text.typing-complete::after {
-            display: none;
+        .typing-text.typing-complete {
+            border-right-color: transparent;
         }
 
         @keyframes typing {
-            to { width: 0 }
+            from { width: 0 }
+            to { width: var(--final-width) }
         }
 
         @keyframes blink-caret {
