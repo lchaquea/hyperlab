@@ -189,6 +189,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
             .header-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -196,6 +200,7 @@
 
             .header-left {
                 text-align: center;
+                padding: 0 0.5rem;
             }
 
             .header-right {
@@ -204,14 +209,18 @@
             }
 
             .header-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 word-wrap: break-word;
                 overflow-wrap: break-word;
                 max-width: 100%;
+                white-space: normal;
+                line-height: 1.2;
             }
 
             .header-subtitle {
                 font-size: 1.2rem;
+                white-space: normal;
+                line-height: 1.4;
             }
 
             .client-logo .typing-text {
@@ -219,6 +228,12 @@
                 word-wrap: break-word;
                 overflow-wrap: break-word;
                 max-width: 100%;
+                white-space: normal;
+            }
+
+            .typing-text {
+                white-space: normal;
+                border-right: none;
             }
         }
 
