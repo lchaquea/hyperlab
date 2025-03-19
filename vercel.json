@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/propuesta-grupo500/index.html",
+      "destination": "/propuesta-grupo500",
+      "permanent": true
+    }
+  ]
+} 
