@@ -1146,23 +1146,45 @@
         }
 
         .detailed-feature-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
+            border-radius: 15px;
             padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
         }
 
-        .detailed-feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(124, 220, 105, 0.1);
+        .detailed-feature-card .timeline-content {
+            cursor: pointer;
+        }
+
+        .detailed-feature-card .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .detailed-feature-card .timeline-content.expanded .feature-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
         }
 
         .feature-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .feature-header::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .timeline-content.expanded .feature-header::after {
+            transform: rotate(180deg);
         }
 
         .feature-number {
@@ -1510,6 +1532,12 @@
                         <td><strong>14 días hábiles</strong></td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr style="border-top: 2px solid var(--line-color);">
+                        <td colspan="2"><strong>Tiempo Total de Desarrollo</strong></td>
+                        <td><strong>22 semanas</strong></td>
+                    </tr>
+                </tfoot>
             </table>
         </section>
 
@@ -2049,6 +2077,15 @@
                                     <li>Gestión de perfiles de usuario</li>
                                     <li>Autenticación multifactor (2FA)</li>
                                     <li>Sincronización multiplataforma</li>
+                                    <li>CRUD completo de cursos</li>
+                                    <li>Creacion de cursos</li>
+                                    <li>Subida de contenido</li>
+                                    <li>Estructura multinivel</li>
+                                    <li>Desbloqueo progresivo</li>
+                                    <li>Embebido seguro YouTube</li>
+                                    <li>Reproductor personalizado</li>
+                                    <li>Anotaciones temporales</li>
+                                    <li>Streaming adaptativo</li>
                                 </ul>
                             </div>
                         </td>
@@ -2097,16 +2134,26 @@
                                     <strong>Optimización y Expansión</strong>
                                 </div>
                                 <ul class="feature-list">
-                                    <li>Versión móvil (PWA)</li>
-                                    <li>Seguridad avanzada</li>
-                                    <li>Pruebas de escalabilidad</li>
-                                    <li>Desarrollo de App</li>
+                                    <li>Sistema de evaluaciones</li>
+                                    <li>Integración de pagos</li>
+                                    <li>Foros y comunicación</li>
+                                    <li>Clases en vivo</li>
+                                    <li>Cuestionarios diversos</li>
+                                    <li>Sistema de asignaciones</li>
+                                    <li>Calificación automática</li>
+                                    <li>Exámenes temporizados</li>
                                 </ul>
                             </div>
                         </td>
                         <td>6 semanas</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr style="border-top: 2px solid var(--line-color);">
+                        <td colspan="2"><strong>Tiempo Total de Desarrollo</strong></td>
+                        <td><strong>22 semanas</strong></td>
+                    </tr>
+                </tfoot>
             </table>
         </section>
 
@@ -2273,11 +2320,26 @@
                 const diffTime = deliveryDate - today;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 
-                document.querySelector('.countdown-number').textContent = diffDays;
+                // Update both countdown elements
+                document.querySelectorAll('.countdown-number').forEach(element => {
+                    element.textContent = diffDays;
+                });
             }
             
             updateCountdown();
             setInterval(updateCountdown, 24 * 60 * 60 * 1000);
+
+            // Add collapsible functionality to detailed features
+            document.querySelectorAll('.detailed-feature-card .timeline-content').forEach(content => {
+                const header = content.querySelector('.feature-header');
+                const featureContent = content.querySelector('.feature-content');
+                
+                if (header) {
+                    header.addEventListener('click', () => {
+                        content.classList.toggle('expanded');
+                    });
+                }
+            });
         });
     </script>
 
