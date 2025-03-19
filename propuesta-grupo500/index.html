@@ -45,6 +45,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             position: relative;
             padding: 8rem 2rem 4rem;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
@@ -52,17 +53,17 @@
 
         .header-content {
             display: grid;
-            grid-template-columns: 65% 35%;
-            gap: 2rem;
-            align-items: flex-start;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0;
+            width: 100%;
         }
 
         .header-left {
             text-align: left;
-            padding-right: 2rem;
+            max-width: 700px;
         }
 
         .header-right {
@@ -73,32 +74,25 @@
             padding: 2rem;
             height: fit-content;
             width: 100%;
-            margin-top: 4rem;
         }
 
         .client-logo {
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards;
         }
 
         .header-title {
-            font-size: 2.5rem;
+            font-size: 4.5rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.2s forwards;
+            line-height: 1.1;
         }
 
         .header-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.4s forwards;
+            line-height: 1.5;
+            max-width: 600px;
         }
 
         .proposal-info {
@@ -215,27 +209,61 @@
         }
 
         /* Ensure proper spacing on small screens */
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 1rem;
+        @media (max-width: 1200px) {
+            .header-content {
+                grid-template-columns: 1fr 350px;
+                gap: 3rem;
+                padding: 0 1rem;
             }
 
+            .header-title {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                max-width: 700px;
+            }
+
+            .header-left {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .header-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .header-right {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
             .proposal-header {
                 padding: 6rem 1rem 2rem;
             }
 
+            .header-title {
+                font-size: 3rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .proposal-header {
+                padding: 5rem 1rem 2rem;
+            }
+
             .header-content {
-                grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .header-left {
-                padding-right: 0;
-            }
-
-            .header-right {
-                margin-top: 2rem;
-                width: 100%;
             }
 
             .header-title {
@@ -246,6 +274,10 @@
             .header-subtitle {
                 font-size: 1.1rem;
                 line-height: 1.5;
+            }
+
+            .header-right {
+                padding: 1.5rem;
             }
         }
 
@@ -1586,4 +1618,5 @@
         document.querySelector('.cost-details').id = 'associated-costs';
     </script>
 </body>
+</html> 
 </html> 
