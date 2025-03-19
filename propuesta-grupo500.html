@@ -574,26 +574,27 @@
             position: fixed;
             left: 2rem;
             bottom: 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-light);
+            background: var(--primary-color);
+            color: var(--bg-dark);
             padding: 1rem 2rem;
             border-radius: 2rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
+            font-weight: 500;
         }
 
         .toc-button:hover {
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 220, 105, 0.2);
         }
 
         .toc-content {
             position: fixed;
             left: 2rem;
             bottom: 5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--bg-dark);
+            border: 1px solid var(--primary-color);
             border-radius: 1rem;
             padding: 2rem;
             width: 300px;
@@ -603,6 +604,7 @@
             pointer-events: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
             z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .toc-button:hover + .toc-content,
@@ -615,6 +617,8 @@
         .toc-content h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
         .toc-content ul {
@@ -624,17 +628,24 @@
         }
 
         .toc-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .toc-content a {
-            color: var(--text-dim);
+            color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
         }
 
         .toc-content a:hover {
             color: var(--primary-color);
+            background: var(--bg-dark);
+            border-color: var(--primary-color);
         }
 
         /* Cost Details Styles */
