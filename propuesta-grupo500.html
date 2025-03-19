@@ -178,11 +178,14 @@
             transition: max-height 0.3s ease-out;
             margin: 0;
             padding: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         }
 
         .timeline-content.expanded ul {
             max-height: 500px;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
+            opacity: 1;
         }
 
         .timeline-title {
@@ -190,22 +193,37 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-right: 20px;
-            position: relative;
+            padding: 1rem;
+            background: rgba(124, 220, 105, 0.1);
+            border-radius: 8px;
+            margin: -0.5rem;
+            transition: background-color 0.3s ease;
         }
 
-        .timeline-title::after {
-            content: '▼';
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
+        .timeline-title:hover {
+            background: rgba(124, 220, 105, 0.15);
         }
 
-        .timeline-content.expanded .timeline-title::after {
-            transform: translateY(-50%) rotate(180deg);
+        .timeline-title::before {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-weight: 300;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .timeline-content.expanded .timeline-title::before {
+            content: '−';
+        }
+
+        .timeline-title strong {
+            flex: 1;
+        }
+
+        .timeline-title:hover strong {
+            color: var(--primary-color);
         }
 
         .timeline-date {
@@ -312,6 +330,10 @@
 
             .timeline-dot {
                 left: -34px;
+            }
+
+            .timeline-title {
+                padding: 0.75rem;
             }
         }
 
@@ -1209,10 +1231,25 @@
                 
                 const title = content.querySelector('.timeline-title');
                 if (title) {
-                    title.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        content.classList.toggle('expanded');
+                    // Add aria attributes for accessibility
+                    title.setAttribute('role', 'button');
+                    title.setAttribute('aria-expanded', 'false');
+                    title.setAttribute('tabindex', '0');
+                    
+                    // Handle both click and keyboard events
+                    title.addEventListener('click', toggleContent);
+                    title.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleContent(e);
+                        }
                     });
+                }
+                
+                function toggleContent(e) {
+                    e.preventDefault();
+                    const isExpanded = content.classList.toggle('expanded');
+                    title.setAttribute('aria-expanded', isExpanded);
                 }
             });
         });
