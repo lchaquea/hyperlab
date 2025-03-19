@@ -763,20 +763,30 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 0.2em solid var(--primary-color);
-            min-width: var(--final-width);
-            width: 0;
-            animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards,
-                     blink-caret 0.75s step-end infinite;
+            width: var(--final-width);
+            position: relative;
+            animation: blink-caret 0.75s step-end infinite;
         }
 
-        .typing-text.typing-complete {
-            width: var(--final-width);
-            border-right-color: transparent;
+        .typing-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            border-left: var(--final-width) solid var(--bg-dark);
+            animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards;
+            box-sizing: border-box;
+        }
+
+        .typing-text.typing-complete::before {
+            display: none;
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: var(--final-width) }
+            to { border-left-width: 0; }
         }
 
         @keyframes blink-caret {
@@ -1305,11 +1315,11 @@
                 title.style.opacity = '0';
                 title.style.width = 'auto';
                 const width = title.offsetWidth;
-                title.style.width = '0';
-                title.style.opacity = '1';
                 
-                // Set the final width as a CSS variable
+                // Set the data-text attribute and final width
+                title.setAttribute('data-text', text);
                 title.style.setProperty('--final-width', `${width}px`);
+                title.style.opacity = '1';
             });
             
             // Second pass: apply animations
