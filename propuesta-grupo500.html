@@ -652,6 +652,58 @@
             from, to { border-color: transparent }
             50% { border-color: var(--primary-color) }
         }
+
+        /* Screenshot Gallery Styles */
+        .screenshots-container {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -688,7 +740,7 @@
     <main class="container">
         <section class="project-summary">
             <h2 class="section-title">Bot de Ventas con IA para WhatsApp</h2>
-            <p style="color: var(--text-dim); margin-bottom: 3rem;">Esta propuesta describe el desarrollo de un Bot de Ventas con IA integrado a WhatsApp Business API Oficial de Meta, con capacidad para automatizar respuestas, gestionar clientes potenciales y procesar pagos.</p>
+            <p style="color: var(--text-dim); margin-bottom: 3rem;"><strong>Alcance del proyecto:</strong> Esta propuesta describe el desarrollo de un Bot de Ventas con IA integrado a WhatsApp Business API Oficial de Meta, con capacidad para automatizar respuestas, gestionar clientes potenciales y procesar pagos.</p>
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="card-icon">🎯</div>
@@ -698,6 +750,16 @@
                         <li>Capturar clientes potenciales e integrarlos con CRM</li>
                         <li>Procesar pagos directamente desde WhatsApp</li>
                         <li>Proporcionar informes en tiempo real</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Resultados del Proyecto</h3>
+                    <ul class="feature-list">
+                        <li><div class="result-number">300%</div>Aumento en la capacidad de respuesta a clientes</li>
+                        <li><div class="result-number">85%</div>Automatización de consultas frecuentes</li>
+                        <li><div class="result-number">50%</div>Reducción en tiempo de cierre de ventas</li>
+                        <li><div class="result-number">24/7</div>Disponibilidad para atención al cliente</li>
                     </ul>
                 </div>
             </div>
@@ -728,6 +790,24 @@
                         <li>Sistema de pagos vinculado</li>
                         <li>Implementación en la nube</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="screenshots-container">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Vista Previa del Producto</h3>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <img src="https://placehold.co/600x400/1a1a1a/7cdc69?text=Panel+de+Control" alt="Panel de Control">
+                        <div class="screenshot-caption">Panel de Control Intuitivo</div>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="https://placehold.co/600x400/1a1a1a/7cdc69?text=Chat+IA" alt="Chat IA">
+                        <div class="screenshot-caption">Interfaz de Chat con IA</div>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="https://placehold.co/600x400/1a1a1a/7cdc69?text=Análisis" alt="Análisis">
+                        <div class="screenshot-caption">Análisis y Métricas en Tiempo Real</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -940,17 +1020,16 @@
             const titles = document.querySelectorAll('.typing-text');
             let maxDuration = 0;
             
-            // Calculate the longest duration
+            // Calculate the longest duration but make it twice as fast
             titles.forEach(title => {
                 const text = title.textContent;
-                const duration = text.length * 0.15;
+                const duration = (text.length * 0.15) / 2; // Doubled speed
                 maxDuration = Math.max(maxDuration, duration);
             });
             
             titles.forEach((title, index) => {
                 const text = title.textContent;
                 const width = title.offsetWidth;
-                // Adjust the typing speed so both finish at the same time
                 const duration = maxDuration;
                 const steps = text.length;
                 
@@ -964,7 +1043,7 @@
                     setTimeout(() => {
                         title.classList.add('typing-complete');
                     }, duration * 1000);
-                }, 500); // Start both at almost the same time
+                }, 500);
             });
         });
     </script>
