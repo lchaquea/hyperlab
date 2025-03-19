@@ -628,7 +628,13 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 0.2em solid var(--primary-color);
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            width: 0;
+            margin: 0 auto;
+        }
+
+        .typing-text.typing-complete {
+            width: fit-content;
+            animation: blink-caret 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -666,9 +672,9 @@
     <header class="proposal-header">
         <div class="container">
             <div class="client-logo">
-                <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Preicfes Grupo 500</h1>
+                <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color); width: fit-content;">Preicfes Grupo 500</h1>
             </div>
-            <h1 class="header-title typing-text" style="animation-delay: 2s;">Transformación Digital Educativa</h1>
+            <h1 class="header-title typing-text" style="width: fit-content; margin: 0 auto;">Transformación Digital Educativa</h1>
             <p class="header-subtitle">Una propuesta personalizada para revolucionar la experiencia de aprendizaje y ventas a través de tecnología de vanguardia</p>
         </div>
     </header>
@@ -919,8 +925,15 @@
             titles.forEach((title, index) => {
                 const text = title.textContent;
                 const duration = text.length * 0.15; // Adjust typing speed
-                title.style.animation = `typing ${duration}s steps(${text.length}, end), blink-caret 0.75s step-end infinite`;
-                title.style.animationDelay = `${index * (duration + 0.5)}s`;
+                
+                setTimeout(() => {
+                    title.style.width = '0';
+                    title.style.animation = `typing ${duration}s steps(${text.length}, end) forwards`;
+                    
+                    setTimeout(() => {
+                        title.classList.add('typing-complete');
+                    }, duration * 1000);
+                }, index * (duration + 0.5) * 1000);
             });
         });
     </script>
