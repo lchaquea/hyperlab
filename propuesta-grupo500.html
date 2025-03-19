@@ -165,6 +165,16 @@
             border-color: transparent;
         }
 
+        @media (max-width: 768px) {
+            .typing-text {
+                white-space: normal;
+                border-right: none;
+                width: auto !important;
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
+
         /* Animations */
         @keyframes typing {
             from { width: 0 }
@@ -229,11 +239,6 @@
                 overflow-wrap: break-word;
                 max-width: 100%;
                 white-space: normal;
-            }
-
-            .typing-text {
-                white-space: normal;
-                border-right: none;
             }
         }
 
