@@ -902,22 +902,55 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .navbar {
+                position: absolute;
+            }
+
+            .header-content {
+                padding-top: 6rem;
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-dark);
+                padding: 6rem 2rem 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
             }
 
             .burger-menu {
-                display: flex;
+                position: relative;
+                z-index: 101;
             }
 
-            .profile-button {
+            .overlay {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 98;
             }
 
-            .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2rem;
+            .overlay.active {
+                display: block;
             }
         }
 
@@ -967,6 +1000,8 @@
             <a href="/#contact" class="nav-link">Contact</a>
         </div>
     </div>
+
+    <div class="overlay"></div>
 
     <header class="proposal-header">
         <div class="container">
@@ -1392,18 +1427,27 @@
             // Mobile menu functionality
             const burgerMenu = document.querySelector('.burger-menu');
             const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
             
-            burgerMenu.addEventListener('click', () => {
+            function toggleMenu() {
                 burgerMenu.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
-            });
+                overlay.classList.toggle('active');
+            }
+            
+            burgerMenu.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
 
             // Close mobile menu when clicking a link
             document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    burgerMenu.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
             });
 
             // Typing effect functionality
