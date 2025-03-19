@@ -13,7 +13,6 @@
             --line-color: rgba(255, 255, 255, 0.2);
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.1);
-            --accent-blue: #4a90e2;
             --accent-purple: #9b51e0;
         }
 
@@ -98,11 +97,20 @@
             animation: fadeInUp 0.8s ease 0.4s forwards;
         }
 
-        .proposal-info {
-            margin-bottom: 2rem;
+        /* Info Box Styles */
+        .proposal-info, .countdown, .prepared-by {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line-color);
         }
 
-        .proposal-info p {
+        .proposal-info {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .proposal-info p, .prepared-by p {
             margin: 0.5rem 0;
             color: var(--text-dim);
             display: flex;
@@ -110,14 +118,11 @@
             align-items: center;
         }
 
-        .proposal-info strong {
+        .proposal-info strong, .prepared-by strong {
             color: var(--text-light);
         }
 
         .countdown {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--line-color);
             text-align: center;
         }
 
@@ -127,24 +132,6 @@
             color: var(--accent-purple);
             line-height: 1;
             margin-bottom: 0.5rem;
-        }
-
-        .prepared-by {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--line-color);
-        }
-
-        .prepared-by p {
-            margin: 0.5rem 0;
-            color: var(--text-dim);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .prepared-by strong {
-            color: var(--text-light);
         }
 
         .prepared-by .hyperlab-info {
@@ -163,6 +150,44 @@
             color: var(--text-dim);
         }
 
+        /* Typing effect styles */
+        .typing-text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.2em solid var(--primary-color);
+            width: var(--final-width);
+            animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards,
+                     blink-caret 0.75s step-end infinite;
+        }
+
+        .typing-text.typing-complete {
+            border-color: transparent;
+        }
+
+        /* Animations */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: var(--final-width) }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 grid-template-columns: 1fr;
@@ -396,416 +421,6 @@
             color: var(--primary-color);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-title {
-                font-size: 3rem;
-            }
-
-            .header-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .timeline-container {
-                padding-left: 30px;
-            }
-
-            .timeline-dot {
-                left: -34px;
-            }
-
-            .timeline-title {
-                padding: 0.75rem;
-            }
-        }
-
-        /* Table Styles */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .schedule-table th,
-        .schedule-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .schedule-table th {
-            background: rgba(124, 220, 105, 0.1);
-            color: var(--primary-color);
-        }
-
-        .schedule-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* Cost Details Section */
-        .cost-details {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .cost-category {
-            margin-bottom: 1.5rem;
-        }
-
-        .cost-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .cost-item {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-dim);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Button Styles */
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 0;
-            position: relative;
-            z-index: 100;
-            background-color: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--text-light);
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon img {
-            vertical-align: middle;
-            position: relative;
-            top: -1px;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--text-light);
-            line-height: 1;
-            position: relative;
-            top: 1px;
-        }
-
-        .profile-button {
-            background-color: var(--primary-color);
-            color: #000;
-            border-radius: 50px;
-            padding: 0.5rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Footer Styles */
-        footer {
-            border-top: 1px solid var(--line-color);
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-link {
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            line-height: 1;
-        }
-
-        .footer-logo img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            vertical-align: middle;
-            position: relative;
-            top: -1px;
-        }
-
-        .footer-address {
-            color: var(--text-dim);
-            font-size: 1rem;
-        }
-
-        .copyright {
-            color: var(--text-dim);
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 99;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            right: 75px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .whatsapp-float:hover .whatsapp-tooltip {
-            opacity: 1;
-        }
-
-        /* Table of Contents Button */
-        .toc-button {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 99;
-            background-color: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .toc-content {
-            position: fixed;
-            bottom: 100px;
-            left: 30px;
-            background-color: rgba(10, 10, 10, 0.95);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid var(--card-border);
-            z-index: 98;
-            min-width: 300px;
-            max-width: 400px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .toc-button:hover + .toc-content,
-        .toc-content:hover {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .toc-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .toc-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .toc-content li {
-            margin-bottom: 0.8rem;
-        }
-
-        .toc-content a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .toc-content a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Typing effect styles */
-        .typing-text {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 0.2em solid var(--primary-color);
-            width: var(--final-width);
-            animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards,
-                     blink-caret 0.75s step-end infinite;
-        }
-
-        .typing-text.typing-complete {
-            border-color: transparent;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: var(--final-width) }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color) }
-        }
-
         /* Screenshot Gallery Styles */
         .screenshots-container {
             margin-top: 4rem;
@@ -860,26 +475,6 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="/" class="logo-container">
-                <div class="logo-icon">
-                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="40" height="40">
-                </div>
-                <span class="logo-text">hyperlab</span>
-            </a>
-            
-            <div class="nav-links">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/#services" class="nav-link">Services</a>
-                <a href="/#about" class="nav-link">About</a>
-                <a href="/#contact" class="nav-link">Contact</a>
-            </div>
-            
-            <a href="https://wa.me/573175946793" target="_blank" class="profile-button">Get in touch</a>
-        </div>
-    </nav>
-
     <header class="proposal-header">
         <div class="container">
             <div class="header-content">
@@ -1300,22 +895,6 @@
     </div>
 
     <script>
-        // Intersection Observer for timeline animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.timeline-item').forEach((item) => {
-            observer.observe(item);
-        });
-
-        // Add typing effect for the title
         document.addEventListener('DOMContentLoaded', function() {
             const titles = document.querySelectorAll('.typing-text');
             let maxDuration = 0;
@@ -1364,44 +943,6 @@
             updateCountdown();
             setInterval(updateCountdown, 24 * 60 * 60 * 1000);
         });
-
-        // Add collapsible functionality to timeline items
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.timeline-content').forEach(content => {
-                // Initially collapse all lists
-                content.classList.remove('expanded');
-                
-                const title = content.querySelector('.timeline-title');
-                if (title) {
-                    // Add aria attributes for accessibility
-                    title.setAttribute('role', 'button');
-                    title.setAttribute('aria-expanded', 'false');
-                    title.setAttribute('tabindex', '0');
-                    
-                    // Handle both click and keyboard events
-                    title.addEventListener('click', toggleContent);
-                    title.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            toggleContent(e);
-                        }
-                    });
-                }
-                
-                function toggleContent(e) {
-                    e.preventDefault();
-                    const isExpanded = content.classList.toggle('expanded');
-                    title.setAttribute('aria-expanded', isExpanded);
-                }
-            });
-        });
-
-        // Add IDs to sections for navigation
-        document.querySelector('.project-summary').id = 'project-summary';
-        document.querySelector('.project-summary:nth-of-type(2)').id = 'features-deliverables';
-        document.querySelector('.timeline').id = 'development-timeline';
-        document.querySelector('.pricing').id = 'pricing-model';
-        document.querySelector('.cost-details').id = 'associated-costs';
     </script>
 </body>
 </html> 
