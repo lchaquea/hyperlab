@@ -1176,15 +1176,16 @@
         }
 
         .feature-header::after {
-            content: '▼';
+            content: '+';
             position: absolute;
             right: 1rem;
             transition: transform 0.3s ease;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
         }
 
         .timeline-content.expanded .feature-header::after {
-            transform: rotate(180deg);
+            content: '−';
         }
 
         .feature-number {
@@ -2065,6 +2066,22 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td><strong>Fase 0: Producto Inicial</strong><br>(Semanas 1-2)</td>
+                        <td>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Producto Inicial</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Página web tipo landing page para explicar la propuesta del programa y aumentar conversión</li>
+                                    <li>Página web para registro de usuarios y acceso a contenidos</li>
+                                    <li>Repositorio de contenidos para acceder a clases recientes que han sido grabadas</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>2 semanas</td>
+                    </tr>
+                    <tr>
                         <td><strong>Fase 1: MVP</strong><br>(Semanas 1-6)</td>
                         <td>
                             <div class="timeline-content">
@@ -2151,7 +2168,7 @@
                 <tfoot>
                     <tr style="border-top: 2px solid var(--line-color);">
                         <td colspan="2"><strong>Tiempo Total de Desarrollo</strong></td>
-                        <td><strong>22 semanas</strong></td>
+                        <td><strong>24 semanas</strong></td>
                     </tr>
                 </tfoot>
             </table>
@@ -2163,27 +2180,32 @@
             <div class="pricing-options">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
-                    <div class="price">$12,000 USD</div>
-                    <p class="price-details">Desarrollo inicial + 3 meses de soporte</p>
+                    <div class="price">$29,500 USD</div>
+                    <p class="price-details">Desarrollo completo + 3 meses de soporte</p>
                     <ul class="feature-list">
-                        <li>Desarrollo completo del LMS</li>
-                        <li>Integración con YouTube</li>
-                        <li>Sistema de evaluación básico</li>
+                        <li>Fase 0: Producto Inicial - $2,500 USD</li>
+                        <li>Fase 1: Producto Mínimo Viable - $5,000 USD</li>
+                        <li>Fase 2: Escalabilidad y Mejoras - $6,000 USD</li>
+                        <li>Fase 3: Funciones Avanzadas - $8,000 USD</li>
+                        <li>Fase 4: Optimización y Expansión - $8,000 USD</li>
                         <li>Soporte técnico (3 meses)</li>
                         <li>Capacitación inicial</li>
                         <li>Hosting no incluido</li>
                     </ul>
                 </div>
                 <div class="pricing-card">
-                    <h3>Plan Enterprise</h3>
-                    <div class="price">$18,000 USD</div>
-                    <p class="price-details">Desarrollo completo + 6 meses de soporte</p>
+                    <h3>Plan Revenue Share</h3>
+                    <div class="price">$14,750 USD + 10%</div>
+                    <p class="price-details">50% del desarrollo + 10% revenue share por estudiante</p>
                     <ul class="feature-list">
-                        <li>Todo lo del Plan Básico</li>
-                        <li>Sistema de gamificación avanzado</li>
-                        <li>IA para recomendaciones</li>
-                        <li>App móvil (PWA)</li>
-                        <li>Soporte prioritario 24/7</li>
+                        <li>Fase 0: Producto Inicial - $1,250 USD</li>
+                        <li>Fase 1: MVP - $2,500 USD</li>
+                        <li>Fase 2: Escalabilidad - $3,000 USD</li>
+                        <li>Fase 3: Funciones Avanzadas - $4,000 USD</li>
+                        <li>Fase 4: Optimización - $4,000 USD</li>
+                        <li>10% de ingresos por estudiante</li>
+                        <li>Soporte continuo incluido</li>
+                        <li>Mantenimiento incluido</li>
                         <li>Hosting incluido (1er año)</li>
                     </ul>
                 </div>
@@ -2358,18 +2380,18 @@
         <ul>
             <!-- WhatsApp AI Bot -->
             <li style="margin-bottom: 0.5rem; color: var(--primary-color); font-weight: 500;">WhatsApp AI Bot</li>
-            <li><a href="#resumen">➤ Resumen del Proyecto</a></li>
-            <li><a href="#funcionalidades">➤ Funcionalidades</a></li>
-            <li><a href="#cronograma">➤ Cronograma</a></li>
-            <li style="margin-bottom: 1rem;"><a href="#precios">➤ Precios</a></li>
+            <li><a href="#resumen">1. Resumen del Proyecto</a></li>
+            <li><a href="#funcionalidades">2. Funcionalidades</a></li>
+            <li><a href="#cronograma">3. Cronograma</a></li>
+            <li style="margin-bottom: 1rem;"><a href="#precios">4. Precios</a></li>
             
             <!-- LMS -->
             <li style="margin-bottom: 0.5rem; color: var(--primary-color); font-weight: 500;">Sistema LMS</li>
-            <li><a href="#lms-resumen">➤ Resumen del Proyecto</a></li>
-            <li><a href="#lms-funcionalidades">➤ Funcionalidades</a></li>
-            <li><a href="#lms-caracteristicas">➤ Características Detalladas</a></li>
-            <li><a href="#lms-cronograma">➤ Cronograma</a></li>
-            <li><a href="#lms-precios">➤ Precios</a></li>
+            <li><a href="#lms-resumen">1. Resumen del Proyecto</a></li>
+            <li><a href="#lms-funcionalidades">2. Funcionalidades</a></li>
+            <li><a href="#lms-caracteristicas">3. Características Detalladas</a></li>
+            <li><a href="#lms-cronograma">4. Cronograma</a></li>
+            <li><a href="#lms-precios">5. Precios</a></li>
         </ul>
     </div>
 </body>
