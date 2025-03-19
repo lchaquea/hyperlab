@@ -763,19 +763,29 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 0.2em solid var(--primary-color);
-            width: 0;
+            width: var(--final-width);
             animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards,
                      blink-caret 0.75s step-end infinite;
+            position: relative;
         }
 
-        .typing-text.typing-complete {
-            width: var(--final-width);
-            border-right-color: transparent;
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-dark);
+            width: 100%;
+            animation: reveal var(--typing-duration) steps(var(--typing-steps)) forwards;
         }
 
-        @keyframes typing {
-            from { width: 0 }
-            to { width: var(--final-width) }
+        .typing-text.typing-complete::after {
+            display: none;
+        }
+
+        @keyframes reveal {
+            to { width: 0; }
         }
 
         @keyframes blink-caret {
