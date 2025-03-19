@@ -169,21 +169,49 @@
         }
 
         .timeline-content {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 2rem;
+            position: relative;
+        }
+
+        .timeline-content ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin: 0;
+            padding: 0;
+        }
+
+        .timeline-content.expanded ul {
+            max-height: 500px;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-title {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .timeline-title::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-content.expanded .timeline-title::after {
+            transform: translateY(-50%) rotate(180deg);
         }
 
         .timeline-date {
             color: var(--primary-color);
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
         }
 
         /* Pricing Section */
@@ -704,34 +732,6 @@
             font-weight: 300;
             margin-bottom: 0.5rem;
         }
-
-        /* Collapsible Timeline Styles */
-        .timeline-content ul {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .timeline-content.expanded ul {
-            max-height: 500px;
-        }
-
-        .timeline-title {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .timeline-title::after {
-            content: '▼';
-            margin-left: 10px;
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-content.expanded .timeline-title::after {
-            transform: rotate(180deg);
-        }
     </style>
 </head>
 <body>
@@ -954,55 +954,71 @@
                     <tr>
                         <td><strong>Semana 1</strong><br>(Marzo 25-31)</td>
                         <td>
-                            <strong>Configuración de Infraestructura y API de WhatsApp</strong>
-                            <ul class="feature-list" style="margin-top: 0.5rem;">
-                                <li>Configuración de Meta Business Manager</li>
-                                <li>Solicitud y verificación de API de WhatsApp</li>
-                                <li>Configuración de hosting en AWS/Render</li>
-                                <li>Creación de Webhook para recibir mensajes</li>
-                                <li>Seguridad básica (SSL, control de acceso)</li>
-                                <li>Pruebas iniciales con mensajes en WhatsApp</li>
-                            </ul>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Configuración de Infraestructura y API de WhatsApp</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Configuración de Meta Business Manager</li>
+                                    <li>Solicitud y verificación de API de WhatsApp</li>
+                                    <li>Configuración de hosting en AWS/Render</li>
+                                    <li>Creación de Webhook para recibir mensajes</li>
+                                    <li>Seguridad básica (SSL, control de acceso)</li>
+                                    <li>Pruebas iniciales con mensajes en WhatsApp</li>
+                                </ul>
+                            </div>
                         </td>
                         <td>7 días</td>
                     </tr>
                     <tr>
                         <td><strong>Semana 2</strong><br>(Abril 1-7)</td>
                         <td>
-                            <strong>Desarrollo del Chatbot IA y Manejo de Leads</strong>
-                            <ul class="feature-list" style="margin-top: 0.5rem;">
-                                <li>Integración de GPT-4 para generación de respuestas</li>
-                                <li>Configuración de respuestas personalizadas</li>
-                                <li>Implementación de memoria de conversación (Redis)</li>
-                                <li>Creación de base de datos PostgreSQL para leads</li>
-                                <li>Integración con CRM (HubSpot, Pipedrive, Zoho)</li>
-                                <li>Pruebas y ajuste de respuestas del bot</li>
-                            </ul>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Desarrollo del Chatbot IA y Manejo de Leads</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Integración de GPT-4 para generación de respuestas</li>
+                                    <li>Configuración de respuestas personalizadas</li>
+                                    <li>Implementación de memoria de conversación (Redis)</li>
+                                    <li>Creación de base de datos PostgreSQL para leads</li>
+                                    <li>Integración con CRM (HubSpot, Pipedrive, Zoho)</li>
+                                    <li>Pruebas y ajuste de respuestas del bot</li>
+                                </ul>
+                            </div>
                         </td>
                         <td>7 días</td>
                     </tr>
                     <tr>
                         <td><strong>Semana 3</strong><br>(Abril 8-14)</td>
                         <td>
-                            <strong>Integración de Pagos y Desarrollo del Panel de Administración</strong>
-                            <ul class="feature-list" style="margin-top: 0.5rem;">
-                                <li>Integración con Stripe/MercadoPago</li>
-                                <li>Creación de API de pagos y generación de enlaces</li>
-                                <li>Desarrollo del Dashboard de Administración (Next.js)</li>
-                                <li>Configuración de métricas y reportes en el panel</li>
-                            </ul>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Integración de Pagos y Desarrollo del Panel de Administración</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Integración con Stripe/MercadoPago</li>
+                                    <li>Creación de API de pagos y generación de enlaces</li>
+                                    <li>Desarrollo del Dashboard de Administración (Next.js)</li>
+                                    <li>Configuración de métricas y reportes en el panel</li>
+                                </ul>
+                            </div>
                         </td>
                         <td>7 días</td>
                     </tr>
                     <tr>
                         <td><strong>Semana 4</strong><br>(Abril 15)</td>
                         <td>
-                            <strong>Pruebas Finales, Seguridad y Despliegue</strong>
-                            <ul class="feature-list" style="margin-top: 0.5rem;">
-                                <li>Pruebas de carga y rendimiento</li>
-                                <li>Implementación de seguridad avanzada (cifrado, OAuth)</li>
-                                <li>Despliegue final en producción</li>
-                            </ul>
+                            <div class="timeline-content">
+                                <div class="timeline-title">
+                                    <strong>Pruebas Finales, Seguridad y Despliegue</strong>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>Pruebas de carga y rendimiento</li>
+                                    <li>Implementación de seguridad avanzada (cifrado, OAuth)</li>
+                                    <li>Despliegue final en producción</li>
+                                </ul>
+                            </div>
                         </td>
                         <td>1 día</td>
                     </tr>
@@ -1186,13 +1202,19 @@
         });
 
         // Add collapsible functionality to timeline items
-        document.querySelectorAll('.timeline-content').forEach(content => {
-            const title = content.querySelector('.timeline-title');
-            if (title) {
-                title.addEventListener('click', () => {
-                    content.classList.toggle('expanded');
-                });
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.timeline-content').forEach(content => {
+                // Initially collapse all lists
+                content.classList.remove('expanded');
+                
+                const title = content.querySelector('.timeline-title');
+                if (title) {
+                    title.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        content.classList.toggle('expanded');
+                    });
+                }
+            });
         });
 
         // Add IDs to sections for navigation
