@@ -384,12 +384,8 @@
 
         .timeline-content .timeline-title::after {
             content: '+';
-            font-size: 1.2em;
+            font-size: 1.2rem;
             color: var(--primary-color);
-            margin-left: 1rem;
-            font-weight: 300;
-            min-width: 20px;
-            text-align: center;
         }
 
         .timeline-content.expanded .timeline-title::after {
@@ -1638,7 +1634,7 @@
                             <p>días para la entrega</p>
                         </div>
                         <div class="prepared-by">
-                            <p>Fecha de entrega: <strong>Abril 15, 2025</strong></p>
+                            <p>Fecha de entrega: <strong>Abril 19, 2025</strong></p>
                             <div class="hyperlab-info">
                                 <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                                 <span>Preparado por hyperlab</span>
@@ -2082,7 +2078,7 @@
                         <td>2 semanas</td>
                     </tr>
                     <tr>
-                        <td><strong>Fase 1: MVP</strong><br>(Semanas 1-6)</td>
+                        <td><strong>Fase 1: MVP</strong><br>(Semanas 3-8)</td>
                         <td>
                             <div class="timeline-content">
                                 <div class="timeline-title">
@@ -2109,7 +2105,7 @@
                         <td>6 semanas</td>
                     </tr>
                     <tr>
-                        <td><strong>Fase 2: Escalabilidad</strong><br>(Semanas 7-13)</td>
+                        <td><strong>Fase 2: Escalabilidad</strong><br>(Semanas 9-14)</td>
                         <td>
                             <div class="timeline-content">
                                 <div class="timeline-title">
@@ -2126,7 +2122,7 @@
                         <td>6 semanas</td>
                     </tr>
                     <tr>
-                        <td><strong>Fase 3: Avanzado</strong><br>(Semanas 13-18)</td>
+                        <td><strong>Fase 3: Avanzado</strong><br>(Semanas 15-20)</td>
                         <td>
                             <div class="timeline-content">
                                 <div class="timeline-title">
@@ -2144,7 +2140,7 @@
                         <td>4 semanas</td>
                     </tr>
                     <tr>
-                        <td><strong>Fase 4: Expansión</strong><br>(Semanas 18+)</td>
+                        <td><strong>Fase 4: Expansión</strong><br>(Semanas 20+)</td>
                         <td>
                             <div class="timeline-content">
                                 <div class="timeline-title">
@@ -2177,6 +2173,7 @@
         <!-- LMS Pricing -->
         <section id="lms-precios" class="pricing">
             <h2 class="section-title">Modelo de Costos y Precios</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem; font-style: italic;">*Cada fase debe ser previamente aprobada por cliente y se debe hacer revisión de tarifa antes de aprobación</p>
             <div class="pricing-options">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
@@ -2190,75 +2187,58 @@
                         <li>Fase 4: Optimización y Expansión - $8,000 USD</li>
                         <li>Soporte técnico (3 meses)</li>
                         <li>Capacitación inicial</li>
-                        <li>Hosting no incluido</li>
+                        <li>*Cada fase debe ser previamente aprobada por cliente y se debe hacer revisión de tarifa antes de aprobación</li>
                     </ul>
                 </div>
                 <div class="pricing-card">
                     <h3>Plan Revenue Share</h3>
-                    <div class="price">$14,750 USD + 10%</div>
-                    <p class="price-details">50% del desarrollo + 10% revenue share por estudiante</p>
+                    <div class="price">$14,750 USD + 15%</div>
+                    <p class="price-details">50% del desarrollo + 15% ingreso por estudiante</p>
                     <ul class="feature-list">
                         <li>Fase 0: Producto Inicial - $1,250 USD</li>
                         <li>Fase 1: MVP - $2,500 USD</li>
                         <li>Fase 2: Escalabilidad - $3,000 USD</li>
                         <li>Fase 3: Funciones Avanzadas - $4,000 USD</li>
                         <li>Fase 4: Optimización - $4,000 USD</li>
-                        <li>10% de ingresos por estudiante</li>
+                        <li>15% de ingresos por estudiante</li>
                         <li>Soporte continuo incluido</li>
                         <li>Mantenimiento incluido</li>
-                        <li>Hosting incluido (1er año)</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cost-details">
                 <h2>Costos Operativos Mensuales</h2>
-                <p style="color: var(--text-dim); margin-bottom: 1rem; font-style: italic;">* Los costos estimados asociados a mantener la infraestructura son responsabilidad del cliente</p>
+                <p style="color: var(--text-dim); margin-bottom: 1rem; font-style: italic;">Para garantizar la operación y escalabilidad del LMS con 400 horas de contenido en video y 3,000 estudiantes, se contemplan los siguientes costos recurrentes:</p>
                 
                 <div class="cost-category">
-                    <h3>1️⃣ Infraestructura Cloud</h3>
+                    <h3>1️⃣ Hosting y Servidores</h3>
                     <div class="cost-item">
-                        <span>Servidores y Base de Datos</span>
-                        <span>$200 - $500/mes</span>
-                    </div>
-                    <div class="cost-item">
-                        <span>CDN y Almacenamiento</span>
-                        <span>$100 - $300/mes</span>
+                        <span>AWS/GCP/Azure (Servidores y Procesamiento)</span>
+                        <span>$1,200 - $2,500/mes</span>
                     </div>
                 </div>
 
                 <div class="cost-category">
-                    <h3>2️⃣ Servicios de Streaming</h3>
+                    <h3>2️⃣ Base de Datos</h3>
                     <div class="cost-item">
-                        <span>CDN para Video</span>
-                        <span>$50 - $200/mes</span>
-                    </div>
-                    <div class="cost-item">
-                        <span>Almacenamiento de Video</span>
-                        <span>$30 - $100/mes</span>
+                        <span>PostgreSQL, Backup y Monitoreo</span>
+                        <span>$600 - $1,200/mes</span>
                     </div>
                 </div>
 
                 <div class="cost-category">
-                    <h3>3️⃣ Servicios Adicionales</h3>
+                    <h3>3️⃣ CDN y Almacenamiento</h3>
                     <div class="cost-item">
-                        <span>SSL y Seguridad</span>
-                        <span>$20 - $50/mes</span>
-                    </div>
-                    <div class="cost-item">
-                        <span>Email y Notificaciones</span>
-                        <span>$10 - $30/mes</span>
+                        <span>Cloudflare/AWS S3 (400 horas de video)</span>
+                        <span>$1,000 - $2,500/mes</span>
                     </div>
                 </div>
 
                 <div class="cost-category">
-                    <h3>4️⃣ Mantenimiento</h3>
+                    <h3>4️⃣ Licencias y API</h3>
                     <div class="cost-item">
-                        <span>Soporte Técnico</span>
-                        <span>$500 - $1,000/mes</span>
-                    </div>
-                    <div class="cost-item">
-                        <span>Actualizaciones y Mejoras</span>
+                        <span>Stripe, Zoom, Firebase, etc.</span>
                         <span>$300 - $800/mes</span>
                     </div>
                 </div>
@@ -2337,7 +2317,7 @@
 
             // Calculate days until delivery
             function updateCountdown() {
-                const deliveryDate = new Date('2025-04-15');
+                const deliveryDate = new Date('2025-04-19');
                 const today = new Date();
                 const diffTime = deliveryDate - today;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
