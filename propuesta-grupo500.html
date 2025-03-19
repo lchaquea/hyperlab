@@ -763,20 +763,36 @@
             white-space: nowrap;
             overflow: hidden;
             border-right: 0.2em solid var(--primary-color);
-            opacity: 1;
+            animation: blink-caret 0.75s step-end infinite;
+            width: var(--final-width);
             position: relative;
-            min-width: var(--final-width);
-            width: 0;
+        }
+
+        .typing-text::before {
+            content: attr(data-text);
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+        }
+
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--bg-dark);
+            width: 100%;
             animation: typing var(--typing-duration) steps(var(--typing-steps)) forwards;
         }
 
-        .typing-text.typing-complete {
-            border-right-color: transparent;
+        .typing-text.typing-complete::after {
+            display: none;
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: var(--final-width) }
+            to { width: 0 }
         }
 
         @keyframes blink-caret {
@@ -1298,15 +1314,14 @@
             // First pass: calculate widths and max duration
             titles.forEach(title => {
                 const text = title.textContent;
-                const duration = (text.length * 0.15) / 2;
+                title.setAttribute('data-text', text);
+                const duration = text.length * 0.15;
                 maxDuration = Math.max(maxDuration, duration);
                 
                 // Force the browser to calculate the final width
-                title.style.opacity = '0';
-                title.style.position = 'absolute';
+                title.style.visibility = 'hidden';
                 const width = title.offsetWidth;
-                title.style.position = '';
-                title.style.opacity = '1';
+                title.style.visibility = '';
                 
                 // Set the final width as a CSS variable
                 title.style.setProperty('--final-width', `${width}px`);
