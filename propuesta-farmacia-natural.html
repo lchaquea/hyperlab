@@ -72,16 +72,12 @@
 
         .header-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 70% 30%;
             gap: 2rem;
             align-items: start;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .header-content {
-                grid-template-columns: 70% 30%;
-            }
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .header-left {
@@ -94,9 +90,10 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 15px;
-            padding: 1.5rem;
+            padding: 2rem;
             height: fit-content;
             width: 100%;
+            min-width: 300px;
         }
 
         .client-logo {
@@ -107,7 +104,7 @@
         }
 
         .header-title {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 300;
             margin-bottom: 1.5rem;
             opacity: 0;
@@ -117,7 +114,7 @@
         }
 
         .header-subtitle {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
             color: var(--text-dim);
             margin-bottom: 2rem;
             opacity: 0;
@@ -209,7 +206,7 @@
             border-top: none;
         }
 
-        .proposal-info p {
+        .proposal-info p, .prepared-by p {
             margin: 0.5rem 0;
             color: var(--text-dim);
             display: flex;
@@ -217,7 +214,7 @@
             align-items: center;
         }
 
-        .proposal-info strong {
+        .proposal-info strong, .prepared-by strong {
             color: var(--text-light);
         }
 
@@ -231,6 +228,33 @@
             color: var(--accent-purple);
             line-height: 1;
             margin-bottom: 0.5rem;
+        }
+
+        .prepared-by .hyperlab-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .prepared-by img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .prepared-by span {
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .header-right {
+                min-width: 100%;
+            }
         }
 
         /* Product Preview Styles */
@@ -610,6 +634,203 @@
             height: 30px;
             margin-left: 1rem;
         }
+
+        /* Timeline Section Styles */
+        .timeline-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .phase-number {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--primary-color);
+        }
+
+        .duration {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .timeline-content {
+            cursor: pointer;
+        }
+
+        .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 1rem;
+        }
+
+        .timeline-content.expanded .feature-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .timeline-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+
+        /* Table of Contents */
+        .toc-button {
+            position: fixed;
+            left: 2rem;
+            bottom: 2rem;
+            background: rgba(124, 220, 105, 0.1);
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-weight: 500;
+            border: 1px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .toc-button:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+        }
+
+        .toc-menu {
+            position: fixed;
+            left: 2rem;
+            bottom: 5rem;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 1rem;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .toc-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .toc-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-menu li {
+            margin: 0.5rem 0;
+        }
+
+        .toc-menu a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+        .toc-menu a:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -632,37 +853,35 @@
         </ul>
     </nav>
 
-    <!-- Revamp Página de Inicio Section -->
-    <header class="proposal-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <div class="client-logo">
-                        <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Farmacia Natural</h1>
-                    </div>
-                    <h1 class="header-title typing-text">Revamp Página de Inicio</h1>
-                    <p class="header-subtitle">Una propuesta para optimizar y modernizar tu plataforma ecommerce, aumentando la tasa de conversión del 5.5% al 8% con un diseño centrado en el usuario.</p>
+    <!-- Hero Section -->
+    <section id="inicio" class="proposal-header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="client-logo">
+                    <h2 class="brand">Farmacia Natural</h2>
                 </div>
-                <div class="header-right">
-                    <div class="proposal-info">
-                        <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
-                        <p>Válida hasta: <strong>Marzo 28, 2024</strong></p>
-                    </div>
-                    <div class="countdown">
-                        <div class="countdown-number">7</div>
-                        <p>días para la entrega</p>
-                    </div>
-                    <div class="prepared-by">
-                        <p>Fecha de entrega: <strong>Marzo 28, 2024</strong></p>
-                        <div class="hyperlab-info">
-                            <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
-                            <span>Preparado por hyperlab</span>
-                        </div>
+                <h1 class="header-title">Revamp Página de Inicio</h1>
+                <p class="header-subtitle">Una propuesta para optimizar y modernizar tu plataforma ecommerce, aumentando la tasa de conversión del 5.5% al 8% con un diseño centrado en el usuario.</p>
+            </div>
+            <div class="header-right">
+                <div class="proposal-info">
+                    <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
+                    <p>Válida hasta: <strong>Marzo 28, 2024</strong></p>
+                </div>
+                <div class="countdown">
+                    <div class="countdown-number">-357</div>
+                    <p>días para la entrega</p>
+                </div>
+                <div class="prepared-by">
+                    <p>Preparado por:</p>
+                    <div class="hyperlab-info">
+                        <img src="assets/logo hyperlab.svg" alt="Hyperlab">
+                        <span>hyperlab</span>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <main class="container">
         <section class="project-summary">
@@ -726,62 +945,76 @@
         </section>
 
         <!-- Timeline Section -->
-        <section class="timeline">
+        <section id="cronograma" class="timeline-section">
             <h2 class="section-title">Cronograma de Desarrollo</h2>
             <div class="timeline-grid">
                 <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 1</span>
-                        <span class="duration">2 días</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="phase-number">Fase 1</h3>
+                            <span class="duration">2 días</span>
+                        </div>
+                        <h4>Análisis y Planificación</h4>
+                        <div class="feature-content">
+                            <ul class="timeline-list">
+                                <li>Auditoría de UX/UI actual</li>
+                                <li>Análisis de métricas y conversiones</li>
+                                <li>Definición de estructura de contenido</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Análisis y Planificación</h3>
-                    <ul class="feature-list">
-                        <li>Auditoría de UX/UI actual</li>
-                        <li>Análisis de métricas y conversiones</li>
-                        <li>Definición de estructura de contenido</li>
-                    </ul>
                 </div>
+                
                 <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 2</span>
-                        <span class="duration">2 días</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="phase-number">Fase 2</h3>
+                            <span class="duration">2 días</span>
+                        </div>
+                        <h4>Diseño y Prototipado</h4>
+                        <div class="feature-content">
+                            <ul class="timeline-list">
+                                <li>Wireframes mobile y desktop</li>
+                                <li>Diseño visual de componentes</li>
+                                <li>Prototipo interactivo</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Diseño y Prototipado</h3>
-                    <ul class="feature-list">
-                        <li>Wireframes mobile y desktop</li>
-                        <li>Diseño visual de componentes</li>
-                        <li>Prototipo interactivo</li>
-                    </ul>
                 </div>
+
                 <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 3</span>
-                        <span class="duration">2 días</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="phase-number">Fase 3</h3>
+                            <span class="duration">2 días</span>
+                        </div>
+                        <h4>Desarrollo Frontend</h4>
+                        <div class="feature-content">
+                            <ul class="timeline-list">
+                                <li>Implementación de diseño responsive</li>
+                                <li>Optimización de recursos</li>
+                                <li>Integración de analytics</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Desarrollo Frontend</h3>
-                    <ul class="feature-list">
-                        <li>Implementación de diseño responsive</li>
-                        <li>Optimización de recursos</li>
-                        <li>Integración de analytics</li>
-                    </ul>
                 </div>
+
                 <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 4</span>
-                        <span class="duration">1 día</span>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="phase-number">Fase 4</h3>
+                            <span class="duration">1 día</span>
+                        </div>
+                        <h4>Testing y Optimización</h4>
+                        <div class="feature-content">
+                            <ul class="timeline-list">
+                                <li>Pruebas de rendimiento</li>
+                                <li>Pruebas de usabilidad</li>
+                                <li>Optimización final</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Testing y Optimización</h3>
-                    <ul class="feature-list">
-                        <li>Pruebas de rendimiento</li>
-                        <li>Pruebas de usabilidad</li>
-                        <li>Optimización final</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="timeline-summary">
-                <p><strong>Tiempo Total de Desarrollo:</strong> 7 días hábiles</p>
-                <p><strong>Fecha de Inicio:</strong> 21 de Marzo, 2024</p>
-                <p><strong>Fecha de Entrega:</strong> 28 de Marzo, 2024</p>
             </div>
         </section>
 
@@ -1537,6 +1770,30 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/573052850514?text=Hola%20Andrés,%20me%20interesa%20la%20propuesta%20para%20Farmacia%20Natural" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-tooltip">Habla con Andrés</span>
+        <svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+        </svg>
+    </a>
+
+    <!-- Table of Contents Button -->
+    <button class="toc-button" onclick="toggleTableOfContents()">
+        Índice
+    </button>
+
+    <!-- Table of Contents Menu -->
+    <nav class="toc-menu" id="tocMenu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#resumen">Resumen del Proyecto</a></li>
+            <li><a href="#objetivos">Objetivos</a></li>
+            <li><a href="#cronograma">Cronograma</a></li>
+            <li><a href="#precios">Precios</a></li>
+        </ul>
+    </nav>
+
     <script>
         function toggleNav() {
             const navMenu = document.getElementById('navMenu');
@@ -1567,6 +1824,22 @@
 
         // Run on page load
         updateCountdowns();
+
+        // Table of Contents Toggle
+        function toggleTableOfContents() {
+            const tocMenu = document.getElementById('tocMenu');
+            tocMenu.classList.toggle('active');
+        }
+
+        // Timeline Cards Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineCards = document.querySelectorAll('.timeline-content');
+            timelineCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                });
+            });
+        });
     </script>
 </body>
 </html> 
