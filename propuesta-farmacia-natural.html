@@ -2242,6 +2242,56 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Price Summary Table -->
+            <div class="price-summary" style="margin-top: 3rem;">
+                <h4 style="color: var(--text-light); margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;">Resumen de Inversión</h4>
+                <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; padding: 2rem; overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; color: var(--text-dim);">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--line-color);">
+                                <th style="text-align: left; padding: 1rem; color: var(--text-light);">Producto</th>
+                                <th style="text-align: right; padding: 1rem; color: var(--text-light);">Plan Básico</th>
+                                <th style="text-align: right; padding: 1rem; color: var(--text-light);">Plan Revenue Share</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 1rem;">Revamp Página de Inicio</td>
+                                <td style="text-align: right; padding: 1rem;">$1,150 USD</td>
+                                <td style="text-align: right; padding: 1rem;">$690 USD + 10%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;">Landing Page V10</td>
+                                <td style="text-align: right; padding: 1rem;">$1,150 USD</td>
+                                <td style="text-align: right; padding: 1rem;">$690 USD + 10%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;">Landing Page Kit Niños</td>
+                                <td style="text-align: right; padding: 1rem;">$1,150 USD</td>
+                                <td style="text-align: right; padding: 1rem;">$690 USD + 10%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;">Landing Page P-FULL</td>
+                                <td style="text-align: right; padding: 1rem;">$1,150 USD</td>
+                                <td style="text-align: right; padding: 1rem;">$690 USD + 10%</td>
+                            </tr>
+                            <tr style="border-top: 1px solid var(--line-color);">
+                                <td style="padding: 1rem; font-weight: 500; color: var(--text-light);">Total Individual</td>
+                                <td style="text-align: right; padding: 1rem; font-weight: 500; color: var(--text-light);">$4,600 USD</td>
+                                <td style="text-align: right; padding: 1rem; font-weight: 500; color: var(--text-light);">$2,760 USD + 10%</td>
+                            </tr>
+                            <tr style="background: rgba(124, 220, 105, 0.1);">
+                                <td style="padding: 1rem; font-weight: 500; color: var(--primary-color);">Plan Integral (Ahorro)</td>
+                                <td style="text-align: right; padding: 1rem; font-weight: 500; color: var(--primary-color);" colspan="2">$4,600 USD + 8%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: var(--text-dim); margin-top: 1rem; text-align: center; font-size: 0.9rem;">
+                    * El Plan Integral ofrece un ahorro significativo en la comisión por ventas (8% vs 10%) y beneficios adicionales de optimización continua.
+                </p>
+            </div>
         </section>
     </main>
 
@@ -2341,13 +2391,12 @@
             </div>
             
             <div class="product-section">
-                <div class="product-header">
-                    <span>Paquete Completo</span>
-                    <span class="toggle-icon">+</span>
-                </div>
-                <ul class="product-content">
-                    <li><a href="#package-deal">Resumen y Beneficios</a></li>
-                </ul>
+                <a href="#package-deal" style="text-decoration: none; color: inherit;">
+                    <div class="product-header" style="cursor: pointer;">
+                        <span>Paquete Completo</span>
+                        <span class="toggle-icon">→</span>
+                    </div>
+                </a>
             </div>
         </div>
     </nav>
