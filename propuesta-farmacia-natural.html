@@ -10,16 +10,29 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/logo-hyperlab-_2_.ico">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Propuesta de optimización y rediseño para Farmacia Natural. Soluciones digitales para aumentar conversiones y mejorar la experiencia de usuario.">
-    <meta name="keywords" content="ecommerce, optimización web, diseño web, conversión, Farmacia Natural">
+    <meta name="description" content="Propuesta integral de optimización y modernización de plataforma ecommerce para Farmacia Natural. Soluciones tecnológicas avanzadas para aumentar conversiones y ventas.">
+    <meta name="keywords" content="ecommerce, optimización web, landing pages, conversión, ventas online, Farmacia Natural">
     <meta name="author" content="Hyperlab">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hyperlab.vercel.app/propuesta-farmacia-natural">
-    <meta property="og:title" content="Propuesta Farmacia Natural - Optimización Web | Hyperlab">
-    <meta property="og:description" content="Optimización y rediseño de plataforma ecommerce para aumentar conversiones y mejorar experiencia de usuario.">
+    <meta property="og:title" content="Propuesta Farmacia Natural - Optimización Ecommerce | Hyperlab">
+    <meta property="og:description" content="Optimización y modernización de plataforma ecommerce para aumentar la tasa de conversión y ventas online de Farmacia Natural.">
     <meta property="og:image" content="https://hyperlab.vercel.app/assets/logo hyperlab.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hyperlab.vercel.app/propuesta-farmacia-natural">
+    <meta property="twitter:title" content="Propuesta Farmacia Natural - Optimización Ecommerce | Hyperlab">
+    <meta property="twitter:description" content="Optimización y modernización de plataforma ecommerce para aumentar la tasa de conversión y ventas online de Farmacia Natural.">
+    <meta property="twitter:image" content="https://hyperlab.vercel.app/assets/logo hyperlab.svg">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#7cdc69">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="assets/logo-hyperlab-_2_.ico">
 
     <style>
         :root {
@@ -51,7 +64,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
             position: relative;
             z-index: 2;
         }
@@ -63,7 +76,7 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            padding: 4rem 0;
+            padding: calc(4rem + 70px) 0 4rem;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
             width: 100vw;
             margin-left: calc(-50vw + 50%);
@@ -104,7 +117,7 @@
         }
 
         .header-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: 4rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
             opacity: 0;
@@ -114,13 +127,145 @@
         }
 
         .header-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-size: 1.5rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease 0.4s forwards;
             line-height: 1.4;
+        }
+
+        /* Info Box Styles */
+        .proposal-info, .countdown, .prepared-by {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line-color);
+        }
+
+        .proposal-info {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .proposal-info p, .prepared-by p {
+            margin: 0.5rem 0;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .proposal-info strong, .prepared-by strong {
+            color: var(--text-light);
+        }
+
+        .countdown {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent-purple);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .prepared-by .hyperlab-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .prepared-by img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .prepared-by span {
+            color: var(--text-dim);
+        }
+
+        /* Typing effect styles */
+        .typing-text {
+            position: relative;
+            display: inline-block;
+            width: fit-content;
+            overflow: visible;
+            white-space: nowrap;
+            animation: typing 2s steps(var(--typing-steps)) forwards;
+        }
+
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .header-title .typing-text {
+            margin-bottom: 0.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            display: block;
+            width: fit-content;
+        }
+
+        .header-title .typing-text:nth-child(2) {
+            --typing-delay: 1s;
+            animation-delay: var(--typing-delay);
+        }
+
+        @media (max-width: 768px) {
+            .typing-text {
+                width: fit-content;
+                white-space: normal;
+                animation: none;
+            }
+
+            .typing-text::after {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* Project Summary Styles */
@@ -180,81 +325,6 @@
         .feature-list li::before {
             content: "→";
             color: var(--primary-color);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Info Box Styles */
-        .proposal-info, .countdown, .prepared-by {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--line-color);
-        }
-
-        .proposal-info {
-            margin-top: 0;
-            padding-top: 0;
-            border-top: none;
-        }
-
-        .proposal-info p, .prepared-by p {
-            margin: 0.5rem 0;
-            color: var(--text-dim);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .proposal-info strong, .prepared-by strong {
-            color: var(--text-light);
-        }
-
-        .countdown {
-            text-align: center;
-        }
-
-        .countdown-number {
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--accent-purple);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .prepared-by .hyperlab-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .prepared-by img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .prepared-by span {
-            color: var(--text-dim);
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .header-right {
-                min-width: 100%;
-            }
         }
 
         /* Product Preview Styles */
@@ -571,130 +641,169 @@
         }
 
         /* Footer Styles */
-        .footer {
+        footer {
+            border-top: 1px solid var(--line-color);
+            padding: 3rem 0;
             margin-top: 4rem;
-            padding: 4rem 0;
-            background: var(--card-bg);
-            border-top: 1px solid var(--card-border);
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
 
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .footer-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .footer-info p {
+        .footer-link {
             color: var(--text-dim);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-contact {
-            text-align: right;
-        }
-
-        .footer-contact .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 1rem 2rem;
-            border-radius: 30px;
             text-decoration: none;
-            font-weight: 500;
-            margin-top: 1rem;
-            transition: transform 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .footer-contact .cta-button:hover {
-            transform: translateY(-2px);
+        .footer-link:hover {
+            color: var(--primary-color);
         }
 
-        .hyperlab-footer {
+        .footer-logo {
+            font-size: 1.5rem;
+            color: var(--text-light);
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            margin-top: 2rem;
+            line-height: 1;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
-        .hyperlab-footer img {
+        .footer-logo:hover {
+            opacity: 0.8;
+        }
+
+        .footer-logo img {
+            width: 30px;
             height: 30px;
-            margin-left: 1rem;
+            margin-right: 10px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+
+        .footer-address {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--line-color);
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
         }
 
         /* Timeline Section Styles */
         .timeline-section {
-            margin-top: 4rem;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border: 1px solid var(--card-border);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(16, 16, 16, 0.9));
+            margin-top: 3rem;
+            border: 1px solid rgba(124, 220, 105, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .timeline-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .timeline-card:hover {
-            transform: translateY(-5px);
+        .timeline-table {
+            width: 100%;
         }
 
         .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 25% 55% 20%;
+            padding: 1.5rem;
+            background: rgba(124, 220, 105, 0.03);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            border: 1px solid rgba(124, 220, 105, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 25% 55% 20%;
+            padding: 1.5rem;
+            border: 1px solid rgba(124, 220, 105, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
             margin-bottom: 1rem;
+            background: rgba(124, 220, 105, 0.01);
         }
 
-        .phase-number {
-            font-size: 1.5rem;
-            font-weight: 300;
+        .timeline-row:hover {
+            background: rgba(124, 220, 105, 0.03);
+            transform: translateX(8px);
+            border-color: rgba(124, 220, 105, 0.08);
+        }
+
+        .fase-col {
             color: var(--primary-color);
+            font-weight: 500;
         }
 
-        .duration {
-            font-size: 1.1rem;
+        .fase-date {
+            font-size: 0.9rem;
             color: var(--text-dim);
+            margin-top: 0.75rem;
+            opacity: 0.8;
         }
 
-        .timeline-content {
+        .collapsible-header {
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            color: var(--text-light);
         }
 
-        .feature-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+        .toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(124, 220, 105, 0.1);
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 2rem 0 1rem 3.5rem;
+            grid-column: 1 / -1;
             margin-top: 1rem;
-        }
-
-        .timeline-content.expanded .feature-content {
-            max-height: 500px;
-            transition: max-height 0.5s ease-in;
+            background: rgba(124, 220, 105, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(124, 220, 105, 0.05);
         }
 
         .timeline-list {
@@ -704,179 +813,403 @@
         }
 
         .timeline-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
             color: var(--text-dim);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .timeline-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: inline-block;
         }
 
-        @media (max-width: 768px) {
-            .timeline-grid {
-                grid-template-columns: 1fr;
-            }
+        .timeline-footer {
+            display: grid;
+            grid-template-columns: 25% 55% 20%;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(124, 220, 105, 0.05);
+            font-weight: 500;
         }
 
-        /* WhatsApp Float Button */
+        /* WhatsApp Button Styles */
         .whatsapp-float {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             background: #25D366;
+            color: white;
+            border-radius: 50px;
             width: 60px;
             height: 60px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-            z-index: 1000;
             text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            z-index: 1000;
+            padding: 0;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            width: 220px;
+            border-radius: 30px;
+            background: #1fa855;
+            padding: 0 1.5rem;
+            justify-content: flex-start;
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            transition: margin-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            fill: currentColor;
+            color: white;
+        }
+
+        .whatsapp-float:hover svg {
+            margin-right: 12px;
         }
 
         .whatsapp-tooltip {
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-right: 1rem;
             white-space: nowrap;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            transform: translateX(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            width: 0;
         }
 
         .whatsapp-float:hover .whatsapp-tooltip {
             opacity: 1;
+            transform: translateX(0);
+            width: auto;
         }
 
-        /* Table of Contents */
+        /* Table of Contents Button Styles */
         .toc-button {
             position: fixed;
-            left: 2rem;
             bottom: 2rem;
-            background: rgba(124, 220, 105, 0.1);
-            color: var(--primary-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
+            left: 1rem;
+            background: rgba(10, 150, 50, 0.9);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
             font-weight: 500;
-            border: 1px solid var(--primary-color);
-            backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1001;
         }
 
         .toc-button:hover {
-            background: var(--primary-color);
-            color: var(--bg-dark);
+            background: rgba(8, 130, 40, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .toc-button::before {
+            content: "☰";
+            font-size: 1.2rem;
         }
 
         .toc-menu {
             position: fixed;
-            left: 2rem;
             bottom: 5rem;
+            left: 1rem;
+            width: 300px;
+            max-height: 80vh;
             background: rgba(10, 10, 10, 0.95);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 1rem;
-            z-index: 999;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.5rem;
             transform: translateY(20px);
             opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 998;
+            overflow-y: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(124, 220, 105, 0.1);
         }
 
         .toc-menu.active {
             transform: translateY(0);
             opacity: 1;
-            pointer-events: all;
+            visibility: visible;
         }
 
-        .toc-menu ul {
+        @media (max-width: 768px) {
+            .toc-menu {
+                width: calc(100% - 2rem);
+                max-height: 70vh;
+                bottom: 5rem;
+            }
+            
+            .toc-button {
+                bottom: 1rem;
+                left: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .whatsapp-float {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .toc-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .toc-close:hover {
+            transform: scale(1.1);
+        }
+
+        .product-header {
+            color: white;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-header:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .product-content {
+            display: none;
+            padding-left: 1.5rem;
+        }
+
+        .product-content a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.2s ease;
+        }
+
+        .product-content a:hover {
+            color: white;
+        }
+
+        .product-section {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(124, 220, 105, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .product-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            background: rgba(124, 220, 105, 0.05);
+        }
+
+        .product-header:hover {
+            background: rgba(124, 220, 105, 0.1);
+            transform: translateX(5px);
+        }
+
+        .product-content {
+            display: none;
             list-style: none;
-            padding: 0;
+            padding: 1rem 0 0.5rem 1.5rem;
             margin: 0;
         }
 
-        .toc-menu li {
-            margin: 0.5rem 0;
+        .product-content li {
+            margin: 0.75rem 0;
+            position: relative;
         }
 
-        .toc-menu a {
+        .product-content li::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            width: 5px;
+            height: 5px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .product-content a {
             color: var(--text-dim);
             text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            padding: 0.25rem 0;
         }
 
-        .toc-menu a:hover {
+        .product-content a:hover {
             color: var(--primary-color);
+            transform: translateX(5px);
+            display: inline-block;
+        }
+
+        /* Main Header Styles */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(124, 220, 105, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-light);
+            line-height: 1;
+            position: relative;
+            top: -1px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Button -->
-    <button class="nav-button" onclick="toggleNav()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-    </button>
-
-    <!-- Navigation Menu -->
-    <nav class="nav-menu" id="navMenu">
-        <h3>Contenido</h3>
-        <ul>
-            <li><a href="#revamp-inicio">1. Revamp Página de Inicio</a></li>
-            <li><a href="#landing-sin-upsell">2. Landing Page V10</a></li>
-            <li><a href="#landing-con-upsell">3. Landing Page Kit Niños</a></li>
-            <li><a href="#landing-pfull">4. Landing Page P-FULL</a></li>
-            <li><a href="#package-deal">5. Paquete Completo</a></li>
-        </ul>
-    </nav>
+    <!-- Main Header/Menu -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="assets/logo hyperlab.svg" alt="Hyperlab" height="30">
+                <span class="logo-text">hyperlab</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#landing-sin-upsell">V10</a></li>
+                    <li><a href="#landing-con-upsell">Kit Niños</a></li>
+                    <li><a href="#landing-pfull">P-FULL</a></li>
+                    <li><a href="#package-deal">Paquete Completo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section id="inicio" class="proposal-header">
-        <div class="header-content">
-            <div class="header-left">
-                <div class="client-logo">
-                    <h2 class="brand">Farmacia Natural</h2>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="client-logo">
+                        <h1 class="typing-text" data-text="Farmacia Natural" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 16;">Farmacia Natural</h1>
+                    </div>
+                    <h1 class="header-title">
+                        <span class="typing-text" data-text="Revamp" style="display: block; --typing-steps: 6;">Revamp</span>
+                        <span class="typing-text" data-text="Página de Inicio" style="display: block; --typing-steps: 15;">Página de Inicio</span>
+                    </h1>
+                    <p class="header-subtitle">Una propuesta para optimizar y modernizar tu plataforma ecommerce, aumentando la tasa de conversión del 5.5% al 8% con un diseño centrado en el usuario.</p>
                 </div>
-                <h1 class="header-title">Revamp Página de Inicio</h1>
-                <p class="header-subtitle">Una propuesta para optimizar y modernizar tu plataforma ecommerce, aumentando la tasa de conversión del 5.5% al 8% con un diseño centrado en el usuario.</p>
-            </div>
-            <div class="header-right">
-                <div class="proposal-info">
-                    <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
-                    <p>Válida hasta: <strong>Marzo 28, 2024</strong></p>
-                </div>
-                <div class="countdown">
-                    <div class="countdown-number">-357</div>
-                    <p>días para la entrega</p>
-                </div>
-                <div class="prepared-by">
-                    <p>Preparado por:</p>
-                    <div class="hyperlab-info">
-                        <img src="assets/logo hyperlab.svg" alt="Hyperlab">
-                        <span>hyperlab</span>
+                <div class="header-right">
+                    <div class="proposal-info">
+                        <p>Fecha de propuesta: <strong>Marzo 20, 2025</strong></p>
+                        <p>Válida hasta: <strong>Marzo 29, 2025</strong></p>
+                    </div>
+                    <div class="countdown">
+                        <div class="countdown-number">7</div>
+                        <p>días para la entrega</p>
+                    </div>
+                    <div class="prepared-by">
+                        <p>Fecha de entrega: <strong>Marzo 28, 2024</strong></p>
+                        <div class="hyperlab-info">
+                            <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+                            <span>Preparado por hyperlab</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -894,22 +1227,22 @@
                     <div class="card-icon">🎯</div>
                     <h3 class="card-title">Objetivos del Proyecto</h3>
                     <ul class="feature-list">
-                        <li>Aumentar la tasa de conversión del 5.5% al 8%</li>
-                        <li>Mejorar la experiencia de usuario en dispositivos móviles</li>
-                        <li>Optimizar la velocidad de carga de la página</li>
-                        <li>Implementar mejores prácticas de SEO</li>
-                        <li>Aumentar el tiempo de permanencia en el sitio</li>
+                        <li>Modernizar la interfaz para reflejar profesionalismo y confianza</li>
+                        <li>Mejorar la navegación y estructura de contenido</li>
+                        <li>Crear una experiencia fluida en dispositivos móviles</li>
+                        <li>Destacar elementos de credibilidad y confianza</li>
+                        <li>Optimizar la presentación visual de productos</li>
                     </ul>
                 </div>
                 <div class="summary-card">
                     <div class="card-icon">📈</div>
                     <h3 class="card-title">Resultados Esperados</h3>
                     <ul class="feature-list">
-                        <li>Incremento de 1,277 órdenes adicionales en 15 días</li>
-                        <li>Aumento en el valor promedio de orden</li>
-                        <li>Reducción en la tasa de rebote</li>
-                        <li>Mejor posicionamiento en buscadores</li>
-                        <li>Mayor engagement con el contenido</li>
+                        <li>Mayor confianza y credibilidad de la marca</li>
+                        <li>Mejor experiencia de navegación para usuarios</li>
+                        <li>Presentación más atractiva de productos</li>
+                        <li>Mayor satisfacción del usuario</li>
+                        <li>Imagen profesional y moderna del negocio</li>
                     </ul>
                 </div>
             </div>
@@ -922,40 +1255,49 @@
                 <div class="preview-card">
                     <h3>Situación Actual</h3>
                     <ul class="feature-list">
-                        <li>Tasa de conversión: 5.5%</li>
-                        <li>3,650 órdenes en 15 días</li>
-                        <li>66,000 usuarios en 15 días</li>
+                        <li>Interfaz sobrecargada con múltiples elementos compitiendo por atención</li>
+                        <li>Tiempo de carga > 8 segundos por exceso de elementos</li>
                         <li>Valor promedio de orden: $60,000 COP</li>
-                        <li>Diseño no optimizado para móviles</li>
-                        <li>Tiempo de carga > 5 segundos</li>
+                        <li>Navegación confusa con más de 12 menús visibles</li>
+                        <li>Diseño no optimizado para dispositivos móviles</li>
+                        <li>Tasa de rebote del 65% en móviles</li>
                     </ul>
                 </div>
                 <div class="preview-card">
                     <h3>Mejoras Propuestas</h3>
                     <ul class="feature-list">
-                        <li>Tasa de conversión objetivo: 8%</li>
-                        <li>4,927 órdenes proyectadas en 15 días</li>
-                        <li>Diseño mobile-first y responsive</li>
-                        <li>Optimización de imágenes y recursos</li>
-                        <li>Tiempo de carga < 2 segundos</li>
-                        <li>UX mejorada para proceso de compra</li>
+                        <li>Diseño minimalista enfocado en conversión</li>
+                        <li>Tiempo de carga < 2 segundos con lazy loading</li>
+                        <li>Valor promedio de orden objetivo: $85,000 COP</li>
+                        <li>Navegación intuitiva con máximo 6 categorías principales</li>
+                        <li>Experiencia mobile-first con UI/UX optimizada</li>
+                        <li>Sistema de recomendaciones para aumentar ticket promedio</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Timeline Section -->
+        <!-- First Product Timeline -->
         <section id="cronograma" class="timeline-section">
             <h2 class="section-title">Cronograma de Desarrollo</h2>
-            <div class="timeline-grid">
-                <div class="timeline-card">
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="phase-number">Fase 1</h3>
-                            <span class="duration">2 días</span>
+            <div class="timeline-table">
+                <div class="timeline-header">
+                    <div class="fase-col">Fase</div>
+                    <div class="func-col">Funcionalidad</div>
+                    <div class="tiempo-col">Tiempo</div>
+                </div>
+                
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 21-23)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Análisis y Planificación
                         </div>
-                        <h4>Análisis y Planificación</h4>
-                        <div class="feature-content">
+                        <div class="collapsible-content">
                             <ul class="timeline-list">
                                 <li>Auditoría de UX/UI actual</li>
                                 <li>Análisis de métricas y conversiones</li>
@@ -963,16 +1305,20 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="tiempo-col">2 días</div>
                 </div>
-                
-                <div class="timeline-card">
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="phase-number">Fase 2</h3>
-                            <span class="duration">2 días</span>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 24-25)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Diseño y Prototipado
                         </div>
-                        <h4>Diseño y Prototipado</h4>
-                        <div class="feature-content">
+                        <div class="collapsible-content">
                             <ul class="timeline-list">
                                 <li>Wireframes mobile y desktop</li>
                                 <li>Diseño visual de componentes</li>
@@ -980,16 +1326,20 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="tiempo-col">2 días</div>
                 </div>
 
-                <div class="timeline-card">
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="phase-number">Fase 3</h3>
-                            <span class="duration">2 días</span>
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 26-27)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Desarrollo Frontend
                         </div>
-                        <h4>Desarrollo Frontend</h4>
-                        <div class="feature-content">
+                        <div class="collapsible-content">
                             <ul class="timeline-list">
                                 <li>Implementación de diseño responsive</li>
                                 <li>Optimización de recursos</li>
@@ -997,16 +1347,20 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="tiempo-col">2 días</div>
                 </div>
 
-                <div class="timeline-card">
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="phase-number">Fase 4</h3>
-                            <span class="duration">1 día</span>
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 28)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Testing y Optimización
                         </div>
-                        <h4>Testing y Optimización</h4>
-                        <div class="feature-content">
+                        <div class="collapsible-content">
                             <ul class="timeline-list">
                                 <li>Pruebas de rendimiento</li>
                                 <li>Pruebas de usabilidad</li>
@@ -1014,17 +1368,24 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="tiempo-col">1 día</div>
+                </div>
+
+                <div class="timeline-footer">
+                    <div class="fase-col">Tiempo Total de Desarrollo</div>
+                    <div class="func-col"></div>
+                    <div class="tiempo-col">7 días hábiles</div>
                 </div>
             </div>
         </section>
 
         <!-- Pricing Section -->
-        <section class="pricing">
+        <section id="precios" class="pricing">
             <h2 class="section-title">Inversión y Retorno</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
-                    <div class="price">$2,500 USD</div>
+                    <div class="price">$1,150 USD</div>
                     <p class="price-details">Pago único + 1 mes de soporte</p>
                     <ul class="feature-list">
                         <li>Diseño mobile-first completo</li>
@@ -1037,9 +1398,9 @@
                 </div>
                 <div class="pricing-card featured">
                     <div class="featured-label">Recomendado</div>
-                    <h3>Plan Performance</h3>
-                    <div class="price">$1,500 USD + 3%</div>
-                    <p class="price-details">Pago inicial + 3% de ventas adicionales</p>
+                    <h3>Plan Revenue Share</h3>
+                    <div class="price">$690 USD + 10%</div>
+                    <p class="price-details">Pago inicial + 10% de ventas adicionales</p>
                     <ul class="feature-list">
                         <li>Todo lo incluido en Plan Básico</li>
                         <li>Optimización continua de conversión</li>
@@ -1065,10 +1426,10 @@
                     <div class="roi-card">
                         <h4>Proyección con Mejoras (15 días)</h4>
                         <ul class="feature-list">
-                            <li>4,927 órdenes (+1,277)</li>
-                            <li>$60,000 COP por orden</li>
-                            <li>Ingresos: $295,620,000 COP</li>
-                            <li>Incremento: $76,620,000 COP</li>
+                            <li>3,650 órdenes (mismo volumen)</li>
+                            <li>$85,000 COP por orden</li>
+                            <li>Ingresos: $310,250,000 COP</li>
+                            <li>Incremento: $91,250,000 COP</li>
                         </ul>
                     </div>
                 </div>
@@ -1081,22 +1442,25 @@
                 <div class="header-content">
                     <div class="header-left">
                         <div class="client-logo">
-                            <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Farmacia Natural</h1>
+                            <h1 class="typing-text" data-text="Farmacia Natural" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 16;">Farmacia Natural</h1>
                         </div>
-                        <h1 class="header-title typing-text">Landing Page V10 Multivitamínico</h1>
+                        <h1 class="header-title">
+                            <span class="typing-text" data-text="Landing Page" style="display: block; --typing-steps: 11;">Landing Page</span>
+                            <span class="typing-text" data-text="V10 Multivitamínico" style="display: block; --typing-steps: 17;">V10 Multivitamínico</span>
+                        </h1>
                         <p class="header-subtitle">Optimización de landing page para aumentar conversiones del producto estrella, con enfoque en experiencia de usuario y claridad en la comunicación.</p>
                     </div>
                     <div class="header-right">
                         <div class="proposal-info">
-                            <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
-                            <p>Válida hasta: <strong>Marzo 29, 2024</strong></p>
+                            <p>Fecha de propuesta: <strong>Marzo 20, 2025</strong></p>
+                            <p>Válida hasta: <strong>Marzo 30, 2025</strong></p>
                         </div>
                         <div class="countdown">
                             <div class="countdown-number">8</div>
                             <p>días para la entrega</p>
                         </div>
                         <div class="prepared-by">
-                            <p>Fecha de entrega: <strong>Marzo 29, 2024</strong></p>
+                            <p>Fecha de entrega: <strong>Marzo 30, 2025</strong></p>
                             <div class="hyperlab-info">
                                 <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                                 <span>Preparado por hyperlab</span>
@@ -1146,12 +1510,12 @@
                 <div class="preview-card">
                     <h3>Situación Actual</h3>
                     <ul class="feature-list">
-                        <li>Diseño básico sin optimización</li>
-                        <li>Información del producto dispersa</li>
-                        <li>Pocos elementos de confianza</li>
-                        <li>Sin sección de testimonios</li>
-                        <li>Proceso de compra complejo</li>
-                        <li>Baja tasa de conversión móvil</li>
+                        <li>Interfaz sobrecargada con elementos que distraen la atención del usuario</li>
+                        <li>Experiencia de usuario fragmentada con puntos de fricción en el proceso de compra</li>
+                        <li>Diseño visual poco profesional que no transmite confianza en el producto</li>
+                        <li>Interacciones confusas que generan frustración en el usuario</li>
+                        <li>Falta de jerarquía visual que dificulta la comprensión del producto</li>
+                        <li>Experiencia móvil deficiente con problemas de usabilidad</li>
                     </ul>
                 </div>
                 <div class="preview-card">
@@ -1169,72 +1533,114 @@
         </section>
 
         <!-- Second Product Timeline -->
-        <section class="timeline">
+        <section id="v10-cronograma" class="timeline-section">
             <h2 class="section-title">Cronograma de Desarrollo</h2>
-            <div class="timeline-grid">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 1</span>
-                        <span class="duration">2 días</span>
-                    </div>
-                    <h3>Investigación y Estrategia</h3>
-                    <ul class="feature-list">
-                        <li>Análisis de competencia</li>
-                        <li>Investigación de usuario</li>
-                        <li>Definición de estructura</li>
-                    </ul>
+            <div class="timeline-table">
+                <div class="timeline-header">
+                    <div class="fase-col">Fase</div>
+                    <div class="func-col">Funcionalidad</div>
+                    <div class="tiempo-col">Tiempo</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 2</span>
-                        <span class="duration">3 días</span>
+                
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 21-22)</div>
                     </div>
-                    <h3>Diseño y Contenido</h3>
-                    <ul class="feature-list">
-                        <li>Diseño de wireframes</li>
-                        <li>Copywriting persuasivo</li>
-                        <li>Diseño visual final</li>
-                    </ul>
-                </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 3</span>
-                        <span class="duration">2 días</span>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Investigación y Estrategia
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Análisis de competencia</li>
+                                <li>Investigación de usuario</li>
+                                <li>Definición de estructura</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Desarrollo</h3>
-                    <ul class="feature-list">
-                        <li>Implementación del diseño</li>
-                        <li>Integración de elementos</li>
-                        <li>Optimización de rendimiento</li>
-                    </ul>
+                    <div class="tiempo-col">2 días</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 4</span>
-                        <span class="duration">1 día</span>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 23-25)</div>
                     </div>
-                    <h3>Testing y Lanzamiento</h3>
-                    <ul class="feature-list">
-                        <li>Pruebas de usabilidad</li>
-                        <li>Optimización final</li>
-                        <li>Lanzamiento</li>
-                    </ul>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Diseño y Contenido
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Diseño de wireframes</li>
+                                <li>Copywriting persuasivo</li>
+                                <li>Diseño visual final</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">3 días</div>
                 </div>
-            </div>
-            <div class="timeline-summary">
-                <p><strong>Tiempo Total de Desarrollo:</strong> 8 días hábiles</p>
-                <p><strong>Fecha de Inicio:</strong> 21 de Marzo, 2024</p>
-                <p><strong>Fecha de Entrega:</strong> 29 de Marzo, 2024</p>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 26-27)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Desarrollo
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Implementación del diseño</li>
+                                <li>Integración de elementos</li>
+                                <li>Optimización de rendimiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">2 días</div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 2
+                        <div class="fase-date">(Marzo 28)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Testing y Lanzamiento
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Pruebas de usabilidad</li>
+                                <li>Optimización final</li>
+                                <li>Lanzamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">1 día</div>
+                </div>
+
+                <div class="timeline-footer">
+                    <div class="fase-col">Tiempo Total de Desarrollo</div>
+                    <div class="func-col"></div>
+                    <div class="tiempo-col">8 días hábiles</div>
+                </div>
             </div>
         </section>
 
         <!-- Second Product Pricing -->
-        <section class="pricing">
+        <section id="v10-precios" class="pricing">
             <h2 class="section-title">Inversión y Retorno</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
-                    <div class="price">$1,800 USD</div>
+                    <div class="price">$1,150 USD</div>
                     <p class="price-details">Pago único + 1 mes de soporte</p>
                     <ul class="feature-list">
                         <li>Diseño de landing page</li>
@@ -1247,9 +1653,9 @@
                 </div>
                 <div class="pricing-card featured">
                     <div class="featured-label">Recomendado</div>
-                    <h3>Plan Performance</h3>
-                    <div class="price">$1,000 USD + 2%</div>
-                    <p class="price-details">Pago inicial + 2% de ventas adicionales</p>
+                    <h3>Plan Revenue Share</h3>
+                    <div class="price">$690 USD + 10%</div>
+                    <p class="price-details">Pago inicial + 10% de ventas adicionales</p>
                     <ul class="feature-list">
                         <li>Todo lo incluido en Plan Básico</li>
                         <li>Optimización continua de conversión</li>
@@ -1268,8 +1674,8 @@
                         <h4>Situación Actual (15 días)</h4>
                         <ul class="feature-list">
                             <li>Tasa de conversión: 5.5%</li>
-                            <li>Visitas al producto: 15,000</li>
-                            <li>Ventas: 825 unidades</li>
+                            <li>Visitas al producto: 12,000</li>
+                            <li>Ventas: 660 unidades</li>
                             <li>Ingresos: $49,500,000 COP</li>
                         </ul>
                     </div>
@@ -1293,22 +1699,25 @@
                 <div class="header-content">
                     <div class="header-left">
                         <div class="client-logo">
-                            <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Farmacia Natural</h1>
+                            <h1 class="typing-text" data-text="Farmacia Natural" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 16;">Farmacia Natural</h1>
                         </div>
-                        <h1 class="header-title typing-text">Landing Page Kit Niños</h1>
+                        <h1 class="header-title">
+                            <span class="typing-text" data-text="Landing Page" style="display: block; --typing-steps: 11;">Landing Page</span>
+                            <span class="typing-text" data-text="Kit Niños" style="display: block; --typing-steps: 9;">Kit Niños</span>
+                        </h1>
                         <p class="header-subtitle">Optimización de landing page con estrategia de upsell para el Kit V10 y Parasivitta, maximizando el valor promedio de orden y la tasa de conversión.</p>
                     </div>
                     <div class="header-right">
                         <div class="proposal-info">
-                            <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
-                            <p>Válida hasta: <strong>Marzo 30, 2024</strong></p>
+                            <p>Fecha de propuesta: <strong>Marzo 20, 2025</strong></p>
+                            <p>Válida hasta: <strong>Marzo 31, 2025</strong></p>
                         </div>
                         <div class="countdown">
                             <div class="countdown-number">9</div>
                             <p>días para la entrega</p>
                         </div>
                         <div class="prepared-by">
-                            <p>Fecha de entrega: <strong>Marzo 30, 2024</strong></p>
+                            <p>Fecha de entrega: <strong>Marzo 31, 2025</strong></p>
                             <div class="hyperlab-info">
                                 <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                                 <span>Preparado por hyperlab</span>
@@ -1358,99 +1767,141 @@
                 <div class="preview-card">
                     <h3>Situación Actual</h3>
                     <ul class="feature-list">
-                        <li>Sin estrategia de upsell definida</li>
-                        <li>Valor promedio de orden bajo</li>
-                        <li>Presentación básica del kit</li>
-                        <li>Testimonios no optimizados</li>
-                        <li>Proceso de compra fragmentado</li>
-                        <li>Baja tasa de conversión del kit</li>
+                        <li>Diseño visual anticuado y poco atractivo</li>
+                        <li>Interfaz sobrecargada que genera desconfianza</li>
+                        <li>Elementos visuales desalineados y poco profesionales</li>
+                        <li>Imágenes de baja calidad que no resaltan el producto</li>
+                        <li>Tipografía inconsistente y difícil de leer</li>
+                        <li>Estructura visual que no guía al usuario</li>
                     </ul>
                 </div>
                 <div class="preview-card">
                     <h3>Mejoras Propuestas</h3>
                     <ul class="feature-list">
-                        <li>Estrategia de upsell integrada</li>
-                        <li>Presentación premium del kit</li>
-                        <li>Testimonios destacados de padres</li>
-                        <li>Proceso de compra optimizado</li>
-                        <li>Sección de beneficios clara</li>
-                        <li>Garantía de satisfacción visible</li>
+                        <li>Diseño moderno con estética médica profesional</li>
+                        <li>Interfaz limpia que transmite confianza y calidad</li>
+                        <li>Sistema visual coherente y profesional</li>
+                        <li>Fotografías de alta calidad del producto y su uso</li>
+                        <li>Tipografía moderna y legible optimizada para web</li>
+                        <li>Jerarquía visual que mejora la experiencia de usuario</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Third Product Timeline -->
-        <section class="timeline">
+        <section id="kit-cronograma" class="timeline-section">
             <h2 class="section-title">Cronograma de Desarrollo</h2>
-            <div class="timeline-grid">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 1</span>
-                        <span class="duration">2 días</span>
-                    </div>
-                    <h3>Investigación y Estrategia</h3>
-                    <ul class="feature-list">
-                        <li>Análisis de comportamiento</li>
-                        <li>Definición de upsells</li>
-                        <li>Estrategia de contenido</li>
-                    </ul>
+            <div class="timeline-table">
+                <div class="timeline-header">
+                    <div class="fase-col">Fase</div>
+                    <div class="func-col">Funcionalidad</div>
+                    <div class="tiempo-col">Tiempo</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 2</span>
-                        <span class="duration">3 días</span>
+                
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 21-22)</div>
                     </div>
-                    <h3>Diseño y Contenido</h3>
-                    <ul class="feature-list">
-                        <li>Diseño de landing page</li>
-                        <li>Diseño de upsells</li>
-                        <li>Copywriting persuasivo</li>
-                    </ul>
-                </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 3</span>
-                        <span class="duration">3 días</span>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Investigación y Estrategia
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Análisis de comportamiento</li>
+                                <li>Definición de upsells</li>
+                                <li>Estrategia de contenido</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Desarrollo</h3>
-                    <ul class="feature-list">
-                        <li>Implementación del diseño</li>
-                        <li>Integración de upsells</li>
-                        <li>Optimización de checkout</li>
-                    </ul>
+                    <div class="tiempo-col">2 días</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 4</span>
-                        <span class="duration">1 día</span>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 23-25)</div>
                     </div>
-                    <h3>Testing y Lanzamiento</h3>
-                    <ul class="feature-list">
-                        <li>Pruebas de flujo de compra</li>
-                        <li>Validación de upsells</li>
-                        <li>Lanzamiento</li>
-                    </ul>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Diseño y Contenido
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Diseño de landing page</li>
+                                <li>Diseño de upsells</li>
+                                <li>Copywriting persuasivo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">3 días</div>
                 </div>
-            </div>
-            <div class="timeline-summary">
-                <p><strong>Tiempo Total de Desarrollo:</strong> 9 días hábiles</p>
-                <p><strong>Fecha de Inicio:</strong> 21 de Marzo, 2024</p>
-                <p><strong>Fecha de Entrega:</strong> 30 de Marzo, 2024</p>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 2
+                        <div class="fase-date">(Marzo 26-28)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Desarrollo
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Implementación del diseño</li>
+                                <li>Integración de upsells</li>
+                                <li>Optimización de checkout</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">3 días</div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 2
+                        <div class="fase-date">(Marzo 29)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Testing y Lanzamiento
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Pruebas de flujo de compra</li>
+                                <li>Validación de upsells</li>
+                                <li>Lanzamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">1 día</div>
+                </div>
+
+                <div class="timeline-footer">
+                    <div class="fase-col">Tiempo Total de Desarrollo</div>
+                    <div class="func-col"></div>
+                    <div class="tiempo-col">9 días hábiles</div>
+                </div>
             </div>
         </section>
 
         <!-- Third Product Pricing -->
-        <section class="pricing">
+        <section id="kit-precios" class="pricing">
             <h2 class="section-title">Inversión y Retorno</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
-                    <div class="price">$2,200 USD</div>
+                    <div class="price">$1,150 USD</div>
                     <p class="price-details">Pago único + 1 mes de soporte</p>
                     <ul class="feature-list">
                         <li>Diseño de landing page</li>
-                        <li>Estrategia de upsell</li>
+                        <li>Optimización móvil</li>
                         <li>Integración con Shopify</li>
                         <li>Sección de testimonios</li>
                         <li>Soporte técnico (1 mes)</li>
@@ -1459,13 +1910,13 @@
                 </div>
                 <div class="pricing-card featured">
                     <div class="featured-label">Recomendado</div>
-                    <h3>Plan Performance</h3>
-                    <div class="price">$1,200 USD + 2.5%</div>
-                    <p class="price-details">Pago inicial + 2.5% de ventas adicionales</p>
+                    <h3>Plan Revenue Share</h3>
+                    <div class="price">$690 USD + 10%</div>
+                    <p class="price-details">Pago inicial + 10% de ventas adicionales</p>
                     <ul class="feature-list">
                         <li>Todo lo incluido en Plan Básico</li>
-                        <li>Optimización continua de upsells</li>
-                        <li>A/B Testing de ofertas</li>
+                        <li>Optimización continua de conversión</li>
+                        <li>A/B Testing mensual</li>
                         <li>Análisis de comportamiento</li>
                         <li>Soporte técnico continuo</li>
                         <li>Actualizaciones de diseño</li>
@@ -1507,22 +1958,25 @@
                 <div class="header-content">
                     <div class="header-left">
                         <div class="client-logo">
-                            <h1 class="typing-text" style="font-size: 2rem; color: var(--primary-color);">Farmacia Natural</h1>
+                            <h1 class="typing-text" data-text="Farmacia Natural" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 16;">Farmacia Natural</h1>
                         </div>
-                        <h1 class="header-title typing-text">Landing Page P-FULL</h1>
+                        <h1 class="header-title">
+                            <span class="typing-text" data-text="Landing Page" style="display: block; --typing-steps: 11;">Landing Page</span>
+                            <span class="typing-text" data-text="P-FULL" style="display: block; --typing-steps: 6;">P-FULL</span>
+                        </h1>
                         <p class="header-subtitle">Optimización de landing page para el producto P-FULL, enfocada en destacar beneficios y aumentar conversiones a través de una experiencia de usuario mejorada.</p>
                     </div>
                     <div class="header-right">
                         <div class="proposal-info">
-                            <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
-                            <p>Válida hasta: <strong>Marzo 31, 2024</strong></p>
+                            <p>Fecha de propuesta: <strong>Marzo 20, 2025</strong></p>
+                            <p>Válida hasta: <strong>Abril 1, 2025</strong></p>
                         </div>
                         <div class="countdown">
                             <div class="countdown-number">10</div>
                             <p>días para la entrega</p>
                         </div>
                         <div class="prepared-by">
-                            <p>Fecha de entrega: <strong>Marzo 31, 2024</strong></p>
+                            <p>Fecha de entrega: <strong>Abril 1, 2025</strong></p>
                             <div class="hyperlab-info">
                                 <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                                 <span>Preparado por hyperlab</span>
@@ -1572,95 +2026,137 @@
                 <div class="preview-card">
                     <h3>Situación Actual</h3>
                     <ul class="feature-list">
-                        <li>Diseño básico no optimizado</li>
-                        <li>Beneficios poco claros</li>
-                        <li>Sin sección de preguntas frecuentes</li>
-                        <li>Testimonios no estructurados</li>
-                        <li>Proceso de compra complejo</li>
-                        <li>Falta de elementos de confianza</li>
+                        <li>Interfaz sobrecargada con elementos que distraen la atención del usuario</li>
+                        <li>Experiencia de usuario fragmentada con puntos de fricción en el proceso de compra</li>
+                        <li>Diseño visual poco profesional que no transmite confianza en el producto</li>
+                        <li>Interacciones confusas que generan frustración en el usuario</li>
+                        <li>Falta de jerarquía visual que dificulta la comprensión del producto</li>
+                        <li>Experiencia móvil deficiente con problemas de usabilidad</li>
                     </ul>
                 </div>
                 <div class="preview-card">
                     <h3>Mejoras Propuestas</h3>
                     <ul class="feature-list">
                         <li>Diseño moderno y atractivo</li>
-                        <li>Beneficios claramente comunicados</li>
-                        <li>FAQ interactivo</li>
-                        <li>Testimonios verificados</li>
+                        <li>Información clara y estructurada</li>
+                        <li>Sección de beneficios destacada</li>
+                        <li>Testimonios y social proof</li>
                         <li>Proceso de compra simplificado</li>
-                        <li>Sellos de garantía y confianza</li>
+                        <li>Optimización mobile-first</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Fourth Product Timeline -->
-        <section class="timeline">
+        <section id="pfull-cronograma" class="timeline-section">
             <h2 class="section-title">Cronograma de Desarrollo</h2>
-            <div class="timeline-grid">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 1</span>
-                        <span class="duration">2 días</span>
-                    </div>
-                    <h3>Investigación y Estrategia</h3>
-                    <ul class="feature-list">
-                        <li>Análisis de audiencia</li>
-                        <li>Investigación de competencia</li>
-                        <li>Definición de mensajes clave</li>
-                    </ul>
+            <div class="timeline-table">
+                <div class="timeline-header">
+                    <div class="fase-col">Fase</div>
+                    <div class="func-col">Funcionalidad</div>
+                    <div class="tiempo-col">Tiempo</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 2</span>
-                        <span class="duration">3 días</span>
+                
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 21-22)</div>
                     </div>
-                    <h3>Diseño y Contenido</h3>
-                    <ul class="feature-list">
-                        <li>Diseño de wireframes</li>
-                        <li>Copywriting persuasivo</li>
-                        <li>Diseño visual final</li>
-                    </ul>
-                </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 3</span>
-                        <span class="duration">4 días</span>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Investigación y Estrategia
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Análisis de audiencia</li>
+                                <li>Investigación de competencia</li>
+                                <li>Definición de mensajes clave</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Desarrollo</h3>
-                    <ul class="feature-list">
-                        <li>Implementación del diseño</li>
-                        <li>Integración de elementos</li>
-                        <li>Optimización de rendimiento</li>
-                    </ul>
+                    <div class="tiempo-col">2 días</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <span class="phase">Fase 4</span>
-                        <span class="duration">1 día</span>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 1
+                        <div class="fase-date">(Marzo 23-25)</div>
                     </div>
-                    <h3>Testing y Lanzamiento</h3>
-                    <ul class="feature-list">
-                        <li>Pruebas de usabilidad</li>
-                        <li>Optimización final</li>
-                        <li>Lanzamiento</li>
-                    </ul>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Diseño y Contenido
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Diseño de wireframes</li>
+                                <li>Copywriting persuasivo</li>
+                                <li>Diseño visual final</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">3 días</div>
                 </div>
-            </div>
-            <div class="timeline-summary">
-                <p><strong>Tiempo Total de Desarrollo:</strong> 10 días hábiles</p>
-                <p><strong>Fecha de Inicio:</strong> 21 de Marzo, 2024</p>
-                <p><strong>Fecha de Entrega:</strong> 31 de Marzo, 2024</p>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 2
+                        <div class="fase-date">(Marzo 26-29)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Desarrollo
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Implementación del diseño</li>
+                                <li>Integración de elementos</li>
+                                <li>Optimización de rendimiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">4 días</div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="fase-col">
+                        Semana 2
+                        <div class="fase-date">(Marzo 30)</div>
+                    </div>
+                    <div class="func-col">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            <span class="toggle-icon">+</span>
+                            Testing y Lanzamiento
+                        </div>
+                        <div class="collapsible-content">
+                            <ul class="timeline-list">
+                                <li>Pruebas de usabilidad</li>
+                                <li>Optimización final</li>
+                                <li>Lanzamiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tiempo-col">1 día</div>
+                </div>
+
+                <div class="timeline-footer">
+                    <div class="fase-col">Tiempo Total de Desarrollo</div>
+                    <div class="func-col"></div>
+                    <div class="tiempo-col">10 días hábiles</div>
+                </div>
             </div>
         </section>
 
         <!-- Fourth Product Pricing -->
-        <section class="pricing">
+        <section id="pfull-precios" class="pricing">
             <h2 class="section-title">Inversión y Retorno</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Plan Básico</h3>
-                    <div class="price">$1,900 USD</div>
+                    <div class="price">$1,150 USD</div>
                     <p class="price-details">Pago único + 1 mes de soporte</p>
                     <ul class="feature-list">
                         <li>Diseño de landing page</li>
@@ -1673,9 +2169,9 @@
                 </div>
                 <div class="pricing-card featured">
                     <div class="featured-label">Recomendado</div>
-                    <h3>Plan Performance</h3>
-                    <div class="price">$1,100 USD + 2%</div>
-                    <p class="price-details">Pago inicial + 2% de ventas adicionales</p>
+                    <h3>Plan Revenue Share</h3>
+                    <div class="price">$690 USD + 10%</div>
+                    <p class="price-details">Pago inicial + 10% de ventas adicionales</p>
                     <ul class="feature-list">
                         <li>Todo lo incluido en Plan Básico</li>
                         <li>Optimización continua de conversión</li>
@@ -1694,10 +2190,10 @@
                         <h4>Situación Actual (15 días)</h4>
                         <ul class="feature-list">
                             <li>Tasa de conversión: 5.5%</li>
-                            <li>Visitas al producto: 10,000</li>
-                            <li>Ventas: 550 unidades</li>
+                            <li>Visitas al producto: 12,000</li>
+                            <li>Ventas: 660 unidades</li>
                             <li>Valor promedio: $59,800 COP</li>
-                            <li>Ingresos: $32,890,000 COP</li>
+                            <li>Ingresos: $39,468,000 COP</li>
                         </ul>
                     </div>
                     <div class="roi-card">
@@ -1716,12 +2212,12 @@
         </section>
 
         <!-- Package Deal Section -->
-        <section class="package-deal">
-            <h2 class="section-title">Paquete Completo de Optimización</h2>
+        <section id="package-deal" class="package-section">
+            <h2>Package Deal</h2>
             <div class="package-card">
                 <h3>Plan Integral de Optimización</h3>
-                <div class="price">$7,000 USD + 2%</div>
-                <p class="price-details">Pago inicial + 2% de ventas adicionales en todos los productos</p>
+                <div class="price">$4,600 USD + 8%</div>
+                <p class="price-details">Pago inicial + 8% de ventas adicionales en todos los productos</p>
                 <div class="package-content">
                     <div class="package-benefits">
                         <h4>Incluye:</h4>
@@ -1738,8 +2234,8 @@
                     <div class="package-savings">
                         <h4>Ahorro Total:</h4>
                         <ul class="feature-list">
-                            <li>Ahorro de $1,700 USD en pago inicial</li>
-                            <li>Reducción de comisión por ventas</li>
+                            <li>Tarifa fija negociable</li>
+                            <li>Reducción de comisión por ventas al 8%</li>
                             <li>Optimización integral coordinada</li>
                             <li>Menor tiempo de implementación</li>
                         </ul>
@@ -1750,49 +2246,226 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>Propuesta de Optimización</h3>
-                <p>Preparada especialmente para Farmacia Natural</p>
-                <p>Válida hasta el 31 de Marzo, 2024</p>
-                <p>Tiempo de implementación: 10 días hábiles</p>
-            </div>
-            <div class="footer-contact">
-                <a href="https://wa.me/573175946793?text=Hola,%20me%20interesa%20la%20propuesta%20para%20Farmacia%20Natural" class="cta-button" target="_blank">
-                    Consultar sobre esta propuesta
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="/" class="footer-logo">
+                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="30" height="30">
+                    hyperlab
                 </a>
-                <div class="hyperlab-footer">
-                    <span>Desarrollado por</span>
-                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
+
+                <div class="footer-links">
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/#services" class="footer-link">Services</a>
+                    <a href="/#about" class="footer-link">About</a>
+                    <a href="/#contact" class="footer-link">Contact</a>
                 </div>
+                
+                <div class="footer-address">
+                    Bogotá, Colombia
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2025 Hyperlab. All rights reserved.
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/573052850514?text=Hola%20Andrés,%20me%20interesa%20la%20propuesta%20para%20Farmacia%20Natural" class="whatsapp-float" target="_blank">
-        <span class="whatsapp-tooltip">Habla con Andrés</span>
-        <svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+    <a href="https://wa.me/573208996977?text=Lucas,%20me%20encantó%20la%20propuesta,%20donde%20firmamos!" class="whatsapp-float" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
+        <span class="whatsapp-tooltip">Andrés, alguna duda?</span>
     </a>
 
     <!-- Table of Contents Button -->
-    <button class="toc-button" onclick="toggleTableOfContents()">
-        Índice
+    <button class="toc-button" id="tocButton">
+        Tabla de Contenidos
     </button>
 
     <!-- Table of Contents Menu -->
     <nav class="toc-menu" id="tocMenu">
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#resumen">Resumen del Proyecto</a></li>
-            <li><a href="#objetivos">Objetivos</a></li>
-            <li><a href="#cronograma">Cronograma</a></li>
-            <li><a href="#precios">Precios</a></li>
-        </ul>
+        <div class="toc-header">
+            <h3>Tabla de Contenidos</h3>
+            <button class="toc-close" id="tocClose">✕</button>
+        </div>
+        <div class="toc-content">
+            <div class="product-section">
+                <div class="product-header">
+                    <span>Revamp Página de Inicio</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <ul class="product-content">
+                    <li><a href="#inicio">Resumen del Proyecto</a></li>
+                    <li><a href="#cronograma">Cronograma</a></li>
+                    <li><a href="#precios">Inversión y Retorno</a></li>
+                </ul>
+            </div>
+            
+            <div class="product-section">
+                <div class="product-header">
+                    <span>Landing Page V10</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <ul class="product-content">
+                    <li><a href="#landing-sin-upsell">Resumen del Proyecto</a></li>
+                    <li><a href="#v10-cronograma">Cronograma</a></li>
+                    <li><a href="#v10-precios">Inversión y Retorno</a></li>
+                </ul>
+            </div>
+            
+            <div class="product-section">
+                <div class="product-header">
+                    <span>Landing Page Kit Niños</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <ul class="product-content">
+                    <li><a href="#landing-con-upsell">Resumen del Proyecto</a></li>
+                    <li><a href="#kit-cronograma">Cronograma</a></li>
+                    <li><a href="#kit-precios">Inversión y Retorno</a></li>
+                </ul>
+            </div>
+            
+            <div class="product-section">
+                <div class="product-header">
+                    <span>Landing Page P-FULL</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <ul class="product-content">
+                    <li><a href="#landing-pfull">Resumen del Proyecto</a></li>
+                    <li><a href="#pfull-cronograma">Cronograma</a></li>
+                    <li><a href="#pfull-precios">Inversión y Retorno</a></li>
+                </ul>
+            </div>
+            
+            <div class="product-section">
+                <div class="product-header">
+                    <span>Paquete Completo</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <ul class="product-content">
+                    <li><a href="#package-deal">Resumen y Beneficios</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
+    <script>
+    // Table of Contents functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocButton = document.getElementById('tocButton');
+        const tocMenu = document.getElementById('tocMenu');
+        const tocClose = document.getElementById('tocClose');
+        const productHeaders = document.querySelectorAll('.product-header');
+        let isMenuVisible = false;
+        let hoverTimeout;
+        
+        // Function to show menu
+        function showMenu() {
+            tocMenu.classList.add('active');
+            isMenuVisible = true;
+        }
+
+        // Function to hide menu
+        function hideMenu() {
+            tocMenu.classList.remove('active');
+            isMenuVisible = false;
+        }
+
+        // Toggle menu on button click
+        tocButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isMenuVisible) {
+                hideMenu();
+            } else {
+                showMenu();
+            }
+        });
+
+        // Handle hover events
+        tocButton.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
+            showMenu();
+        });
+
+        tocMenu.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
+        });
+
+        tocButton.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(() => {
+                if (!tocMenu.matches(':hover')) {
+                    hideMenu();
+                }
+            }, 200);
+        });
+
+        tocMenu.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(hideMenu, 200);
+        });
+
+        // Close menu on close button click
+        tocClose.addEventListener('click', function() {
+            hideMenu();
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!tocMenu.contains(e.target) && !tocButton.contains(e.target)) {
+                hideMenu();
+            }
+        });
+
+        // Handle touch events for mobile
+        let touchStartY;
+        tocMenu.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        tocMenu.addEventListener('touchmove', function(e) {
+            const touchY = e.touches[0].clientY;
+            const scrollTop = tocMenu.scrollTop;
+            const scrollHeight = tocMenu.scrollHeight;
+            const clientHeight = tocMenu.clientHeight;
+
+            // Prevent default only if trying to scroll past the bounds
+            if ((scrollTop <= 0 && touchY > touchStartY) || 
+                (scrollTop + clientHeight >= scrollHeight && touchY < touchStartY)) {
+                e.preventDefault();
+            }
+        });
+
+        // Close menu when clicking a link
+        tocMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hideMenu();
+            });
+        });
+
+        // Product sections toggle
+        productHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const wasActive = content.style.display === 'block';
+                const icon = header.querySelector('.toggle-icon');
+                
+                // Close all sections
+                document.querySelectorAll('.product-content').forEach(c => {
+                    c.style.display = 'none';
+                    c.previousElementSibling.querySelector('.toggle-icon').textContent = '+';
+                });
+                
+                // Toggle clicked section
+                if (!wasActive) {
+                    content.style.display = 'block';
+                    if (icon) icon.textContent = '−';
+                }
+            });
+        });
+    });
+    </script>
 
     <script>
         function toggleNav() {
@@ -1809,14 +2482,55 @@
             }
         });
 
+        // Table of Contents Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocButton = document.querySelector('.table-contents-button');
+            const tocBox = document.querySelector('.table-contents-box');
+            
+            tocButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                tocBox.classList.toggle('active');
+            });
+
+            // Close table of contents when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!tocBox.contains(e.target) && !tocButton.contains(e.target)) {
+                    tocBox.classList.remove('active');
+                }
+            });
+
+            // Product sections toggle
+            const productTitles = document.querySelectorAll('.product-title');
+            productTitles.forEach(title => {
+                title.addEventListener('click', () => {
+                    const subsections = title.nextElementSibling;
+                    title.classList.toggle('expanded');
+                    subsections.classList.toggle('expanded');
+                });
+            });
+        });
+
+        // Timeline Cards Toggle
+        function toggleCollapsible(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            } else {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            }
+        }
+
         // Update countdown numbers
         function updateCountdowns() {
             const countdowns = document.querySelectorAll('.countdown-number');
             const today = new Date();
             countdowns.forEach(countdown => {
-                const section = countdown.closest('section, header');
-                const deliveryDate = section.querySelector('.prepared-by strong').textContent;
-                const endDate = new Date(deliveryDate);
+                const section = countdown.closest('section');
+                const deliveryDate = new Date('2024-03-30'); // Update with actual delivery date
                 const diffTime = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
                 countdown.textContent = diffTime;
             });
@@ -1824,22 +2538,6 @@
 
         // Run on page load
         updateCountdowns();
-
-        // Table of Contents Toggle
-        function toggleTableOfContents() {
-            const tocMenu = document.getElementById('tocMenu');
-            tocMenu.classList.toggle('active');
-        }
-
-        // Timeline Cards Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const timelineCards = document.querySelectorAll('.timeline-content');
-            timelineCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    this.classList.toggle('expanded');
-                });
-            });
-        });
     </script>
 </body>
 </html> 
