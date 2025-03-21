@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1200" height="630" fill="#0A0A0A"/>
+    <rect width="1200" height="630" fill="url(#gradient)"/>
+    
+    <!-- Logo -->
+    <g transform="translate(60, 60) scale(0.12)">
+        <circle cx="256" cy="256" r="240" stroke="#7CDC69" stroke-width="32"/>
+        <path d="M256 120L366.205 180V300L256 360L145.795 300V180L256 120Z" 
+              stroke="#7CDC69" stroke-width="24" fill="none"/>
+        <circle cx="256" cy="256" r="24" fill="#7CDC69"/>
+    </g>
+    
+    <!-- Text -->
+    <text x="180" y="120" fill="#FFFFFF" font-family="system-ui" font-size="48" font-weight="600">
+        Optimización de Landing Page
+    </text>
+    
+    <!-- Features -->
+    <g transform="translate(180, 200)">
+        <text fill="#7CDC69" font-family="system-ui" font-size="32">
+            ✨ Aumenta tus conversiones hasta un 60%
+        </text>
+        <text y="50" fill="#FFFFFF" font-family="system-ui" font-size="32">
+            💯 Diseño mobile-first
+        </text>
+        <text y="100" fill="#FFFFFF" font-family="system-ui" font-size="32">
+            ⚡ Carga < 2 segundos
+        </text>
+        <text y="150" fill="#FFFFFF" font-family="system-ui" font-size="32">
+            📊 ROI desde el primer mes
+        </text>
+    </g>
+    
+    <!-- Gradient definition -->
+    <defs>
+        <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#7CDC69" stop-opacity="0.1"/>
+            <stop offset="1" stop-color="#4A90E2" stop-opacity="0.1"/>
+        </linearGradient>
+    </defs>
+</svg> 
