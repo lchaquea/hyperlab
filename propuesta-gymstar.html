@@ -52,129 +52,236 @@
 
     <style>
         :root {
-            --primary-color: #7CDC69;
-            --text-light: #FFFFFF;
-            --text-dim: #A0A0A0;
-            --card-bg: rgba(10, 10, 10, 0.95);
-            --card-border: rgba(124, 220, 105, 0.1);
-            --line-color: rgba(124, 220, 105, 0.1);
+            --primary-color: #7cdc69;
+            --bg-dark: #0a0a0a;
+            --text-light: #f0f0f0;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --line-color: rgba(255, 255, 255, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --accent-purple: #9b51e0;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
+            background-color: var(--bg-dark);
             color: var(--text-light);
-            background: #0A0A0A;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Container Styles */
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Styles */
+        .proposal-header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: calc(4rem + 70px) 0 4rem;
+            background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            align-items: start;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        .proposal-header {
-            padding: 6rem 0 4rem;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
         .header-left {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .client-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-title {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .header-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
+            text-align: left;
+            max-width: 100%;
         }
 
         .header-right {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            height: fit-content;
+            width: 100%;
+            min-width: 300px;
+        }
+
+        .client-logo {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .header-title {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            line-height: 1.4;
+        }
+
+        /* Info Box Styles */
+        .proposal-info, .countdown, .prepared-by {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--line-color);
         }
 
         .proposal-info {
-            background: rgba(124, 220, 105, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(124, 220, 105, 0.2);
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
         }
 
-        .proposal-info p {
-            margin-bottom: 0.5rem;
+        .proposal-info p, .prepared-by p {
+            margin: 0.5rem 0;
             color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .proposal-info strong {
-            color: var(--primary-color);
+        .proposal-info strong, .prepared-by strong {
+            color: var(--text-light);
         }
 
         .countdown {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(124, 220, 105, 0.05);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(124, 220, 105, 0.1);
+            text-align: center;
         }
 
         .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent-purple);
             line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .prepared-by {
-            background: rgba(124, 220, 105, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(124, 220, 105, 0.2);
-        }
-
-        .hyperlab-info {
+        .prepared-by .hyperlab-info {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .hyperlab-info img {
-            width: 30px;
-            height: 30px;
+        .prepared-by img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .prepared-by span {
+            color: var(--text-dim);
+        }
+
+        /* Typing effect styles */
+        .typing-text {
+            position: relative;
+            display: inline-block;
+            width: fit-content;
+            overflow: visible;
+            white-space: nowrap;
+            animation: typing 2s steps(var(--typing-steps)) forwards;
+        }
+
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .header-title .typing-text {
+            margin-bottom: 0.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            display: block;
+            width: fit-content;
+        }
+
+        .header-title .typing-text:nth-child(2) {
+            --typing-delay: 1s;
+            animation-delay: var(--typing-delay);
+        }
+
+        @media (max-width: 768px) {
+            .typing-text {
+                width: fit-content;
+                white-space: normal;
+                animation: none;
+            }
+
+            .typing-text::after {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         .section-title {
@@ -1062,10 +1169,10 @@
                         <h1 class="typing-text" data-text="GymStar" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 7;">GymStar</h1>
                     </div>
                     <h1 class="header-title">
-                        <span class="typing-text" data-text="Propuesta de" style="display: block; --typing-steps: 12;">Propuesta de</span>
-                        <span class="typing-text" data-text="Optimización" style="display: block; --typing-steps: 12;">Optimización</span>
+                        <span class="typing-text" data-text="E-commerce" style="display: block; --typing-steps: 10;">E-commerce</span>
+                        <span class="typing-text" data-text="Internacional" style="display: block; --typing-steps: 12;">Internacional</span>
                     </h1>
-                    <p class="header-subtitle">Optimización de landing page enfocada en aumentar conversiones a través de una experiencia de usuario mejorada y diseño profesional.</p>
+                    <p class="header-subtitle">Desarrollo de tienda Shopify premium con dos storefronts internacionales, diseño de alta gama y experiencia de compra optimizada.</p>
                 </div>
                 <div class="header-right">
                     <div class="proposal-info">
