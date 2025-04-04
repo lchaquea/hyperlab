@@ -1062,22 +1062,22 @@
                         <h1 class="typing-text" data-text="GymStar" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 7;">GymStar</h1>
                     </div>
                     <h1 class="header-title">
-                        <span class="typing-text" data-text="E-commerce" style="display: block; --typing-steps: 10;">E-commerce</span>
-                        <span class="typing-text" data-text="Internacional" style="display: block; --typing-steps: 12;">Internacional</span>
+                        <span class="typing-text" data-text="Propuesta de" style="display: block; --typing-steps: 12;">Propuesta de</span>
+                        <span class="typing-text" data-text="Optimización" style="display: block; --typing-steps: 12;">Optimización</span>
                     </h1>
-                    <p class="header-subtitle">Desarrollo de tienda Shopify premium con dos storefronts internacionales, diseño de alta gama y experiencia de compra optimizada.</p>
+                    <p class="header-subtitle">Optimización de landing page enfocada en aumentar conversiones a través de una experiencia de usuario mejorada y diseño profesional.</p>
                 </div>
                 <div class="header-right">
                     <div class="proposal-info">
-                        <p>Fecha de propuesta: <strong>Marzo 21, 2025</strong></p>
-                        <p>Válida hasta: <strong>Marzo 28, 2025</strong></p>
+                        <p>Fecha de propuesta: <strong>Marzo 21, 2024</strong></p>
+                        <p>Válida hasta: <strong>Marzo 28, 2024</strong></p>
                     </div>
                     <div class="countdown">
                         <div class="countdown-number">7</div>
                         <p>días para la entrega</p>
                     </div>
                     <div class="prepared-by">
-                        <p>Fecha de entrega: <strong>Marzo 30, 2025</strong></p>
+                        <p>Fecha de entrega: <strong>Marzo 30, 2024</strong></p>
                         <div class="hyperlab-info">
                             <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
                             <span>Preparado por hyperlab</span>
@@ -1574,6 +1574,15 @@
         </div>
         <div class="toc-content">
             <div class="product-section">
+                <ul class="toc-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#optimizacion">Optimización de Landing Page</a></li>
+                    <li><a href="#funcionalidades">Funcionalidades y Entregables</a></li>
+                    <li><a href="#cronograma">Cronograma de Desarrollo</a></li>
+                    <li><a href="#precios">Inversión y Retorno</a></li>
+                    <li><a href="#faqs">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
                 <div class="product-header">
                     <h4 class="toc-title">Propuesta GymStar</h4>
                     <span class="toggle-icon">+</span>
@@ -1595,67 +1604,96 @@
 
     <!-- Reuse all scripts from propuesta-precios-pro.html -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Table of Contents functionality
-            const tocButton = document.getElementById('tocButton');
-            const tocMenu = document.getElementById('tocMenu');
-            const tocClose = document.getElementById('tocClose');
-            const productHeaders = document.querySelectorAll('.product-header');
-            
-            // Toggle table of contents menu
-            tocButton.addEventListener('click', function() {
-                tocMenu.classList.toggle('active');
-            });
-            
-            // Close table of contents menu
-            tocClose.addEventListener('click', function() {
-                tocMenu.classList.remove('active');
-            });
-            
-            // Toggle product sections
-            productHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    
-                    // Toggle the current section
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    content.style.display = isExpanded ? 'none' : 'block';
-                    
-                    // Add animation class
-                    content.classList.add('expanding');
-                    setTimeout(() => {
-                        content.classList.remove('expanding');
-                    }, 300);
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!tocMenu.contains(event.target) && !tocButton.contains(event.target)) {
-                    tocMenu.classList.remove('active');
+    // Table of Contents functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocButton = document.getElementById('tocButton');
+        const tocMenu = document.getElementById('tocMenu');
+        const tocClose = document.getElementById('tocClose');
+        let isMenuVisible = false;
+        let hoverTimeout;
+        
+        // Function to show menu
+        function showMenu() {
+            tocMenu.classList.add('active');
+            isMenuVisible = true;
+        }
+
+        // Function to hide menu
+        function hideMenu() {
+            tocMenu.classList.remove('active');
+            isMenuVisible = false;
+        }
+
+        // Toggle menu on button click
+        tocButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isMenuVisible) {
+                hideMenu();
+            } else {
+                showMenu();
+            }
+        });
+
+        // Handle hover events
+        tocButton.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
+            showMenu();
+        });
+
+        tocMenu.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
+        });
+
+        tocButton.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(() => {
+                if (!tocMenu.matches(':hover')) {
+                    hideMenu();
                 }
-            });
-            
-            // Smooth scroll to sections
-            document.querySelectorAll('.product-content a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Close menu after clicking
-                        tocMenu.classList.remove('active');
-                    }
-                });
+            }, 200);
+        });
+
+        tocMenu.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(hideMenu, 200);
+        });
+
+        // Close menu on close button click
+        tocClose.addEventListener('click', function() {
+            hideMenu();
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!tocMenu.contains(e.target) && !tocButton.contains(e.target)) {
+                hideMenu();
+            }
+        });
+
+        // Handle touch events for mobile
+        let touchStartY;
+        tocMenu.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        tocMenu.addEventListener('touchmove', function(e) {
+            const touchY = e.touches[0].clientY;
+            const scrollTop = tocMenu.scrollTop;
+            const scrollHeight = tocMenu.scrollHeight;
+            const clientHeight = tocMenu.clientHeight;
+
+            // Prevent default only if trying to scroll past the bounds
+            if ((scrollTop <= 0 && touchY > touchStartY) || 
+                (scrollTop + clientHeight >= scrollHeight && touchY < touchStartY)) {
+                e.preventDefault();
+            }
+        });
+
+        // Close menu when clicking a link
+        tocMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hideMenu();
             });
         });
+    });
     </script>
 </body>
 </html> 
