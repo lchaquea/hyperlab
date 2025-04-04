@@ -1322,11 +1322,11 @@
                         </div>
                         <div class="collapsible-content">
                             <ul class="timeline-list">
-                                <li>Configuración de Shopify Plus</li>
-                                <li>Diseño de UI/UX para ambos storefronts</li>
-                                <li>Configuración de dominios y SSL</li>
-                                <li>Integración de pasarelas de pago</li>
-                                <li>Configuración de impuestos y envíos</li>
+                                <li>Configuración de Shopify Plus: Creación de cuenta, permisos, y configuración de entornos de desarrollo</li>
+                                <li>Diseño de UI/UX para ambos storefronts: Wireframes de alta fidelidad, mockups, y definición de componentes</li>
+                                <li>Configuración de dominios y SSL: gymstar.co (CO) y gymstar.us (US), con certificados SSL</li>
+                                <li>Integración de pasarelas de pago: MercadoPago para Colombia y Shopify Payments para USA</li>
+                                <li>Configuración de impuestos y envíos: Automáticos según región, con cálculo preciso para envíos internacionales</li>
                             </ul>
                         </div>
                     </div>
@@ -1345,11 +1345,11 @@
                         </div>
                         <div class="collapsible-content">
                             <ul class="timeline-list">
-                                <li>Desarrollo de storefront Colombia</li>
-                                <li>Desarrollo de storefront USA</li>
-                                <li>Implementación de diseño responsive</li>
-                                <li>Integración de catálogo de productos</li>
-                                <li>Configuración de inventario unificado</li>
+                                <li>Desarrollo de storefront Colombia: Personalizado en español, con precios en COP y contenido adaptado localmente</li>
+                                <li>Desarrollo de storefront USA: Versión en inglés, con precios en USD y contenido adaptado al mercado norteamericano</li>
+                                <li>Implementación de diseño responsive: Optimización para todos los dispositivos con breakpoints específicos</li>
+                                <li>Integración de catálogo de productos: Sistemas de categorías, filtrado avanzado y búsqueda predictiva</li>
+                                <li>Configuración de inventario unificado: Sistema sincronizado entre storefronts con actualizaciones en tiempo real</li>
                             </ul>
                         </div>
                     </div>
@@ -1368,11 +1368,11 @@
                         </div>
                         <div class="collapsible-content">
                             <ul class="timeline-list">
-                                <li>Implementación de checkout personalizado</li>
-                                <li>Configuración de envíos internacionales</li>
-                                <li>Integración de pasarelas de pago</li>
-                                <li>Configuración de impuestos automáticos</li>
-                                <li>Implementación de SEO avanzado</li>
+                                <li>Implementación de checkout personalizado: Proceso optimizado en un solo paso con datos persistentes</li>
+                                <li>Configuración de envíos internacionales: Integración con DHL, UPS y operadores locales con cálculo exacto de costos</li>
+                                <li>Integración de pasarelas de pago: Configuración de MercadoPago, Shopify Payments y alternativas de pago por región</li>
+                                <li>Configuración de impuestos automáticos: Sistema que detecta ubicación y aplica impuestos correspondientes</li>
+                                <li>Implementación de SEO avanzado: Metadatos optimizados, URLs amigables, esquemas estructurados y optimización de velocidad</li>
                             </ul>
                         </div>
                     </div>
@@ -1391,11 +1391,11 @@
                         </div>
                         <div class="collapsible-content">
                             <ul class="timeline-list">
-                                <li>Pruebas de usabilidad</li>
-                                <li>Optimización de rendimiento</li>
-                                <li>Testing de integraciones</li>
-                                <li>Verificación de SEO</li>
-                                <li>Pruebas de seguridad</li>
+                                <li>Pruebas de usabilidad: Testing con usuarios reales de ambos mercados para optimizar la experiencia</li>
+                                <li>Optimización de rendimiento: Mejora de velocidad de carga a menos de 2s en ambos storefronts</li>
+                                <li>Testing de integraciones: Pruebas end-to-end de pasarelas de pago, envíos y funcionalidades críticas</li>
+                                <li>Verificación de SEO: Auditoría completa con herramientas como Lighthouse, SEMrush y optimización adicional</li>
+                                <li>Pruebas de seguridad: Auditoría de seguridad, pentesting y validación de protección de datos sensibles</li>
                             </ul>
                         </div>
                     </div>
@@ -1414,11 +1414,11 @@
                         </div>
                         <div class="collapsible-content">
                             <ul class="timeline-list">
-                                <li>Lanzamiento de storefronts</li>
-                                <li>Capacitación del equipo</li>
-                                <li>Documentación técnica</li>
-                                <li>Monitoreo post-lanzamiento</li>
-                                <li>Soporte inicial</li>
+                                <li>Lanzamiento de storefronts: Publicación de ambos storefronts con monitoreo 24/7 durante primeras 48h</li>
+                                <li>Capacitación del equipo: Sesiones específicas para administración de productos, pedidos, inventario y marketing</li>
+                                <li>Documentación técnica: Entrega de manuales detallados para usuarios, administradores y desarrolladores</li>
+                                <li>Monitoreo post-lanzamiento: Análisis de datos, comportamiento de usuarios y optimización continua</li>
+                                <li>Soporte inicial: Asistencia prioritaria por 30 días con tiempo de respuesta menor a 4 horas</li>
                             </ul>
                         </div>
                     </div>
@@ -1784,6 +1784,66 @@
             link.addEventListener('click', () => {
                 hideMenu();
             });
+        });
+        
+        // Initialize FAQ items
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                
+                // Close all FAQs
+                faqQuestions.forEach(q => {
+                    q.setAttribute('aria-expanded', 'false');
+                    q.nextElementSibling.classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it was closed
+                if (!isExpanded) {
+                    question.setAttribute('aria-expanded', 'true');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize ARIA attributes
+        faqQuestions.forEach(question => {
+            question.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // Function to toggle collapsible sections in timeline
+    function toggleCollapsible(header) {
+        const content = header.nextElementSibling;
+        const isOpen = content.style.display === 'block';
+        const icon = header.querySelector('.toggle-icon');
+        
+        // Close all collapsibles
+        document.querySelectorAll('.collapsible-content').forEach(c => {
+            c.style.display = 'none';
+            const prevHeader = c.previousElementSibling;
+            const prevIcon = prevHeader.querySelector('.toggle-icon');
+            if (prevIcon) prevIcon.textContent = '+';
+            prevHeader.classList.remove('active');
+        });
+        
+        // Open clicked collapsible if it was closed
+        if (!isOpen) {
+            content.style.display = 'block';
+            if (icon) icon.textContent = '−';
+            header.classList.add('active');
+        } else {
+            if (icon) icon.textContent = '+';
+            header.classList.remove('active');
+        }
+    }
+
+    // Initialize all collapsible sections as closed
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.collapsible-content').forEach(content => {
+            content.style.display = 'none';
         });
     });
     </script>
