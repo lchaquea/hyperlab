@@ -119,11 +119,11 @@
 
         /* Hero Section */
         .careers-hero {
-            min-height: 100vh;
+            min-height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: calc(4rem + 70px) 0 4rem;
+            padding: calc(2rem + 70px) 0 2rem;
             background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
         }
 
@@ -134,16 +134,110 @@
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Job Card Styles */
+        .job-listing {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            transition: all 0.3s ease;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-brief {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .job-details {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .job-details.expanded {
+            display: block;
+            opacity: 1;
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .view-more-btn:hover {
+            background: rgba(124, 220, 105, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .apply-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(124, 220, 105, 0.4);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         /* Job Listing Styles */
@@ -253,25 +347,6 @@
             content: '🚫';
             position: absolute;
             left: -1.5rem;
-        }
-
-        .apply-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--bg-dark);
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .apply-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(124, 220, 105, 0.4);
         }
 
         /* Footer Styles */
@@ -416,60 +491,62 @@
                 </div>
             </div>
 
-            <div class="job-description">
-                <p>¿Tienes un talento visual brutal y te obsesionas con los detalles estéticos? ¿Te encanta el diseño, pero también te emociona la idea de transformar tus ideas en código, aunque apenas estés empezando?</p>
-                <p>En Hyperlab estamos buscando un(a) UX/UI Vibe Coder: Una mente creativa, visualmente poderosa y con muchas ganas de aprender a mezclar arte y tecnología para crear experiencias digitales con alma ✨.</p>
-            </div>
+            <p class="job-brief">
+                ¿Tienes un talento visual brutal y te obsesionas con los detalles estéticos? Buscamos una mente creativa para transformar ideas en experiencias digitales únicas. Únete a nuestro equipo como UX/UI Vibe Coder y sé parte de proyectos innovadores.
+            </p>
 
-            <div class="job-section">
-                <h3>Lo que harás 💻🎨</h3>
-                <ul class="job-list">
-                    <li>Colaborar con diseño y producto para crear interfaces bellas, intuitivas y funcionales.</li>
-                    <li>Aprender y aplicar principios básicos de código (HTML, CSS, JS) para prototipar y dar vida a tus diseños.</li>
-                    <li>Ser guardián(a) de la estética: cuidar detalles visuales, animaciones, armonía y la vibra del producto 💫.</li>
-                    <li>Participar en todo el journey de diseño digital: desde la idea hasta la ejecución.</li>
-                    <li>Trabajar en proyectos reales con startups de alto impacto 🚀 y clientes globales 🌍.</li>
-                </ul>
-            </div>
-
-            <div class="job-section">
-                <h3>Lo que buscamos en ti 🧠🔥</h3>
-                <ul class="job-list">
-                    <li>Recién graduado(a) en diseño gráfico, diseño de producto o similar.</li>
-                    <li>Hipercreativo(a), curioso(a), con una mirada estética potente y atención al detalle.</li>
-                    <li>Con conocimientos básicos de desarrollo front-end (HTML, CSS, algo de JS).</li>
-                    <li>👉 Algo de backend es un plus.</li>
-                    <li>Ganas genuinas de aprender vibe coding: diseñar y codificar experiencias que se sientan bien ✨.</li>
-                    <li>Interés por startups, tech, diseño de producto y herramientas de AI/UX/UI.</li>
-                </ul>
-            </div>
-
-            <div class="job-section">
-                <h3>Qué ofrecemos 🚀</h3>
-                <ul class="job-list">
-                    <li>Entrenamiento personalizado para llevar tu talento visual al mundo tech.</li>
-                    <li>Cultura creativa, exigente y de aprendizaje constante 💡.</li>
-                    <li>Proyectos con impacto real, libertad para experimentar y equipo que vibra alto.</li>
-                </ul>
-            </div>
-
-            <div class="warning-section">
-                <h3>Ahora, ojo 👇👇👇</h3>
-                <p>⚠️ NO apliques si...</p>
-                <ul class="warning-list">
-                    <li>No estás dispuesto(a) a dar muchas horas al aprendizaje.</li>
-                    <li>No te gusta aprender ni sabes cómo hacerlo bien.</li>
-                    <li>No te interesa la inteligencia artificial ni el futuro del diseño.</li>
-                    <li>Tu sentido estético no es tu fuerte.</li>
-                    <li>Buscas un trabajo convencional, de 9 a 5 sin mucha emoción.</li>
-                </ul>
-                <p style="margin-top: 1rem;">✨ Este rol no es para cualquiera. Es para quien ve belleza en los detalles, quiere aprender rápido y sueña con crear productos que se sientan tan bien como se ven.</p>
-            </div>
-
-            <div style="text-align: center;">
+            <div class="button-group">
+                <button class="view-more-btn" onclick="toggleJobDetails()">Ver más detalles</button>
                 <a href="https://airtable.com/appPsHYbod4xpVKbK/pag1GNx401rAg37vD/form" target="_blank" class="apply-button">
-                    ¿Are you vibe coding? Apply now
+                    Apply now
                 </a>
+            </div>
+
+            <div class="job-details" id="jobDetails">
+                <div class="job-section">
+                    <h3>Lo que harás 💻🎨</h3>
+                    <ul class="job-list">
+                        <li>Colaborar con diseño y producto para crear interfaces bellas, intuitivas y funcionales.</li>
+                        <li>Aprender y aplicar principios básicos de código (HTML, CSS, JS) para prototipar y dar vida a tus diseños.</li>
+                        <li>Ser guardián(a) de la estética: cuidar detalles visuales, animaciones, armonía y la vibra del producto 💫.</li>
+                        <li>Participar en todo el journey de diseño digital: desde la idea hasta la ejecución.</li>
+                        <li>Trabajar en proyectos reales con startups de alto impacto 🚀 y clientes globales 🌍.</li>
+                    </ul>
+                </div>
+
+                <div class="job-section">
+                    <h3>Lo que buscamos en ti 🧠🔥</h3>
+                    <ul class="job-list">
+                        <li>Recién graduado(a) en diseño gráfico, diseño de producto o similar.</li>
+                        <li>Hipercreativo(a), curioso(a), con una mirada estética potente y atención al detalle.</li>
+                        <li>Con conocimientos básicos de desarrollo front-end (HTML, CSS, algo de JS).</li>
+                        <li>👉 Algo de backend es un plus.</li>
+                        <li>Ganas genuinas de aprender vibe coding: diseñar y codificar experiencias que se sientan bien ✨.</li>
+                        <li>Interés por startups, tech, diseño de producto y herramientas de AI/UX/UI.</li>
+                    </ul>
+                </div>
+
+                <div class="job-section">
+                    <h3>Qué ofrecemos 🚀</h3>
+                    <ul class="job-list">
+                        <li>Entrenamiento personalizado para llevar tu talento visual al mundo tech.</li>
+                        <li>Cultura creativa, exigente y de aprendizaje constante 💡.</li>
+                        <li>Proyectos con impacto real, libertad para experimentar y equipo que vibra alto.</li>
+                    </ul>
+                </div>
+
+                <div class="warning-section">
+                    <h3>Ahora, ojo 👇👇👇</h3>
+                    <p>⚠️ NO apliques si...</p>
+                    <ul class="warning-list">
+                        <li>No estás dispuesto(a) a dar muchas horas al aprendizaje.</li>
+                        <li>No te gusta aprender ni sabes cómo hacerlo bien.</li>
+                        <li>No te interesa la inteligencia artificial ni el futuro del diseño.</li>
+                        <li>Tu sentido estético no es tu fuerte.</li>
+                        <li>Buscas un trabajo convencional, de 9 a 5 sin mucha emoción.</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">✨ Este rol no es para cualquiera. Es para quien ve belleza en los detalles, quiere aprender rápido y sueña con crear productos que se sientan tan bien como se ven.</p>
+                </div>
             </div>
         </article>
     </main>
@@ -501,5 +578,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleJobDetails() {
+            const jobDetails = document.getElementById('jobDetails');
+            const viewMoreBtn = document.querySelector('.view-more-btn');
+            
+            jobDetails.classList.toggle('expanded');
+            
+            if (jobDetails.classList.contains('expanded')) {
+                viewMoreBtn.textContent = 'Ver menos';
+            } else {
+                viewMoreBtn.textContent = 'Ver más detalles';
+            }
+        }
+    </script>
 </body>
 </html> 
