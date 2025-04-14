@@ -390,123 +390,91 @@
             <h1 class="section-title">Progreso del Proyecto</h1>
             
             <div class="progress-grid">
-                <!-- Overall Progress Card -->
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-icon">📊</span>
-                        <h2 class="progress-title">Progreso General</h2>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 45%;"></div>
-                    </div>
-                    <div class="progress-stats">
-                        <span>45% Completado</span>
-                        <span>3/7 días</span>
-                    </div>
-                    <ul class="task-list">
-                        <li class="task-item completed">
-                            <span class="task-check">✓</span>
-                            Análisis inicial
-                        </li>
-                        <li class="task-item completed">
-                            <span class="task-check">✓</span>
-                            Diseño de wireframes
-                        </li>
-                        <li class="task-item">
-                            <span class="task-check"></span>
-                            Desarrollo frontend
-                        </li>
-                        <li class="task-item">
-                            <span class="task-check"></span>
-                            Testing y optimización
+                <!-- Completed Tasks Card -->
+                <div class="progress-card completed">
+                    <h3>Completed</h3>
+                    <ul>
+                        <li>✓ Envío de contrato (28/03/2025)</li>
+                        <li>✓ Aprobación de Contrato (03/04/2025)</li>
+                        <li>✓ Envío métodos de pago 50% (03/04/2025)</li>
+                        <li>✓ Pago 50% (03/04/2025)</li>
+                        <li>✓ Enviar formulario de Onboarding (04/04/2025)</li>
+                    </ul>
+                </div>
+
+                <!-- In Progress Card -->
+                <div class="progress-card in-progress">
+                    <h3>In Progress</h3>
+                    <ul>
+                        <li>⟳ Call: Kickoff (04/04/2025)
+                            <br><small>Reunión inicial para alinear expectativas y revisar cronograma</small>
+                            <br><small><a href="https://calendly.com/lucas-zitruus/consultants" target="_blank">Agendar llamada</a></small>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Current Phase Card -->
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-icon">🎯</span>
-                        <h2 class="progress-title">Fase Actual</h2>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 60%;"></div>
-                    </div>
-                    <div class="progress-stats">
-                        <span>60% de la fase</span>
-                        <span>Día 3 de 7</span>
-                    </div>
-                    <ul class="task-list">
-                        <li class="task-item completed">
-                            <span class="task-check">✓</span>
-                            Maquetación base
-                        </li>
-                        <li class="task-item completed">
-                            <span class="task-check">✓</span>
-                            Implementación de estilos
-                        </li>
-                        <li class="task-item">
-                            <span class="task-check"></span>
-                            Animaciones y transiciones
-                        </li>
-                        <li class="task-item">
-                            <span class="task-check"></span>
-                            Optimización móvil
-                        </li>
+                <!-- Upcoming Tasks Card -->
+                <div class="progress-card upcoming">
+                    <h3>Próximas Tareas</h3>
+                    <ul>
+                        <li>Cliente completa Formulario (15/04/2025)</li>
+                        <li>Cliente otorga acceso a Shopify (15/04/2025)</li>
+                        <li>Subida de assets y validación (15/04/2025)</li>
+                        <li>Diseño wireframe y UI (16-18/04/2025)</li>
+                        <li>Implementación en Shopify (21/04/2025)</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Airtable Embed -->
-            <div style="margin: 4rem 0;">
-                <iframe class="airtable-embed" 
-                    src="https://airtable.com/embed/appPsHYbod4xpVKbK/shrpMvVF22oZsnhB0?viewControls=on" 
-                    frameborder="0" 
-                    onmousewheel="" 
-                    width="100%" 
-                    height="533" 
-                    style="background: transparent; border: 1px solid #ccc;">
-                </iframe>
-            </div>
-
-            <!-- Timeline Section -->
-            <div class="timeline">
-                <h2 class="section-title" style="font-size: 1.8rem;">Línea de Tiempo</h2>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 21, 2025</div>
-                    <h3 class="timeline-title">Inicio del Proyecto</h3>
-                    <p class="timeline-description">Kickoff meeting y definición de objetivos principales. Análisis de requerimientos y planificación inicial.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 22, 2025</div>
-                    <h3 class="timeline-title">Diseño y Wireframes</h3>
-                    <p class="timeline-description">Desarrollo de wireframes y mockups. Aprobación del diseño visual y estructura de la landing page.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 23-24, 2025</div>
-                    <h3 class="timeline-title">Desarrollo Frontend</h3>
-                    <p class="timeline-description">Implementación de la estructura HTML, estilos CSS y funcionalidades JavaScript. Optimización de recursos.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 25-26, 2025</div>
-                    <h3 class="timeline-title">Testing y Optimización</h3>
-                    <p class="timeline-description">Pruebas de rendimiento, compatibilidad y usabilidad. Optimización de velocidad de carga y experiencia de usuario.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 27-28, 2025</div>
-                    <h3 class="timeline-title">Revisión y Ajustes</h3>
-                    <p class="timeline-description">Revisión final del proyecto, implementación de feedback y ajustes necesarios.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Marzo 30, 2025</div>
-                    <h3 class="timeline-title">Entrega Final</h3>
-                    <p class="timeline-description">Entrega del proyecto finalizado, documentación y capacitación del equipo.</p>
+            <!-- Project Timeline -->
+            <div class="timeline-section">
+                <h2>Línea de Tiempo del Proyecto</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 1: Inicio del Proyecto</h3>
+                            <p>28/03 - 04/04</p>
+                            <ul>
+                                <li>Contrato y pago inicial</li>
+                                <li>Kickoff meeting</li>
+                                <li>Onboarding</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 2: Recopilación y Diseño</h3>
+                            <p>15/04 - 18/04</p>
+                            <ul>
+                                <li>Recopilación de assets</li>
+                                <li>Diseño wireframe</li>
+                                <li>Diseño UI final</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 3: Implementación</h3>
+                            <p>21/04 - 22/04</p>
+                            <ul>
+                                <li>Implementación en Shopify</li>
+                                <li>QA y pruebas</li>
+                                <li>Analíticas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 4: Entrega Final</h3>
+                            <p>23/04</p>
+                            <ul>
+                                <li>Entrega al cliente</li>
+                                <li>Publicación</li>
+                                <li>Pago final</li>
+                                <li>Inicio soporte (30 días)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
