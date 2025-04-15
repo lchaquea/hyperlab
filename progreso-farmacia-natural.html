@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progreso del Proyecto - Farmacia Natural</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--background-color);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: var(--card-background);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Links Box Styles */
+        .links-box {
+            background: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .links-box h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .links-list li {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .links-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .links-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .links-list a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .links-list .link-description {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        /* Progress Grid Styles */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-card {
+            background: var(--card-background);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .progress-card.completed h3 {
+            color: var(--success-color);
+        }
+
+        .progress-card.in-progress h3 {
+            color: var(--warning-color);
+        }
+
+        .progress-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .progress-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .progress-card li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+        }
+
+        .progress-card.completed li:before {
+            background-color: var(--success-color);
+        }
+
+        .progress-card.in-progress li:before {
+            background-color: var(--warning-color);
+        }
+
+        .progress-card.upcoming li:before {
+            background-color: var(--text-color);
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .timeline-content p {
+            color: #64748b;
+            margin: 0.5rem 0;
+        }
+
+        .timeline-content ul {
+            margin: 0.5rem 0 0 0;
+            padding-left: 1.25rem;
+        }
+
+        /* Airtable Embed Styles */
+        .airtable-container {
+            margin: 2rem 0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Links Section -->
+        <div class="section">
+            <h2 class="section-title">Enlaces Importantes</h2>
+            <div class="links-box">
+                <h3>🔗 Enlaces del Proyecto</h3>
+                <ul class="links-list">
+                    <li>
+                        <a href="https://calendly.com/lucas-zitruus/consultants" target="_blank">
+                            📅 Agendar Llamada
+                        </a>
+                        <div class="link-description">Programa las reuniones de seguimiento del proyecto</div>
+                    </li>
+                    <li>
+                        <a href="https://airtable.com/appPsHYbod4xpVKbK/pag20mscwozE0n6KD/form" target="_blank">
+                            📝 Formulario de Onboarding
+                        </a>
+                        <div class="link-description">Completa la información necesaria para iniciar el proyecto</div>
+                    </li>
+                    <li>
+                        <a href="https://drive.google.com/drive/folders/1E2uMCG45PhnxpR1O2qmivnO-REOTERF" target="_blank">
+                            📁 Google Drive - Assets
+                        </a>
+                        <div class="link-description">Carpeta para subir logos, fotos y recursos del proyecto</div>
+                    </li>
+                    <li>
+                        <a href="mailto:hello@grouplcg.com">
+                            ✉️ Contacto Shopify
+                        </a>
+                        <div class="link-description">Email para gestionar accesos administrativos de Shopify</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="section">
+            <h2 class="section-title">Estado del Proyecto</h2>
+            <div class="progress-grid">
+                <!-- Completed Tasks Card -->
+                <div class="progress-card completed">
+                    <h3>✓ Completado</h3>
+                    <ul>
+                        <li>Envío de contrato (28/03/2025)</li>
+                        <li>Aprobación de Contrato (03/04/2025)</li>
+                        <li>Envío métodos de pago 50% (03/04/2025)</li>
+                        <li>Pago 50% (03/04/2025)</li>
+                        <li>Enviar formulario de Onboarding (04/04/2025)</li>
+                    </ul>
+                </div>
+
+                <!-- In Progress Card -->
+                <div class="progress-card in-progress">
+                    <h3>⟳ En Progreso</h3>
+                    <ul>
+                        <li>
+                            Call: Kickoff (04/04/2025)
+                            <div class="link-description">Reunión inicial para alinear expectativas y revisar cronograma</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Upcoming Tasks Card -->
+                <div class="progress-card upcoming">
+                    <h3>⌛ Próximas Tareas</h3>
+                    <ul>
+                        <li>Cliente completa Formulario (04/04/2025)</li>
+                        <li>Cliente otorga acceso a Shopify (04/04/2025)</li>
+                        <li>Cliente sube assets (05/04/2025)</li>
+                        <li>Validar assets completos (05/04/2025)</li>
+                        <li>Call: Validación Assets y Formulario (07/04/2025)</li>
+                        <li>Diseño de wireframe (08/04/2025)</li>
+                        <li>Diseño UI final (09/04/2025)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Airtable Embed -->
+            <div class="airtable-container">
+                <iframe class="airtable-embed" 
+                    src="https://airtable.com/embed/appPsHYbod4xpVKbK/shrILLqFtpLBJE5hb?viewControls=on" 
+                    frameborder="0" 
+                    onmousewheel="" 
+                    width="100%" 
+                    height="533" 
+                    style="background: transparent; border: 1px solid #ccc;">
+                </iframe>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <h2 class="section-title">Línea de Tiempo del Proyecto</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 1: Inicio del Proyecto</h3>
+                            <p>28/03 - 04/04</p>
+                            <ul>
+                                <li>Contrato y pago inicial</li>
+                                <li>Kickoff meeting</li>
+                                <li>Onboarding</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 2: Recopilación y Diseño</h3>
+                            <p>04/04 - 09/04</p>
+                            <ul>
+                                <li>Recopilación de assets</li>
+                                <li>Validación de recursos</li>
+                                <li>Diseño wireframe y UI</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 3: Implementación</h3>
+                            <p>10/04 - 10/04</p>
+                            <ul>
+                                <li>Implementación en Shopify</li>
+                                <li>QA y pruebas</li>
+                                <li>Configuración de analíticas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Fase 4: Entrega Final</h3>
+                            <p>11/04 - 14/04</p>
+                            <ul>
+                                <li>Entrega al cliente</li>
+                                <li>Publicación</li>
+                                <li>Pago final</li>
+                                <li>Inicio soporte (30 días)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
