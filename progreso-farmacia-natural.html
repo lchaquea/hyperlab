@@ -6,28 +6,150 @@
     <title>Progreso del Proyecto - Farmacia Natural</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --success-color: #059669;
-            --warning-color: #d97706;
-            --background-color: #f8fafc;
-            --card-background: #ffffff;
-            --text-color: #1f2937;
-            --border-color: #e5e7eb;
+            --primary-color: #7cdc69;
+            --bg-dark: #0a0a0a;
+            --text-light: #f0f0f0;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --line-color: rgba(255, 255, 255, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
-            color: var(--text-color);
-            background: var(--background-color);
-            margin: 0;
-            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            line-height: 1;
+            position: relative;
+            top: 1px;
+        }
+
+        /* Banner Styles */
+        .banner {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        /* Footer Styles */
+        .footer {
+            padding: 4rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
         }
 
         .section {
@@ -256,6 +378,31 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo-container">
+                <div class="logo-icon">
+                    <img src="assets/logo-icon.svg" alt="Hyperlab Icon" width="30" height="30">
+                </div>
+                <span class="logo-text">hyperlab</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/propuesta-farmacia-natural.html" class="nav-link">Propuesta</a>
+                <a href="/progreso-farmacia-natural.html" class="nav-link">Progreso</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <h1>Farmacia Natural - Landing Page CO & US</h1>
+            <p>Seguimiento y progreso del proyecto</p>
+        </div>
+    </section>
+
     <div class="container">
         <!-- Links Section -->
         <div class="section">
@@ -419,6 +566,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                © 2025 Hyperlab. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
     <!-- WhatsApp Button -->
     <a href="https://wa.me/573208996977" target="_blank" class="whatsapp-button" aria-label="Contact via WhatsApp">
         <svg viewBox="0 0 24 24">
