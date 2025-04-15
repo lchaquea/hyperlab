@@ -6,13 +6,18 @@
     <title>Progreso del Proyecto - Farmacia Natural</title>
     <style>
         :root {
-            --primary-color: #7cdc69;
+            --primary-color: #2563eb;
             --bg-dark: #0a0a0a;
             --text-light: #f0f0f0;
             --text-dim: rgba(255, 255, 255, 0.7);
             --line-color: rgba(255, 255, 255, 0.2);
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --secondary-color: #3b82f6;
         }
 
         * {
@@ -23,8 +28,8 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: #f8fafc;
+            color: var(--text-color);
             line-height: 1.6;
             position: relative;
             overflow-x: hidden;
@@ -123,7 +128,7 @@
         .banner {
             padding: 8rem 0 4rem;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.02);
+            background-color: #ffffff;
             border-bottom: 1px solid var(--card-border);
         }
 
@@ -136,7 +141,7 @@
 
         .banner p {
             font-size: 1.2rem;
-            color: var(--text-dim);
+            color: var(--text-color);
         }
 
         /* Footer Styles */
@@ -144,6 +149,7 @@
             padding: 4rem 0;
             margin-top: 4rem;
             border-top: 1px solid var(--card-border);
+            background-color: var(--bg-dark);
         }
 
         .copyright {
@@ -154,7 +160,7 @@
 
         .section {
             margin-bottom: 3rem;
-            background: var(--card-background);
+            background: var(--card-bg);
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             padding: 2rem;
@@ -169,7 +175,7 @@
 
         /* Links Box Styles */
         .links-box {
-            background: #f8fafc;
+            background: #ffffff;
             border: 2px solid var(--border-color);
             border-radius: 0.75rem;
             padding: 1.5rem;
@@ -192,7 +198,7 @@
         .links-list li {
             margin-bottom: 1rem;
             padding: 0.75rem;
-            background: white;
+            background: #f8fafc;
             border-radius: 0.5rem;
             border: 1px solid var(--border-color);
         }
@@ -229,7 +235,7 @@
         }
 
         .progress-card {
-            background: var(--card-background);
+            background: #ffffff;
             border-radius: 0.75rem;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
@@ -259,6 +265,7 @@
             margin-bottom: 0.75rem;
             padding-left: 1.5rem;
             position: relative;
+            color: var(--text-color);
         }
 
         .progress-card li:before {
@@ -317,7 +324,7 @@
         }
 
         .timeline-content {
-            background: white;
+            background: #ffffff;
             border-radius: 0.75rem;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
