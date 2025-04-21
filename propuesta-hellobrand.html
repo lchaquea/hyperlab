@@ -921,45 +921,74 @@
         /* Pricing Card Styles */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .pricing-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 2rem;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             overflow: hidden;
             position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 220, 105, 0.3);
+            background: rgba(20, 20, 20, 0.6);
         }
 
         .pricing-card h3 {
             color: var(--primary-color);
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         .pricing-card .price {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .pricing-card .price-details {
             color: var(--text-dim);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-size: 0.9rem;
         }
 
         .pricing-card .feature-list {
-            margin-bottom: 1.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .pricing-card .feature-list li {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-card .feature-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1;
         }
 
         .pricing-card.featured {
             border: 2px solid var(--primary-color);
+            background: rgba(124, 220, 105, 0.05);
         }
 
         .featured-label {
@@ -974,8 +1003,11 @@
             font-weight: 500;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-5px);
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
@@ -1218,13 +1250,15 @@
             <div class="pricing-grid">
                 <!-- WhatsApp AI Conversacional Card -->
                 <div class="pricing-card">
-                    <h3>WhatsApp AI Conversacional</h3>
+                    <h3>WhatsApp AI + Ventas</h3>
                     <div class="price">$199 USD</div>
                     <p class="price-details">Inversión Inicial</p>
                     
                     <ul class="feature-list">
                         <li>Bot de WhatsApp con IA</li>
                         <li>Mejora de ventas con sugerencias</li>
+                        <li>Recomendaciones de productos</li>
+                        <li>Seguimiento de clientes potenciales</li>
                         <li>Respuestas contextuales</li>
                         <li>Atención al cliente 24/7</li>
                         <li>Entrenamiento personalizado</li>
