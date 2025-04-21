@@ -143,9 +143,16 @@
 
         /* Hero Section */
         .proposal-header {
-            padding: 4rem 0;
-            background: linear-gradient(45deg, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.98));
-            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            padding: calc(4rem + 70px) 0 4rem;
+            background: linear-gradient(45deg, rgba(124, 220, 105, 0.1), rgba(74, 144, 226, 0.1));
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         .header-content {
@@ -652,6 +659,71 @@
 
         .toggle-icon:hover {
             background: rgba(124, 220, 105, 0.2);
+        }
+
+        /* WhatsApp Float Button Styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .whatsapp-float:hover {
+            width: 220px;
+            border-radius: 30px;
+            background: #1fa855;
+            padding: 0 1.5rem;
+            justify-content: flex-start;
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            transition: margin-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            fill: currentColor;
+            color: white;
+        }
+
+        .whatsapp-float:hover svg {
+            margin-right: 12px;
+        }
+
+        .whatsapp-tooltip {
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            width: 0;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 1rem;
+                right: 1rem;
+            }
         }
     </style>
 </head>
