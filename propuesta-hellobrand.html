@@ -157,23 +157,59 @@
 
         .header-content {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-left {
+            text-align: left;
+            max-width: 100%;
+        }
+
+        .client-logo {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .client-logo .typing-text {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
         }
 
         .header-title {
-            font-size: 3rem;
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
             line-height: 1.2;
-            margin: 1rem 0;
+        }
+
+        .header-title .typing-text {
+            display: block;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 0.5rem;
         }
 
         .header-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            line-height: 1.4;
         }
 
         .proposal-info, .countdown, .prepared-by {
@@ -419,8 +455,16 @@
                 display: none;
             }
 
+            .client-logo .typing-text {
+                font-size: 1.8rem;
+            }
+
             .header-title {
-                font-size: 2rem;
+                font-size: 3rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
             }
 
             .timeline-table {
@@ -862,8 +906,9 @@
             font-size: 2rem;
             color: var(--primary-color);
             font-weight: 500;
-            display: block;
-            margin-bottom: 1rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
         }
 
         /* Footer Styles */
@@ -1079,11 +1124,11 @@
             <div class="header-content">
                 <div class="header-left">
                     <div class="client-logo">
-                        <span class="typing-text" data-text="Hello Brand">Hello Brand</span>
+                        <h1 class="typing-text" data-text="Hello Brand" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 10;">Hello Brand</h1>
                     </div>
                     <h1 class="header-title">
-                        <span class="typing-text" data-text="WhatsApp AI Bot">WhatsApp AI Bot</span>
-                        <span class="typing-text" data-text="Premium">Premium</span>
+                        <span class="typing-text" data-text="WhatsApp AI Bot" style="display: block; --typing-steps: 12;">WhatsApp AI Bot</span>
+                        <span class="typing-text" data-text="Premium" style="display: block; --typing-steps: 8;">Premium</span>
                     </h1>
                     <p class="header-subtitle">Desarrollo de bot de WhatsApp con IA para automatización de respuestas, integración de pagos y gestión de pedidos en tres números de WhatsApp.</p>
                 </div>
