@@ -203,10 +203,21 @@
         }
 
         .prepared-by {
-            background: var(--bg-color);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            text-align: right;
+            padding: 1.5rem;
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .prepared-by p {
+            margin: 0;
+            color: var(--text-dim);
+        }
+
+        .prepared-by strong {
+            color: var(--text-light);
         }
 
         .hyperlab-info {
@@ -830,6 +841,139 @@
             color: var(--primary-color);
             --typing-steps: 10;
         }
+
+        /* Footer Styles */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(124, 220, 105, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-address {
+            text-align: right;
+            color: var(--text-dim);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-dim);
+            padding-top: 2rem;
+            border-top: 1px solid rgba(124, 220, 105, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-address {
+                text-align: center;
+            }
+        }
+
+        /* Pricing Card Styles */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pricing-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price-details {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card .feature-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary-color);
+        }
+
+        .featured-label {
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            padding: 0.25rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body>
@@ -876,10 +1020,7 @@
                     </div>
                     <div class="prepared-by">
                         <p>Fecha de entrega: <strong>Abril 29, 2024</strong></p>
-                        <div class="hyperlab-info">
-                            <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo">
-                            <span>Preparado por hyperlab</span>
-                        </div>
+                        <p>Preparado por hyperlab</p>
                     </div>
                 </div>
             </div>
@@ -1071,14 +1212,15 @@
         <section id="inversion" class="pricing-section project-summary">
             <h2 class="section-title">Inversión y Opciones</h2>
             
-            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div class="pricing-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease; overflow: hidden;">
-                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem;">Bot Conversacional</h3>
-                    <div class="price" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem;">$199 USD</div>
-                    <p class="price-details" style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Inversión Inicial</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>WhatsApp AI Conversacional</h3>
+                    <div class="price">$199 USD</div>
+                    <p class="price-details">Inversión Inicial</p>
                     
-                    <ul class="feature-list" style="margin-bottom: 1.5rem;">
+                    <ul class="feature-list">
                         <li>Bot de WhatsApp con IA</li>
+                        <li>Mejora de ventas con sugerencias</li>
                         <li>Respuestas contextuales</li>
                         <li>Atención al cliente 24/7</li>
                         <li>Entrenamiento personalizado</li>
@@ -1086,12 +1228,12 @@
                     </ul>
                 </div>
 
-                <div class="pricing-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease; overflow: hidden;">
-                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem;">Bot + Pagos</h3>
-                    <div class="price" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem;">$299 USD</div>
-                    <p class="price-details" style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Inversión Inicial</p>
+                <div class="pricing-card">
+                    <h3>Bot + Pagos</h3>
+                    <div class="price">$299 USD</div>
+                    <p class="price-details">Inversión Inicial</p>
                     
-                    <ul class="feature-list" style="margin-bottom: 1.5rem;">
+                    <ul class="feature-list">
                         <li>Bot de WhatsApp con IA</li>
                         <li>Integración de enlaces de pago</li>
                         <li>Gestión de pagos</li>
@@ -1100,12 +1242,12 @@
                     </ul>
                 </div>
 
-                <div class="pricing-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease; overflow: hidden;">
-                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem;">Bot + Pedidos</h3>
-                    <div class="price" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem;">$299 USD</div>
-                    <p class="price-details" style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Inversión Inicial</p>
+                <div class="pricing-card">
+                    <h3>Bot + Pedidos</h3>
+                    <div class="price">$299 USD</div>
+                    <p class="price-details">Inversión Inicial</p>
                     
-                    <ul class="feature-list" style="margin-bottom: 1.5rem;">
+                    <ul class="feature-list">
                         <li>Bot de WhatsApp con IA</li>
                         <li>Gestión de pedidos</li>
                         <li>Actualización de estados</li>
@@ -1114,13 +1256,13 @@
                     </ul>
                 </div>
 
-                <div class="pricing-card featured" style="background: var(--card-bg); border: 2px solid var(--primary-color); border-radius: 15px; padding: 2rem; transition: transform 0.3s ease; overflow: hidden; position: relative;">
-                    <div style="position: absolute; top: 1rem; right: -2rem; background: var(--primary-color); color: var(--bg-dark); padding: 0.25rem 3rem; transform: rotate(45deg); font-size: 0.9rem; font-weight: 500;">Recomendado</div>
-                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem;">Paquete Completo</h3>
-                    <div class="price" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 0.5rem;">$996 USD</div>
-                    <p class="price-details" style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Inversión Inicial</p>
+                <div class="pricing-card featured">
+                    <div class="featured-label">Recomendado</div>
+                    <h3>Paquete Completo</h3>
+                    <div class="price">$996 USD</div>
+                    <p class="price-details">Inversión Inicial</p>
                     
-                    <ul class="feature-list" style="margin-bottom: 1.5rem;">
+                    <ul class="feature-list">
                         <li>Todas las funcionalidades incluidas</li>
                         <li>Bot de WhatsApp con IA</li>
                         <li>Integración de pagos</li>
@@ -1222,8 +1364,8 @@
         <div class="container">
             <div class="footer-content">
                 <a href="/" class="footer-logo">
-                    <img src="assets/logo hyperlab.svg" alt="Hyperlab Logo" width="30" height="30">
-                    hyperlab
+                    <img src="assets/logo hyperlab.svg" alt="Hyperlab" width="30" height="30">
+                    <span>hyperlab</span>
                 </a>
 
                 <div class="footer-links">
