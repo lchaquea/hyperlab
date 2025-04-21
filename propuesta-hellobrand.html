@@ -439,6 +439,38 @@
             transform: translateY(-50%);
         }
 
+        /* Table of Contents Styles */
+        .toc-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 1rem;
+            background: rgba(10, 150, 50, 0.9);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toc-button:hover {
+            background: rgba(8, 130, 40, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .toc-button::before {
+            content: "☰";
+            font-size: 1.2rem;
+        }
+
         .toc-menu {
             position: fixed;
             bottom: 5rem;
@@ -481,6 +513,10 @@
             cursor: pointer;
             padding: 0.5rem;
             transition: transform 0.2s ease;
+        }
+
+        .toc-close:hover {
+            transform: scale(1.1);
         }
 
         .toc-links {
@@ -632,39 +668,6 @@
         .copyright {
             color: var(--text-dim);
             border-top: 1px solid var(--line-color);
-        }
-
-        .toc-button {
-            position: fixed;
-            bottom: 2rem;
-            left: 1rem;
-            background: rgba(10, 150, 50, 0.9);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem 1.25rem;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            z-index: 1001;
-        }
-
-        .toc-button:hover {
-            background: rgba(8, 130, 40, 0.95);
-        }
-
-        .toc-links a {
-            color: var(--text-dim);
-        }
-
-        .toc-links a:hover {
-            color: var(--text-light);
-            background: rgba(124, 220, 105, 0.1);
         }
 
         .proposal-info p, .prepared-by p {
@@ -1213,6 +1216,7 @@
             <h2 class="section-title">Inversión y Opciones</h2>
             
             <div class="pricing-grid">
+                <!-- WhatsApp AI Conversacional Card -->
                 <div class="pricing-card">
                     <h3>WhatsApp AI Conversacional</h3>
                     <div class="price">$199 USD</div>
@@ -1228,6 +1232,7 @@
                     </ul>
                 </div>
 
+                <!-- Bot + Pagos Card -->
                 <div class="pricing-card">
                     <h3>Bot + Pagos</h3>
                     <div class="price">$299 USD</div>
@@ -1242,6 +1247,7 @@
                     </ul>
                 </div>
 
+                <!-- Bot + Pedidos Card -->
                 <div class="pricing-card">
                     <h3>Bot + Pedidos</h3>
                     <div class="price">$299 USD</div>
@@ -1256,6 +1262,7 @@
                     </ul>
                 </div>
 
+                <!-- Paquete Completo Card -->
                 <div class="pricing-card featured">
                     <div class="featured-label">Recomendado</div>
                     <h3>Paquete Completo</h3>
@@ -1477,6 +1484,97 @@
 
             // Make toggleCollapsible available globally
             window.toggleCollapsible = toggleCollapsible;
+        });
+    </script>
+
+    <!-- Add this script just before the closing body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocButton = document.getElementById('tocButton');
+            const tocMenu = document.getElementById('tocMenu');
+            const tocClose = document.getElementById('tocClose');
+            let isMenuVisible = false;
+            let hoverTimeout;
+
+            function showMenu() {
+                tocMenu.classList.add('active');
+                isMenuVisible = true;
+            }
+
+            function hideMenu() {
+                tocMenu.classList.remove('active');
+                isMenuVisible = false;
+            }
+
+            // Toggle menu on button click
+            tocButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isMenuVisible) {
+                    hideMenu();
+                } else {
+                    showMenu();
+                }
+            });
+
+            // Handle hover events
+            tocButton.addEventListener('mouseenter', function() {
+                clearTimeout(hoverTimeout);
+                showMenu();
+            });
+
+            tocMenu.addEventListener('mouseenter', function() {
+                clearTimeout(hoverTimeout);
+            });
+
+            tocButton.addEventListener('mouseleave', function() {
+                hoverTimeout = setTimeout(() => {
+                    if (!tocMenu.matches(':hover')) {
+                        hideMenu();
+                    }
+                }, 200);
+            });
+
+            tocMenu.addEventListener('mouseleave', function() {
+                hoverTimeout = setTimeout(hideMenu, 200);
+            });
+
+            // Close menu on close button click
+            tocClose.addEventListener('click', function() {
+                hideMenu();
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!tocMenu.contains(e.target) && !tocButton.contains(e.target)) {
+                    hideMenu();
+                }
+            });
+
+            // Close menu when clicking a link
+            tocMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hideMenu();
+                });
+            });
+
+            // Handle touch events for mobile
+            let touchStartY;
+            tocMenu.addEventListener('touchstart', function(e) {
+                touchStartY = e.touches[0].clientY;
+            });
+
+            tocMenu.addEventListener('touchmove', function(e) {
+                const touchY = e.touches[0].clientY;
+                const scrollTop = tocMenu.scrollTop;
+                const scrollHeight = tocMenu.scrollHeight;
+                const clientHeight = tocMenu.clientHeight;
+
+                // Prevent default only if trying to scroll past the bounds
+                if ((scrollTop <= 0 && touchY > touchStartY) || 
+                    (scrollTop + clientHeight >= scrollHeight && touchY < touchStartY)) {
+                    e.preventDefault();
+                }
+            });
         });
     </script>
 </body>
