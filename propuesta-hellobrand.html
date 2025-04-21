@@ -169,17 +169,18 @@
             margin-bottom: 2rem;
         }
 
-        .proposal-info {
-            background: var(--bg-color);
+        .proposal-info, .countdown, .prepared-by {
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 1.5rem;
         }
 
         .countdown {
             text-align: center;
-            margin-bottom: 2rem;
         }
 
         .countdown-number {
@@ -187,6 +188,11 @@
             font-weight: 700;
             color: var(--primary-color);
             line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown p {
+            color: var(--text-dim);
         }
 
         .prepared-by {
@@ -459,25 +465,28 @@
         }
 
         .faq-answer {
-            padding: 0 1.5rem;
-            height: 0;
+            max-height: 0;
             opacity: 0;
             overflow: hidden;
             transition: all 0.3s ease;
-            color: var(--text-dim);
+            background: rgba(20, 20, 20, 0.3);
         }
 
         .faq-answer.active {
-            padding: 1.5rem;
-            height: auto;
+            max-height: 500px;
             opacity: 1;
-            background: rgba(124, 220, 105, 0.02);
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
         }
 
         .faq-answer ul {
             list-style: none;
             padding: 0;
-            margin: 1rem 0;
+            margin: 0;
         }
 
         .faq-answer li {
@@ -492,6 +501,16 @@
             color: var(--primary-color);
             position: absolute;
             left: 0;
+        }
+
+        .faq-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-arrow {
+            transform: rotate(180deg);
         }
 
         .footer-content {
@@ -1046,22 +1065,63 @@
 
     <!-- Reuse all scripts from propuesta-gymstar.html -->
     <script>
-        function toggleCollapsible(element) {
-            const content = element.nextElementSibling;
-            const icon = element.querySelector('.toggle-icon');
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
             
-            content.classList.toggle('active');
-            icon.textContent = content.classList.contains('active') ? '-' : '+';
-        }
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all FAQs
+                    faqQuestions.forEach(q => {
+                        q.setAttribute('aria-expanded', 'false');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Open clicked FAQ if it was closed
+                    if (!isExpanded) {
+                        question.setAttribute('aria-expanded', 'true');
+                        answer.classList.add('active');
+                    }
+                });
+            });
 
-        // Initialize all collapsible sections as closed
-        document.addEventListener('DOMContentLoaded', () => {
-            const collapsibles = document.querySelectorAll('.collapsible-content');
-            collapsibles.forEach(content => {
+            // Initialize ARIA attributes
+            faqQuestions.forEach(question => {
+                question.setAttribute('aria-expanded', 'false');
+            });
+
+            // Timeline collapsible functionality
+            function toggleCollapsible(element) {
+                const content = element.nextElementSibling;
+                const icon = element.querySelector('.toggle-icon');
+                
+                // Close all other collapsibles
+                document.querySelectorAll('.collapsible-content').forEach(c => {
+                    if (c !== content) {
+                        c.classList.remove('active');
+                        const prevIcon = c.previousElementSibling.querySelector('.toggle-icon');
+                        if (prevIcon) prevIcon.textContent = '+';
+                    }
+                });
+                
+                content.classList.toggle('active');
+                if (icon) {
+                    icon.textContent = content.classList.contains('active') ? '−' : '+';
+                }
+            }
+
+            // Initialize all collapsible sections as closed
+            document.querySelectorAll('.collapsible-content').forEach(content => {
                 content.classList.remove('active');
                 const icon = content.previousElementSibling.querySelector('.toggle-icon');
                 if (icon) icon.textContent = '+';
             });
+
+            // Make toggleCollapsible available globally
+            window.toggleCollapsible = toggleCollapsible;
         });
     </script>
 </body>
