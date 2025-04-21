@@ -507,6 +507,7 @@
             width: 20px;
             height: 20px;
             transition: transform 0.3s ease;
+            fill: var(--primary-color);
         }
 
         .faq-question[aria-expanded="true"] .faq-arrow {
@@ -615,6 +616,43 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
+
+        /* Fix for all cards in hero section */
+        .header-right > div {
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 1.5rem;
+        }
+
+        .header-right > div:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Fix for FAQ arrows */
+        .faq-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            fill: var(--primary-color);
+        }
+
+        .faq-question:hover .faq-arrow {
+            fill: var(--primary-color);
+            opacity: 0.8;
+        }
+
+        .toggle-icon {
+            color: var(--primary-color);
+            background: rgba(124, 220, 105, 0.1);
+        }
+
+        .toggle-icon:hover {
+            background: rgba(124, 220, 105, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -629,7 +667,7 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#cronograma">Cronograma</a></li>
-                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#inversion">Precios</a></li>
                     <li><a href="#faqs">FAQs</a></li>
                 </ul>
             </nav>
