@@ -172,9 +172,6 @@
 
         .client-logo {
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards;
         }
 
         .client-logo .typing-text {
@@ -184,15 +181,18 @@
             margin: 0;
             padding: 0;
             line-height: 1.2;
+            width: auto;
+            border-right: none;
+            white-space: normal;
+            display: block;
+            opacity: 1;
+            animation: none;
         }
 
         .header-title {
             font-size: 4rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.2s forwards;
             line-height: 1.2;
         }
 
@@ -200,16 +200,50 @@
             display: block;
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 0.5rem;
+            width: auto;
+            border-right: none;
+            white-space: normal;
+            opacity: 1;
+            animation: none;
         }
 
         .header-subtitle {
             font-size: 1.5rem;
             color: var(--text-dim);
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease 0.4s forwards;
             line-height: 1.4;
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Remove typing animation for better visibility */
+        .typing-text {
+            overflow: visible;
+            border-right: none;
+            white-space: normal;
+            animation: none;
+            width: auto;
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .client-logo .typing-text {
+                font-size: 1.8rem;
+            }
+
+            .header-title {
+                font-size: 3rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
         }
 
         .proposal-info, .countdown, .prepared-by {
