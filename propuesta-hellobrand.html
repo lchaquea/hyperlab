@@ -141,7 +141,7 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section Styles */
         .proposal-header {
             min-height: 100vh;
             display: flex;
@@ -229,9 +229,28 @@
 
         /* Section Styles */
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            color: var(--text-dim);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            max-width: 800px;
         }
 
         .summary-grid, .preview-grid {
@@ -840,9 +859,11 @@
         }
 
         .client-logo .typing-text {
-            font-size: 1.5rem !important;
+            font-size: 2rem;
             color: var(--primary-color);
-            --typing-steps: 10;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1rem;
         }
 
         /* Footer Styles */
@@ -1009,6 +1030,28 @@
                 padding: 0 1rem;
             }
         }
+
+        /* Section Spacing */
+        .project-summary {
+            padding: 6rem 0;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .project-summary:first-of-type {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .project-summary {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1065,33 +1108,35 @@
     <main class="container">
         <!-- Project Summary -->
         <section id="proyecto" class="project-summary">
-            <h2 class="section-title">Desarrollo WhatsApp AI Bot</h2>
-            <p style="color: var(--text-dim); margin-bottom: 3rem;">
-                <strong>Alcance del proyecto:</strong> Desarrollo de bot de WhatsApp con IA para automatización de respuestas, integración de pagos y gestión de pedidos en tres números de WhatsApp.
-            </p>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Objetivos del Proyecto</h3>
-                    <ul class="feature-list">
-                        <li>Automatizar respuestas a consultas frecuentes</li>
-                        <li>Integrar sistema de enlaces de pago</li>
-                        <li>Gestionar pedidos y actualizar estados</li>
-                        <li>Mejorar la experiencia de atención al cliente</li>
-                        <li>Optimizar el proceso de ventas</li>
-                    </ul>
-                </div>
-                <div class="summary-card">
-                    <div class="card-icon">📈</div>
-                    <h3 class="card-title">Resultados Esperados</h3>
-                    <ul class="feature-list">
-                        <li>Bot de WhatsApp con IA funcional</li>
-                        <li>Sistema de pagos integrado</li>
-                        <li>Gestión automatizada de pedidos</li>
-                        <li>Mejora en la atención al cliente</li>
-                        <li>Optimización del proceso de ventas</li>
-                        <li>Reducción de tiempo de respuesta</li>
-                    </ul>
+            <div class="container">
+                <h2 class="section-title">Desarrollo WhatsApp AI Bot</h2>
+                <p class="section-description">
+                    <strong>Alcance del proyecto:</strong> Desarrollo de bot de WhatsApp con IA para automatización de respuestas, integración de pagos y gestión de pedidos en tres números de WhatsApp.
+                </p>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Objetivos del Proyecto</h3>
+                        <ul class="feature-list">
+                            <li>Automatizar respuestas a consultas frecuentes</li>
+                            <li>Integrar sistema de enlaces de pago</li>
+                            <li>Gestionar pedidos y actualizar estados</li>
+                            <li>Mejorar la experiencia de atención al cliente</li>
+                            <li>Optimizar el proceso de ventas</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">Resultados Esperados</h3>
+                        <ul class="feature-list">
+                            <li>Bot de WhatsApp con IA funcional</li>
+                            <li>Sistema de pagos integrado</li>
+                            <li>Gestión automatizada de pedidos</li>
+                            <li>Mejora en la atención al cliente</li>
+                            <li>Optimización del proceso de ventas</li>
+                            <li>Reducción de tiempo de respuesta</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
