@@ -255,43 +255,64 @@
 
         /* Timeline Styles */
         .timeline-section {
-            margin: 4rem 0;
-            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(16, 16, 16, 0.9));
+            padding: 0;
+            margin-top: 4rem;
         }
 
         .timeline-table {
-            background: var(--bg-dark);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             overflow: hidden;
         }
 
         .timeline-header {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            background: rgba(124, 220, 105, 0.03);
-            color: white;
-            padding: 1rem;
-            font-weight: 600;
+            grid-template-columns: 200px 1fr 100px;
+            padding: 1.5rem;
+            background: rgba(124, 220, 105, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .timeline-row {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--card-border);
-            color: var(--text-light);
+            display: grid;
+            grid-template-columns: 200px 1fr 100px;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-row:hover {
+            background: rgba(124, 220, 105, 0.05);
         }
 
         .fase-col {
             color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .fase-date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .func-col {
+            color: var(--text-light);
         }
 
         .tiempo-col {
             color: var(--text-dim);
+            text-align: right;
         }
 
         .timeline-footer {
-            background: var(--card-bg);
-            border-top: 1px solid var(--card-border);
+            display: grid;
+            grid-template-columns: 200px 1fr 100px;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(124, 220, 105, 0.05);
         }
 
         .collapsible-header {
@@ -302,21 +323,24 @@
         }
 
         .toggle-icon {
-            background: rgba(124, 220, 105, 0.1);
-            color: var(--primary-color);
-            border-radius: 50%;
             width: 24px;
             height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: rgba(124, 220, 105, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .collapsible-content {
             display: none;
-            padding: 1rem 0;
+            padding: 1.5rem;
+            background: rgba(124, 220, 105, 0.02);
+            margin-top: 0.5rem;
+            border-radius: 8px;
         }
 
         .collapsible-content.active {
@@ -366,8 +390,29 @@
             }
         }
 
-        .timeline-row:hover {
-            background: rgba(124, 220, 105, 0.03);
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            color: var(--text-dim);
+            margin-bottom: 0.875rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
         }
 
         .toc-menu {
@@ -382,11 +427,16 @@
         }
 
         .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             overflow: hidden;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
         }
 
         .faq-question {
@@ -405,7 +455,7 @@
         }
 
         .faq-question:hover {
-            background: rgba(124, 220, 105, 0.03);
+            background: rgba(124, 220, 105, 0.05);
         }
 
         .faq-answer {
@@ -418,9 +468,10 @@
         }
 
         .faq-answer.active {
-            padding: 0 1.5rem 1.5rem;
+            padding: 1.5rem;
             height: auto;
             opacity: 1;
+            background: rgba(124, 220, 105, 0.02);
         }
 
         .faq-answer ul {
@@ -531,9 +582,19 @@
             box-shadow: 0 6px 20px rgba(46, 229, 87, 0.6);
         }
 
-        .collapsible-header.active .toggle-icon {
+        .collapsible-header.active .toggle-icon,
+        .collapsible-header:hover .toggle-icon {
             background: rgba(124, 220, 105, 0.2);
-            transform: rotate(45deg);
+        }
+
+        /* Header card fix */
+        .header-right {
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
     </style>
 </head>
