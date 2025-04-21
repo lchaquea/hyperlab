@@ -429,9 +429,86 @@
         }
 
         .toc-menu {
+            position: fixed;
+            bottom: 5rem;
+            left: 1rem;
+            width: 300px;
+            max-height: 80vh;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 998;
+            overflow-y: auto;
+            border-radius: 12px;
             border: 1px solid rgba(124, 220, 105, 0.1);
+        }
+
+        .toc-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .toc-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .toc-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-links li {
+            margin: 0.5rem 0;
+        }
+
+        .toc-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-links a:hover {
+            color: var(--text-light);
+            background: rgba(124, 220, 105, 0.1);
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .toc-menu {
+                width: calc(100% - 2rem);
+                max-height: 70vh;
+                bottom: 5rem;
+            }
+            
+            .toc-button {
+                bottom: 1rem;
+                left: 1rem;
+                padding: 0.5rem 1rem;
+            }
         }
 
         .faq-container {
@@ -547,9 +624,23 @@
         }
 
         .toc-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 1rem;
             background: rgba(10, 150, 50, 0.9);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1001;
         }
 
         .toc-button:hover {
@@ -725,6 +816,20 @@
                 right: 1rem;
             }
         }
+
+        /* Logo and Client Name Styles */
+        .client-logo {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .client-logo .typing-text {
+            font-size: 1.5rem !important;
+            color: var(--primary-color);
+            --typing-steps: 10;
+        }
     </style>
 </head>
 <body>
@@ -752,11 +857,11 @@
             <div class="header-content">
                 <div class="header-left">
                     <div class="client-logo">
-                        <h1 class="typing-text" data-text="Hello Brand" style="font-size: 2rem; color: var(--primary-color); --typing-steps: 10;">Hello Brand</h1>
+                        <span class="typing-text" data-text="Hello Brand">Hello Brand</span>
                     </div>
                     <h1 class="header-title">
-                        <span class="typing-text" data-text="WhatsApp AI Bot" style="display: block; --typing-steps: 12;">WhatsApp AI Bot</span>
-                        <span class="typing-text" data-text="Premium" style="display: block; --typing-steps: 8;">Premium</span>
+                        <span class="typing-text" data-text="WhatsApp AI Bot">WhatsApp AI Bot</span>
+                        <span class="typing-text" data-text="Premium">Premium</span>
                     </h1>
                     <p class="header-subtitle">Desarrollo de bot de WhatsApp con IA para automatización de respuestas, integración de pagos y gestión de pedidos en tres números de WhatsApp.</p>
                 </div>
@@ -1160,16 +1265,14 @@
             <button class="toc-close" id="tocClose">✕</button>
         </div>
         <div class="toc-content">
-            <div class="product-section">
-                <ul class="toc-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#proyecto">Desarrollo WhatsApp AI Bot</a></li>
-                    <li><a href="#funcionalidades">Funcionalidades y Entregables</a></li>
-                    <li><a href="#cronograma">Cronograma de Desarrollo</a></li>
-                    <li><a href="#inversion">Inversión y Opciones</a></li>
-                    <li><a href="#faqs">Preguntas Frecuentes</a></li>
-                </ul>
-            </div>
+            <ul class="toc-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#proyecto">Desarrollo WhatsApp AI Bot</a></li>
+                <li><a href="#funcionalidades">Funcionalidades y Entregables</a></li>
+                <li><a href="#cronograma">Cronograma de Desarrollo</a></li>
+                <li><a href="#inversion">Inversión y Opciones</a></li>
+                <li><a href="#faqs">Preguntas Frecuentes</a></li>
+            </ul>
         </div>
     </nav>
 
